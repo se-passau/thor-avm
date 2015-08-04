@@ -48,7 +48,7 @@
     <copy todir="PF">
       <fileset dir="${src}/pf" />
     </copy>
-    <java classname="jmetal.experiments.IBEAStudy" fork="true">
+    <java classname="jmetal.experiments.NSGAIIDMStudy" fork="true">
      <classpath>
        <pathelement path="${classpath}"/>
        <fileset dir="lib">

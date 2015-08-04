@@ -107,10 +107,10 @@ public class NSGAII_Settings extends Settings {
     parameters = new HashMap() ;
     parameters.put("probability", mutationProbability_) ;
     parameters.put("distributionIndex", mutationDistributionIndex_) ;
-	    parameters.put("featureModel", problem_.pfm);
-	    mutation = MutationFactory.getMutationOperator("FMMutator", parameters);                              
-            //parameters.put("dimacs", problem_.dfm);
-	    //mutation = MutationFactory.getMutationOperator("DMBitFlipMutation", parameters);                              
+    //parameters.put("featureModel", problem_.pfm);
+    //	    mutation = MutationFactory.getMutationOperator("FMMutator", parameters);                              
+    parameters.put("dimacs", problem_.dfm);
+    mutation = MutationFactory.getMutationOperator("DMBitFlipMutation", parameters);                              
 
     // Selection Operator 
     parameters = null ;
