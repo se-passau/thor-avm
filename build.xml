@@ -1,0 +1,50 @@
+<!-- Mac OS X: export JAVA_HOME=`/usr/libexec/java_home -v 1.7`-->
+<project name="ibea-study-replication" default="compile" basedir=".">
+  <description>
+    ...
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <!--<property name="dist" location="dist"/>-->
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" source="7" target="7">
+      <classpath>
+	<pathelement path="${classpath}"/>
+	<fileset dir="lib">
+          <include name="**/*.jar"/>
+	</fileset>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="clean"
+          description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+  </target>
+
+  <target name="run"
+          description="perform jMetal 'experiment'">
+    <java classname="jmetal.experiments.IBEADMStudy">
+     <classpath>
+       <pathelement path="${classpath}"/>
+       <fileset dir="lib">
+         <include name="**/*.jar"/>
+       </fileset>
+       <pathelement location="${build}"/>
+     </classpath>
+    </java>
+  </target>
+  
+</project>
