@@ -19,7 +19,7 @@ public class FM94r extends Problem {
   private static ParsedFM featureModel;
     
   public FM94r(String solutionType) throws ClassNotFoundException {
-    this(solutionType, 94, 8, new ParsedFM("..\\trunk2\\jmetal\\problems\\FMr\\FM-94.xml"));
+      this(solutionType, 94, 5 /* 8 */, new ParsedFM(FM94r.class.getResource("FM-94.xml").getPath()));
   }
 
   public FM94r(String solutionType, 
@@ -56,7 +56,7 @@ public class FM94r extends Problem {
     public static final int FEATURES = 94;
     public static final int [] [] requires_pairs = {{44,47} , {79,70}};
     
-    public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\jmetal\\problems\\FMr\\qualities94.csv");
+    public static ObjectiveParser op = new ObjectiveParser(FM94r.class.getResource("qualities94.csv").getPath());
 
     public static final boolean[] USED_BEFORE = op.getBools(0);
 

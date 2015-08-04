@@ -18,7 +18,7 @@
   <target name="compile" depends="init"
         description="compile the source">
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}" source="7" target="7">
+    <javac srcdir="${src}" destdir="${build}" source="7" target="7" debug="true">
       <classpath>
 	<pathelement path="${classpath}"/>
 	<fileset dir="lib">
@@ -35,8 +35,20 @@
   </target>
 
   <target name="run"
-          description="perform jMetal 'experiment'">
-    <java classname="jmetal.experiments.IBEADMStudy">
+          description="perform jMetal 'experiment'" depends="compile">
+    <copy todir="${build}/dimacs">
+      <fileset dir="${src}/dimacs"/>
+    </copy>
+    <copy todir="${build}/jmetal/problems/FMr">
+      <fileset dir="${src}/jmetal/problems/FMr">
+	<include name="**/*.xml"/>
+	<include name="**/*.csv"/>
+      </fileset>
+    </copy>
+    <copy todir="PF">
+      <fileset dir="${src}/pf" />
+    </copy>
+    <java classname="jmetal.experiments.IBEAStudy" fork="true">
      <classpath>
        <pathelement path="${classpath}"/>
        <fileset dir="lib">

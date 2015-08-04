@@ -15,7 +15,8 @@ public class Ptoybox extends Problem {
   public static final int FEATURES = 544;	
   public static DimacsFM dimacs;
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\toybox.csv");
+    public static ObjectiveParser op =
+	new ObjectiveParser(Ptoybox.class.getResource("/dimacs/toybox.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -25,7 +26,8 @@ public class Ptoybox extends Problem {
   
     
   public Ptoybox(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 5, new DimacsFM("..\\trunk2\\dimacs\\toybox.dimacs", 544));
+	  this(solutionType, FEATURES, 5,
+	       new DimacsFM(Ptoybox.class.getResource("/dimacs/toybox.dimacs").getPath(), 544));
   }
   
   public Ptoybox(String solutionType, 
