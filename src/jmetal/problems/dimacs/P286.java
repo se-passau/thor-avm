@@ -13,7 +13,7 @@ public class P286 extends Problem {
   public static final int FEATURES = 6888;	
  //public static final DimacsFM dfm = new DimacsFM("dimacs\\2.6.28.6-icse11.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\6888B.csv");
+  public static ObjectiveParser op = new ObjectiveParser(P286.class.getResource("/dimacs/6888B.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -23,7 +23,8 @@ public class P286 extends Problem {
   
     
   public P286(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, 6888, 5, new DimacsFM("..\\trunk2\\dimacs\\2.6.28.6-icse11.dimacs", FEATURES));
+	  this(solutionType, 6888, 5,
+	       new DimacsFM(P286.class.getResource("/dimacs/2.6.28.6-icse11.dimacs").getPath(), FEATURES));
   }
   
   public P286(String solutionType, 

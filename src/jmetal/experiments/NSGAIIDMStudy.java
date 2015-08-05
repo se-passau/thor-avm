@@ -93,13 +93,13 @@ public class NSGAIIDMStudy extends Experiment {
     exp.experimentName_  = "NSGAIIDMStudy" ;
     exp.algorithmNameList_   = new String[] {"IBEA", "NSGAII" };
     exp.problemList_     = new String[] {
-        "Ptoybox", "PaxTLS", "Pecos", "Pfreebsd", "Pfiasco", "PuClinux", 
-        "Pbusybox", "P286"};
+        "Ptoybox", "PaxTLS",  "Pecos",  "Pfreebsd",  "Pfiasco",  "PuClinux", 
+	   /* "Pbusybox" , */ "P286"};
         //"PuClinuxconfig", "Pcoreboot"};
         //"Pbuildroot", "Pembtoolkit", "Pfreetz", "P322", "P3332"};
     exp.paretoFrontFile_ = new String[] {
-        "FM544_5obj.pf", "FM684_5obj.pf", "FM1244_5obj.pf", "FM1396_5obj.pf", "FM1638_5obj.pf", "FM1850_5obj.pf",
-    	"FM6796_5obj.pf", "FM6888_5obj.pf"};
+         "FM544_5obj.pf",  "FM684_5obj.pf",  "FM1244_5obj.pf",  "FM1396_5obj.pf",  "FM1638_5obj.pf",   "FM1850_5obj.pf", 
+	   /*   "FM6796_5obj.pf" , */ "FM6888_5obj.pf"};
         //, "FM11254_5obj.pf", "FM12268_5obj.pf"};
         //"FM14910_5obj.pf", "FM23516_5obj.pf", "FM31012_5obj.pf", "FM60072_5obj.pf", "FM62482_5obj.pf"};
 

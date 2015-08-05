@@ -14,7 +14,7 @@ public class Pfreebsd extends Problem {
   public static final int FEATURES = 1396;	
   //public static final DimacsFM dfm = new DimacsFM("dimacs\\freebsd-icse11.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\freebsd.csv");
+  public static ObjectiveParser op = new ObjectiveParser(Pfreebsd.class.getResource("/dimacs/freebsd.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -24,7 +24,8 @@ public class Pfreebsd extends Problem {
   
     
   public Pfreebsd(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 5,new DimacsFM("..\\trunk2\\dimacs\\freebsd-icse11.dimacs", FEATURES));
+	  this(solutionType, FEATURES, 5,
+	       new DimacsFM(Pfreebsd.class.getResource("/dimacs/freebsd-icse11.dimacs").getPath(), FEATURES));
   }
   
   public Pfreebsd(String solutionType, 

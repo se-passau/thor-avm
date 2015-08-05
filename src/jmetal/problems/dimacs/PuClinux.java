@@ -14,7 +14,7 @@ public class PuClinux extends Problem {
   public static final int FEATURES = 1850;	
   //public static final DimacsFM dfm = new DimacsFM("dimacs\\uClinux.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\uClinux.csv");
+  public static ObjectiveParser op = new ObjectiveParser(PuClinux.class.getResource("/dimacs/uClinux.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -24,7 +24,8 @@ public class PuClinux extends Problem {
   
     
   public PuClinux(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 8,new DimacsFM("..\\trunk2\\dimacs\\uClinux.dimacs", FEATURES));
+      this(solutionType, FEATURES, 5 /* 8 */,
+	   new DimacsFM(PuClinux.class.getResource("/dimacs/uClinux.dimacs").getPath(), FEATURES));
   }
   
   public PuClinux(String solutionType, 

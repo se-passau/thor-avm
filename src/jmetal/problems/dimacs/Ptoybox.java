@@ -27,7 +27,7 @@ public class Ptoybox extends Problem {
     
   public Ptoybox(String solutionType) throws ClassNotFoundException {
 	  this(solutionType, FEATURES, 5,
-	       new DimacsFM(Ptoybox.class.getResource("/dimacs/toybox.dimacs").getPath(), 544));
+	       new DimacsFM(Ptoybox.class.getResource("/dimacs/toybox.dimacs").getPath(), FEATURES));
   }
   
   public Ptoybox(String solutionType, 

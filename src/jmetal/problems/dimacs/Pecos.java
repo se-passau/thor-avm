@@ -14,7 +14,7 @@ public class Pecos extends Problem {
   public static final int FEATURES = 1244;	
 //  public static final DimacsFM dfm = new DimacsFM("dimacs\\ecos-icse11.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\ecos.csv");
+  public static ObjectiveParser op = new ObjectiveParser(Pecos.class.getResource("/dimacs/ecos.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -24,7 +24,8 @@ public class Pecos extends Problem {
   
     
   public Pecos(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 5,new DimacsFM("..\\trunk2\\dimacs\\ecos-icse11.dimacs", FEATURES));
+	  this(solutionType, FEATURES, 5,
+	       new DimacsFM(Pecos.class.getResource("/dimacs/ecos-icse11.dimacs").getPath(), FEATURES));
   }
   
   public Pecos(String solutionType, 

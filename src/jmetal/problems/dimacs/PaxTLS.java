@@ -14,7 +14,8 @@ public class PaxTLS extends Problem {
   public static final int FEATURES = 684;	
   //public static final DimacsFM dfm = new DimacsFM("dimacs\\axTLS.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\684B.csv");
+  public static ObjectiveParser op = new ObjectiveParser(PaxTLS.class.getResource("/dimacs/684B.csv").getPath());
+
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -24,7 +25,8 @@ public class PaxTLS extends Problem {
   
     
   public PaxTLS(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, 684, 5,new DimacsFM("..\\trunk2\\dimacs\\axTLS.dimacs", FEATURES));
+	  this(solutionType, 684, 5,
+	       new DimacsFM(PaxTLS.class.getResource("/dimacs/axTLS.dimacs").getPath(), FEATURES));
   }
   
   public PaxTLS(String solutionType, 

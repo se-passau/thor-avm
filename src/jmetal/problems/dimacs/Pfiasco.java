@@ -14,7 +14,7 @@ public class Pfiasco extends Problem {
   public static final int FEATURES = 1638;	
   //public static final DimacsFM dfm = new DimacsFM("dimacs\\fiasco.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\fiasco.csv");
+  public static ObjectiveParser op = new ObjectiveParser(Pfiasco.class.getResource("/dimacs/fiasco.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -24,7 +24,8 @@ public class Pfiasco extends Problem {
   
     
   public Pfiasco(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 5,new DimacsFM("..\\trunk2\\dimacs\\fiasco.dimacs", FEATURES));
+	  this(solutionType, FEATURES, 5,
+	       new DimacsFM(Pfiasco.class.getResource("/dimacs/fiasco.dimacs").getPath(), FEATURES));
   }
   
   public Pfiasco(String solutionType, 

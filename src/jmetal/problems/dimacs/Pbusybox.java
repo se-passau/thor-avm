@@ -13,7 +13,7 @@ public class Pbusybox extends Problem {
   public static final int FEATURES = 6796;	
   //public static final DimacsFM dfm = new DimacsFM("dimacs\\busybox-1.18.0.dimacs", FEATURES);	
   
-  public static ObjectiveParser op = new ObjectiveParser("..\\trunk2\\dimacs\\busybox.csv");
+  public static ObjectiveParser op = new ObjectiveParser(Pbusybox.class.getResource("/dimacs/busybox.csv").getPath());
 
   public static final boolean[] USED_BEFORE = op.getBools(-2); //offset the index since there are just 3 columns
 
@@ -23,7 +23,8 @@ public class Pbusybox extends Problem {
   
     
   public Pbusybox(String solutionType) throws ClassNotFoundException {
-	  this(solutionType, FEATURES, 5, new DimacsFM("..\\trunk2\\dimacs\\busybox-1.18.0.dimacs", FEATURES));
+	  this(solutionType, FEATURES, 5,
+	       new DimacsFM(Pbusybox.class.getResource("/dimacs/busybox-1.18.0.dimacs").getPath(), FEATURES));
   }
   
   public Pbusybox(String solutionType, 
