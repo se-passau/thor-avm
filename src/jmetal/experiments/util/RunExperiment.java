@@ -237,7 +237,7 @@ public class RunExperiment extends Thread {
 								float value = -1;
 								FileWriter os;
 								try {
-									os = new FileWriter(experimentDirectory + "/TIMETOANYC", true);
+									os = new FileWriter(experimentDirectory + "/TimeToAnyC", true);
 									//os.write("TimeToAnyC,TimeTo50C,TimeTo100C");
 									os.write("" + resultFront.anyC + "\n");
 									os.close();
@@ -249,7 +249,7 @@ public class RunExperiment extends Thread {
 								float value = -1;
 								FileWriter os;
 								try {
-									os = new FileWriter(experimentDirectory + "/TIMETO50C", true);
+									os = new FileWriter(experimentDirectory + "/TimeTo50C", true);
 									//os.write("TimeToAnyC,TimeTo50C,TimeTo100C");
 									os.write("" + resultFront.fiftyC + "\n");
 									os.close();
@@ -261,7 +261,7 @@ public class RunExperiment extends Thread {
 								float value = -1;
 								FileWriter os;
 								try {
-									os = new FileWriter(experimentDirectory + "/TIMETO100C", true);
+									os = new FileWriter(experimentDirectory + "/TimeTo100C", true);
 									//os.write("TimeToAnyC,TimeTo50C,TimeTo100C");
 									os.write("" + resultFront.hundredC + "\n");
 									os.close();
