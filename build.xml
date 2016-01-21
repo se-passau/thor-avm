@@ -6,6 +6,7 @@
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
   <property name="build" location="build"/>
+  <property name="pf" location="PF"/>
   <!--<property name="dist" location="dist"/>-->
 
   <target name="init">
@@ -32,6 +33,7 @@
           description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
+    <delete dir="${pf}"/>
   </target>
 
   <target name="run"
@@ -45,7 +47,7 @@
 	<include name="**/*.csv"/>
       </fileset>
     </copy>
-    <copy todir="PF">
+    <copy todir="${pf}">
       <fileset dir="${src}/pf" />
     </copy>
     <java classname="jmetal.experiments.NSGAIIDMStudy" fork="true">
