@@ -39,7 +39,7 @@
   <target name="run"
           description="perform jMetal 'experiment'" depends="compile">
     <copy todir="${build}/dimacs">
-      <fileset dir="${src}/dimacs"/>
+      <fileset dir="${src}/dimacs2"/>
     </copy>
     <copy todir="${build}/jmetal/problems/FMr">
       <fileset dir="${src}/jmetal/problems/FMr">
