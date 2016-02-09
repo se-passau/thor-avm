@@ -24,6 +24,8 @@ package jmetal.experiments;
 import java.util.logging.Logger;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -49,61 +51,115 @@ public class NSGAIIDMStudy extends Experiment {
   		                                       Algorithm[] algorithm) 
     throws ClassNotFoundException {  	
   	try {
-      int numberOfAlgorithms = algorithmNameList_.length;
-
-      HashMap[] parameters = new HashMap[numberOfAlgorithms];
-
-      for (int i = 0; i < numberOfAlgorithms; i++) {
-        parameters[i] = new HashMap();
-      } // for
-
-
-      for (int i = 0; i < numberOfAlgorithms; i++){
-            parameters[i].put("runTime_", 1800000); //30 minutes
-            parameters[i].put("populationSize_", 300);
-            parameters[i].put("archiveSize_", 300);
-            parameters[i].put("mutationProbability_", 0.001); 
-            parameters[i].put("mutationOperator_", "DMBitFlipMutation");
-            parameters[i].put("crossoverProbability_", 0.05);
-            parameters[i].put("crossoverOperator_", "SinglePointCrossover");
-      }
-
-      if ((!paretoFrontFile_[problemIndex].equals("")) || 
-      		(paretoFrontFile_[problemIndex] == null)) {
-        for (int i = 0; i < numberOfAlgorithms; i++) 
-          parameters[i].put("paretoFrontFile_",  paretoFrontFile_[problemIndex]);
-      } // if
- 
-      //for (int i = 0; i < numberOfAlgorithms; i++)
-        algorithm[0] = new IBEA_Settings(problemName).configure(parameters[0]);
-        algorithm[1] = new NSGAII_Settings(problemName).configure(parameters[1]);
-      
-    } catch (IllegalArgumentException ex) {
-      Logger.getLogger(IBEAStudy.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      Logger.getLogger(IBEAStudy.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (JMException ex) {
-      Logger.getLogger(IBEAStudy.class.getName()).log(Level.SEVERE, null, ex);
-    }
+	    int numberOfAlgorithms = algorithmNameList_.length;
+	    
+	    HashMap[] parameters = new HashMap[numberOfAlgorithms];
+	    
+	    for (int i = 0; i < numberOfAlgorithms; i++) {
+		HashMap params = new HashMap();
+		params.put("runTime_", 1800000); //30 minutes
+		params.put("populationSize_", 300);
+		params.put("archiveSize_", 300);
+		params.put("mutationProbability_", 0.001); 
+		params.put("mutationOperator_", "DMBitFlipMutation");
+		params.put("crossoverProbability_", 0.05);
+		params.put("crossoverOperator_", "SinglePointCrossover");
+		
+		if ((!paretoFrontFile_[problemIndex].equals("")) || 
+		    (paretoFrontFile_[problemIndex] == null)) {
+		    params.put("paretoFrontFile_",  paretoFrontFile_[problemIndex]);
+		}
+		
+		switch (algorithmNameList_[i]) {
+		case "IBEA":
+		    algorithm[i] = new IBEA_Settings(problemName).configure(params);
+		    break;
+		case "NSGAII":
+		    algorithm[i] = new NSGAII_Settings(problemName).configure(params);
+		    break;
+		default:
+		    throw new IllegalArgumentException("Unsupported algorithm.");
+		}
+	    }
+	    
+	} catch (IllegalArgumentException ex) {
+	    Logger.getLogger(NSGAIIDMStudy.class.getName()).log(Level.SEVERE,
+								null,
+								ex);
+	} catch (IllegalAccessException ex) {
+	    Logger.getLogger(NSGAIIDMStudy.class.getName()).log(Level.SEVERE,
+								null,
+								ex);
+	} catch (JMException ex) {
+	    Logger.getLogger(NSGAIIDMStudy.class.getName()).log(Level.SEVERE,
+								null,
+								ex);
+	}
   } // algorithmSettings
-  
+    
+    private static String[] paretoFrontFiles = {
+	    "FM544_5obj.pf",
+	    "FM684_5obj.pf",
+	    "FM1244_5obj.pf",
+	    "FM1396_5obj.pf",
+	    "FM1638_5obj.pf",
+	    "FM1850_5obj.pf",
+	    "FM6888_5obj.pf"
+	};
+    
+    private static List<String> availProblems = Arrays.asList(
+	"Ptoybox",
+	"PaxTLS",
+	"Pecos",
+	"Pfreebsd",
+	"Pfiasco",
+	"PuClinux", 
+	"P286");
+    
+    private static String[] getParetoFF (String[] probs) {
+	String res[] = new String[probs.length];
+	for (int i = 0; i < probs.length; i++) {
+	    res[i] = paretoFrontFiles[availProblems.indexOf(probs[i])];
+	}
+	return res;
+    }
+
+    
   public static void main(String[] args) throws JMException, IOException {
     NSGAIIDMStudy exp = new NSGAIIDMStudy() ; // exp = experiment
-    
+    int numberOfThreads = -1, numberOfRuns = -1;
+    String[] probsList = null, algoList = null;
+	
     exp.experimentName_  = "NSGAIIDMStudy" ;
-    exp.algorithmNameList_   = new String[] {"IBEA", "NSGAII" };
-    exp.problemList_     = new String[] {
-        "Ptoybox", "PaxTLS",  "Pecos",  "Pfreebsd",  "Pfiasco",  "PuClinux", 
-	   /* "Pbusybox" , */ "P286"};
-        //"PuClinuxconfig", "Pcoreboot"};
-        //"Pbuildroot", "Pembtoolkit", "Pfreetz", "P322", "P3332"};
-    exp.paretoFrontFile_ = new String[] {
-         "FM544_5obj.pf",  "FM684_5obj.pf",  "FM1244_5obj.pf",  "FM1396_5obj.pf",  "FM1638_5obj.pf",   "FM1850_5obj.pf", 
-	   /*   "FM6796_5obj.pf" , */ "FM6888_5obj.pf"};
-        //, "FM11254_5obj.pf", "FM12268_5obj.pf"};
-        //"FM14910_5obj.pf", "FM23516_5obj.pf", "FM31012_5obj.pf", "FM60072_5obj.pf", "FM62482_5obj.pf"};
+    
+    if (args.length == 4) {
+	try {
+	    algoList = args[0].split(":");
+	    probsList = args[1].split(":");
+	    numberOfRuns = Integer.parseInt(args[2]);
+	    numberOfThreads = Integer.parseInt(args[3]);
+	} catch (Exception e) {
+	    System.err.println("Malformatted arguments.");
+	    System.exit(1);
+	}
+    } else {
+	System.err.println("Wrong numbers of arguments.");
+	System.exit(1);
+    }
+   
+    exp.algorithmNameList_  = algoList; // new String[] {"IBEA", "NSGAII" };
 
-    exp.indicatorList_   = new String[] {"HV", "SPREAD", "PCORRECT", "TimeToAnyC", "TimeTo50C", "TimeTo100C"} ;
+    exp.problemList_ = probsList;
+    exp.paretoFrontFile_ = getParetoFF(probsList);
+
+    exp.indicatorList_ = new String[] {
+	"HV",
+	"SPREAD",
+	"PCORRECT",
+	"TimeToAnyC",
+	"TimeTo50C",
+	"TimeTo100C"
+    };
     
     int numberOfAlgorithms = exp.algorithmNameList_.length ;
 
@@ -113,10 +169,9 @@ public class NSGAIIDMStudy extends Experiment {
     
     exp.algorithmSettings_ = new Settings[numberOfAlgorithms] ;
     
-    exp.independentRuns_ = 9 ;
+    exp.independentRuns_ = numberOfRuns;
     
     // Run the experiments
-    int numberOfThreads = 1;
     exp.runExperiment(numberOfThreads) ;
     
     // Generate latex tables (comment this sentence is not desired)

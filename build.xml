@@ -36,20 +36,32 @@
     <delete dir="${pf}"/>
   </target>
 
-  <target name="run"
-          description="perform jMetal 'experiment'" depends="compile">
+  <target name="data" depends="required-databed">
     <copy todir="${build}/dimacs">
-      <fileset dir="${src}/dimacs2"/>
+      <!-- stage DIMACS -->
+      <fileset dir="${src}/dimacs">
+	<include name="**/*.dimacs"/>
+      </fileset>
     </copy>
-    <copy todir="${build}/jmetal/problems/FMr">
+    <copy todir="${build}/dimacs">
+    <!-- stage attribute data -->
+      <fileset dir="${src}/attrs/${databed}">
+	<include name="**/*.csv"/>
+      </fileset>
+    </copy>
+    <!--<copy todir="${build}/jmetal/problems/FMr">
       <fileset dir="${src}/jmetal/problems/FMr">
 	<include name="**/*.xml"/>
 	<include name="**/*.csv"/>
       </fileset>
-    </copy>
+      </copy>-->
     <copy todir="${pf}">
       <fileset dir="${src}/pf" />
     </copy>
+  </target>
+  
+  <target name="run"
+          description="perform jMetal 'experiment'" depends="compile,required-algo,required-spl,required-repeats,required-threads,data">
     <java classname="jmetal.experiments.NSGAIIDMStudy" fork="true">
      <classpath>
        <pathelement path="${classpath}"/>
@@ -58,7 +70,39 @@
        </fileset>
        <pathelement location="${build}"/>
      </classpath>
+     <arg value="${algo}" />
+     <arg value="${spl}" />
+     <arg value="${repeats}" />
+     <arg value="${threads}" />
     </java>
   </target>
+
+  <!-- Defaults as found in Sayyad ASE'13 setup -->
+  <target name="required-algo" unless="algo">
+    <property name="algo" value="IBEA:NSGAII"/>
+    <echo message="Using default algos"/>
+  </target>
+
+  <target name="required-spl" unless="spl">
+    <property name="spl"
+	      value="Ptoybox:PaxTLS:Pecos:Pfreebsd:Pfiasco:PuClinux:P286"/>
+    <echo message="Using default SPLs"/>
+  </target>
+  
+  <target name="required-repeats" unless="repeats">
+    <property name="repeats" value="9"/>
+    <echo message="Using default number of repetitions"/>
+  </target>
+
+  <target name="required-threads" unless="threads">
+    <property name="threads" value="1"/>
+    <echo message="Using default number of threads per problem"/>
+  </target>
+
+<target name="required-databed" unless="databed">
+    <property name="databed" value="orig-sayyad-ase13"/>
+    <echo message="Using default databed"/>
+  </target>
+  
   
 </project>
