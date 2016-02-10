@@ -1,3 +1,4 @@
+#!/bin/sh
 ALGO=$1
 SPL=$2
 
@@ -6,9 +7,8 @@ PREFIX=/home/${USER}
 
 ## staging to nodes
 cd /local/$USER
-mkdir sayyad
+cp -R ${PREFIX}/sayyad .
 cd sayyad
-
 ## trigger the run (assuming `ant compile` was performed once on the SLURM server: debussy).
 ant -Dalgo=$1 -Dspl=$2 -Drepeats=1 run
 
