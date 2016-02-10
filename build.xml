@@ -70,6 +70,7 @@
        </fileset>
        <pathelement location="${build}"/>
      </classpath>
+     <jvmarg value="-Xmx2048m" />
      <arg value="${algo}" />
      <arg value="${spl}" />
      <arg value="${repeats}" />
