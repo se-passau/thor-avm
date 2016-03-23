@@ -3,7 +3,7 @@ package main;
 import java.io.FileReader;
 import java.util.List;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.CSVReader;
 
 public class ObjectiveParser {
 	
