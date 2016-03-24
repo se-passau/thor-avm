@@ -99,6 +99,7 @@ public class NSGAIIDMStudy extends Experiment {
     
     private static String[] paretoFrontFiles = {
 	    "FM544_5obj.pf",
+	    "FM544_5obj.pf",
 	    "FM684_5obj.pf",
 	    "FM1244_5obj.pf",
 	    "FM1396_5obj.pf",
@@ -109,6 +110,7 @@ public class NSGAIIDMStudy extends Experiment {
     
     private static List<String> availProblems = Arrays.asList(
 	"Ptoybox",
+	"Ptoybox2",
 	"PaxTLS",
 	"Pecos",
 	"Pfreebsd",
