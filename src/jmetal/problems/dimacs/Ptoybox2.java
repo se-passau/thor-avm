@@ -12,14 +12,15 @@ import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Ptoybox2 extends Ptoybox {   
 
-    public final static List<Entry<BitSet, Double>> interactions =
-	new ArrayList<Entry<BitSet, Double>>();
-
+    public static List<Entry<BitSet, Double>> interactions = null;
+    
     static {
 	String interactFile = Ptoybox.class.getResource("/dimacs/ivmI16.csv").getPath();
+	List<Entry<BitSet, Double>> interacts = new ArrayList<Entry<BitSet, Double>>();
 	try (CSVReader reader =
 	     new CSVReader(new BufferedReader(new FileReader(interactFile)), ',', '"', 1);
 	     ) {
@@ -34,8 +35,9 @@ public class Ptoybox2 extends Ptoybox {
 		    }
 		}
 		Entry e = new SimpleImmutableEntry(bs, Double.parseDouble(line[line.length-1]));
-		interactions.add(e);
-	    } 
+		interacts.add(e);
+	    }
+	    interactions = Collections.unmodifiableList(interacts);
 	} catch (Exception e) {
 	    System.out.println("OpenCVS: " + e.getMessage());
 	}
