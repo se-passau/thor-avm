@@ -2,30 +2,28 @@ package jmetal.problems.dimacs;
 
 import jmetal.encodings.variable.Binary;
 
-/* TODO: relocate */
 import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.List;
 import java.io.IOException;
 import java.util.BitSet;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Ptoybox2 extends Ptoybox {   
 
-    public final Map <BitSet, Double> interactions = new HashMap<BitSet, Double>();
+    public static List<Entry<BitSet, Double>> interactions = null;
     
-    public Ptoybox2(String solutionType) throws ClassNotFoundException, IOException {
-	super(solutionType);
-
-	/* TODO relocate later, make static */
+    static {
 	String interactFile = Ptoybox.class.getResource("/dimacs/ivmI16.csv").getPath();
+	List<Entry<BitSet, Double>> interacts = new ArrayList<Entry<BitSet, Double>>();
 	try (CSVReader reader =
 	     new CSVReader(new BufferedReader(new FileReader(interactFile)), ',', '"', 1);
 	     ) {
-	  
 	    List<String[]> lines = reader.readAll();
 	    for (String[] line : lines) {
 		int numOfFeatures = line.length-1;
@@ -36,20 +34,23 @@ public class Ptoybox2 extends Ptoybox {
 			bs.set(i);
 		    }
 		}
-		this.interactions.put(bs, Double.parseDouble(line[line.length-1]));
+		Entry e = new SimpleImmutableEntry(bs, Double.parseDouble(line[line.length-1]));
+		interacts.add(e);
 	    }
+	    interactions = Collections.unmodifiableList(interacts);
 	} catch (Exception e) {
 	    System.out.println("OpenCVS: " + e.getMessage());
-	    throw e;
 	}
+    }
+    
+    public Ptoybox2(String solutionType) throws ClassNotFoundException {
+	super(solutionType);
     }
 
     public double computeCosts(Binary variable) {
 	double cost = super.computeCosts(variable);
-	
-	/* TODO: make it a simple list */
-	
-	for (Map.Entry<BitSet, Double> interactEntry : this.interactions.entrySet()) {
+
+	for (Entry<BitSet, Double> interactEntry : this.interactions) {
 	    /* Is interaction a subset of the solution:
 	       solution & interaction = interaction? */
 	    BitSet interaction = interactEntry.getKey();
