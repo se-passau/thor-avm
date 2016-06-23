@@ -98,12 +98,12 @@ public class DimacsFM {
 //			if(skipRules[i])
 //				numSkipRules++;
 //		}
-//		System.out.println(fileName);
-//		System.out.println("Skipped Features (Arity 1): " + singleCount);
-//		System.out.println("Skipped Features: " + numSkipBits);
-//		System.out.println("Skipped Rules: " + numSkipRules);
-//		System.out.println("Total Features: " + numFeatures);
-//		System.out.println("Total Rules: " + totalRules);
+		System.out.println(fileName);
+		System.out.println("Skipped Features (Arity 1): " + singleCount);
+		System.out.println("Skipped Features: " + numSkipBits);
+		System.out.println("Skipped Rules: " + numSkipRules);
+		System.out.println("Total Features: " + numFeatures);
+		System.out.println("Total Rules: " + totalRules);
 //		System.out.println();
 		
 //		for(int i=0;i<this.numFeatures;i++) {
@@ -220,6 +220,7 @@ public class DimacsFM {
 				violations += lineViolations(variable, line);
 			rule++;
 		}
+		//System.out.println("--- VIOL: " + violations + "; RULES: " + rule);
 		return violations;
 	}
 	

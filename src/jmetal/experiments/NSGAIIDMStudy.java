@@ -100,6 +100,7 @@ public class NSGAIIDMStudy extends Experiment {
     private static String[] paretoFrontFiles = {
 	    "FM544_5obj.pf",
 	    "FM544_5obj.pf",
+	    "toybox.pf",
 	    "FM684_5obj.pf",
 	    "FM1244_5obj.pf",
 	    "FM1396_5obj.pf",
@@ -111,6 +112,7 @@ public class NSGAIIDMStudy extends Experiment {
     private static List<String> availProblems = Arrays.asList(
 	"Ptoybox",
 	"Ptoybox2",
+	"Ptoybox3",
 	"PaxTLS",
 	"Pecos",
 	"Pfreebsd",
@@ -177,7 +179,7 @@ public class NSGAIIDMStudy extends Experiment {
     exp.runExperiment(numberOfThreads) ;
     
     // Generate latex tables (comment this sentence is not desired)
-    exp.generateLatexTables() ;
+    // exp.generateLatexTables() ;
    /* 
     // Configure the R scripts to be generated
     int rows  ;
