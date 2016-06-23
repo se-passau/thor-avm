@@ -1,6 +1,7 @@
 #!/bin/sh
 ALGO=$1
 SPL=$2
+DATABED=$3
 
 USER=sobernig
 PREFIX=/home/${USER}
@@ -12,7 +13,7 @@ cp -R ${PREFIX}/sayyad ${LOCAL}
     cd ${LOCAL}
     ## trigger the run
     ## (assuming `ant compile` was performed once on the SLURM server: debussy).
-    ant -Dalgo=${ALGO} -Dspl=${SPL} -Drepeats=1 run
+    ant -Dalgo=${ALGO} -Dspl=${SPL} -Drepeats=1 -Ddatabed=${DATABED} run
     
     ## copy-merge the result data back to the SLURM server 
     for file in $(find NSGAIIDMStudy/data -type f); do
