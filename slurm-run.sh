@@ -16,13 +16,13 @@ cp -R ${PREFIX}/sayyad ${LOCAL}
     ant -Dalgo=${ALGO} -Dspl=${SPL} -Drepeats=1 -Ddatabed=${DATABED} run
     
     ## copy-merge the result data back to the SLURM server 
-    for file in $(find NSGAIIDMStudy/data -type f ! -name "FUN.*"); do
+    for file in $(find NSGAIIDMStudy/data -type f ! -name "FUN.*" ! -name "VAR.*"); do
 	## echo "${file}"
 	mkdir -p "${PREFIX}/$(dirname "${file}")"
 	cat "${file}" >> "${PREFIX}/${file}"
     done
 
-    for file in $(find NSGAIIDMStudy/data -type f -name "FUN.*"); do
+    for file in $(find NSGAIIDMStudy/data -type f -name "FUN.*" -name "VAR.*"); do
 	## echo "${file}"
 	mkdir -p "${PREFIX}/$(dirname "${file}")"
 	cat "${file}" > "${PREFIX}/${file}.${SLURM_JOB_ID}"
