@@ -47,7 +47,6 @@
     <!-- stage attribute data -->
       <fileset dir="${src}/attrs/${databed}">
 	<include name="**/*.csv"/>
-	<include name="**/*.pf"/>
       </fileset>
     </copy>
     <!--<copy todir="${build}/jmetal/problems/FMr">
@@ -58,6 +57,9 @@
       </copy>-->
     <copy todir="${pf}">
       <fileset dir="${src}/pf" />
+      <fileset dir="${src}/attrs/${databed}">
+	<include name="**/*.pf"/>
+      </fileset>
     </copy>
   </target>
   
