@@ -136,12 +136,15 @@ public class NSGAIIDMStudy extends Experiment {
 	
     exp.experimentName_  = "NSGAIIDMStudy" ;
     
-    if (args.length == 4) {
+    if (args.length == 5) {
 	try {
 	    algoList = args[0].split(":");
 	    probsList = args[1].split(":");
 	    numberOfRuns = Integer.parseInt(args[2]);
 	    numberOfThreads = Integer.parseInt(args[3]);
+	    if (args[4] != "") {
+		exp.experimentName_ = args[4];
+	    }
 	} catch (Exception e) {
 	    System.err.println("Malformatted arguments.");
 	    System.exit(1);
