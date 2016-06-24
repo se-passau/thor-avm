@@ -64,7 +64,7 @@
   </target>
   
   <target name="run"
-          description="perform jMetal 'experiment'" depends="compile,required-algo,required-spl,required-repeats,required-threads,data">
+          description="perform jMetal 'experiment'" depends="compile,required-algo,required-spl,required-repeats,required-threads,required-name,data">
     <java classname="jmetal.experiments.NSGAIIDMStudy" fork="true">
      <classpath>
        <pathelement path="${classpath}"/>
@@ -78,6 +78,7 @@
      <arg value="${spl}" />
      <arg value="${repeats}" />
      <arg value="${threads}" />
+     <arg value="${name}" />
     </java>
   </target>
 
@@ -103,9 +104,14 @@
     <echo message="Using default number of threads per problem"/>
   </target>
 
-<target name="required-databed" unless="databed">
+  <target name="required-databed" unless="databed">
     <property name="databed" value="orig-sayyad-ase13"/>
     <echo message="Using default databed"/>
+  </target>
+
+  <target name="required-name" unless="name">
+    <property name="name" value="NSGAIIDMStudy"/>
+    <echo message="Using default name"/>
   </target>
   
   
