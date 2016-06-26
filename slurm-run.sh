@@ -12,6 +12,7 @@ LOCAL=/local/${USER}/${SLURM_JOB_ID}
 cp -R ${PREFIX}/sayyad ${LOCAL}
 (
     cd ${LOCAL}
+    ant clean
     ## trigger the run
     ## (assuming `ant compile` was performed once on the SLURM server: debussy).
     ant -Dalgo=${ALGO} -Dspl=${SPL} -Drepeats=1 -Ddatabed=${DATABED} -Dname=${DIR} run
