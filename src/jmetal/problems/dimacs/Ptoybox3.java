@@ -36,9 +36,9 @@ public class Ptoybox3 extends Problem {
     public static final double[] COST2 = op.getDoubles(-1);
     public static final double[] COST3 = op.getDoubles(0);
 
-    public static List<Entry<BitSet, Double>> INTERACT1 = loadInteract("/dimacs/interact0.csv");
-    public static List<Entry<BitSet, Double>> INTERACT2 = loadInteract("/dimacs/interact1.csv");
-    public static List<Entry<BitSet, Double>> INTERACT3 = loadInteract("/dimacs/interact2.csv");
+    public static List<Entry<BitSet, Double>> INTERACT1 = loadInteract("/dimacs/interact1.csv");
+    public static List<Entry<BitSet, Double>> INTERACT2 = loadInteract("/dimacs/interact2.csv");
+    public static List<Entry<BitSet, Double>> INTERACT3 = loadInteract("/dimacs/interact3.csv");
 
     private static List<Entry<BitSet, Double>> loadInteract(String path) {
 	URL interactFile =  Ptoybox3.class.getResource(path);
