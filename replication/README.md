@@ -1,4 +1,4 @@
-There is the [statistical companion](data/) to the robustness experiment reported on in Section IV. 
+There is the [statistical companion](data/companion.md) to the robustness experiment reported on in Section IV. 
 
 In addition, there is the complete _experimental package_ for reproducing and replicating a) the robustness experiment and b) the original ASE'13 experiment.
 
