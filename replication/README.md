@@ -16,13 +16,17 @@ There is the [statistical companion](data/) to the robustness experiment reporte
 
 ## Robustness experiment (Section IV)
 
-```
-ant run
-```
+(There are four factor combinations, each requires a separate experimental run.)
+
+1. `ant run -Dname=normal-F -Ddatabed=1of3normal-15-F -Drepeats=50 -Dalgo=IBEA` (normal distribution, without feature interactions)
+2. `ant run -Dname=normal-FI100 -Ddatabed=1of3normal-15-FI100 -Drepeats=50 -Dalgo=IBEA` (normal distribution, with feature interactions)
+3. `ant run -Dname=x264-F -Ddatabed=1of3x264-15-F -Drepeats=50 -Dalgo=IBEA` (x264 distribution, without feature interactions)
+4. `ant run -Dname=x264-FI100 -Ddatabed=1of3x264-15-FI100 -Drepeats=50 -Dalgo=IBEA` (x264 distribution, with feature interactions)
+5. Collect the results from the four newly created sub-directories: `normal-F`, `normal-FI100`, `x264-F`, and `x264-FI100`
 
 ## ASE'13 experiment (exact)
 
-1. `ant run`
+1. `ant run` (Note: The defaults correspond to the ASE'13 study setting.)
 2. Collect the results from a newly created sub-directory `NSGAIIDMStudy`.
 
 # References
