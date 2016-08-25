@@ -1,9 +1,10 @@
 Statistical companion
 ================
 Stefan Sobernig
-2016-08-25
+2016-08-26
 
 -   Prequisites
+    -   How to (re-)generate the companion report
     -   R packages
 -   Data description
     -   ALGO=IBEA
@@ -12,12 +13,21 @@ Stefan Sobernig
     -   Checks
     -   Anova table: Hypervolume (HV)
     -   Anova table: PCORRECT
+    -   Significant differences: Tukey HSD
 -   Exact Replication
-    -   Exact vs. adjusted replication
-    -   Detach R packages
+-   Exact vs. adjusted replication
+-   Detach R packages
 
 Prequisites
 ===========
+
+How to (re-)generate the companion report
+-----------------------------------------
+
+1.  Clone the repo or download its content
+2.  `cd replication/data`
+3.  `Rscript -e "rmarkdown::render('companion.Rmd','all')"`
+4.  Open `companion.html`
 
 R packages
 ----------
@@ -39,44 +49,6 @@ levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
 
 df.toybox <- subset(all, DIST != "origSayyadASE13")
 df.ase13 <- subset(all, DIST == "origSayyadASE13")
-
-my.nestedBoxplot <- function(data, response.var = "value") {
-         
-    means <- melt(acast(data, DIST ~ OBJ,
-                        fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
-    
-    se <- melt(acast(data, DIST ~ OBJ,
-                     function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
-
-    
-    means$Var1 <- as.character(means$Var1)
-    means$se <- se[,3]
-    colnames(means) <- c("DIST","OBJ","value","se")
-
-ggplot(data) + 
-    geom_boxplot(aes(x = factor(OBJ), y = value, colour = DIST)) + 
-    geom_point(data = means, aes(x = factor(OBJ), y = value, shape=DIST)) +
-    geom_line(data = means, aes(x = factor(OBJ), y = value, group = DIST, linetype = DIST)) + 
-    theme_bw(base_size = 20) + theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), legend.justification=c(1,0), legend.position=c(1,0)) + ylab(unique(data$VARIABLE)[1]) + xlab("COST")
-
-}
-
-my.interactionPlot <- function(data , response.var = "value") {
-    means <- melt(acast(data, DIST ~ OBJ,
-                        fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
-    
-    se <- melt(acast(data, DIST ~ OBJ,
-                     function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
-
-    
-    means$Var1 <- as.character(means$Var1)
-    means$se <- se[,3]
-
-    ggplot(means, aes(x = factor(Var2), y = value, group = Var1)) + 
-        geom_line(aes(linetype = Var1)) + geom_point(aes(shape = Var1)) +
-            geom_errorbar(aes(ymax=value+se, ymin=value-se), width=.1) +
-                theme_bw()
-}
 ```
 
 Data description
@@ -177,15 +149,103 @@ Analysis of variances (for ALGO = IBEA)
 
 ``` {.r}
 DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI100") & DIST %in% c("normal","x264"))
+d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
+d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
 ### Checks
 
+#### Normality of residuals
+
+``` {.r}
+hv.res <- residuals(d.hv.glm)
+QQplot(hv.res)
+```
+
+![](companion_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+``` {.r}
+pc.res <- residuals(d.pc.glm)
+QQplot(pc.res)
+```
+
+![](companion_files/figure-markdown_github/unnamed-chunk-8-2.png)
+
+#### Homogeneity of variances
+
+``` {.r}
+hv <- subset(DATA, VARIABLE == "HV")
+hv$combn <- interaction(hv$OBJ,hv$DIST)
+pc <- subset(DATA, VARIABLE == "PCORRECT")
+pc$combn <- interaction(pc$OBJ,pc$DIST)
+
+ggplot(data=hv, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
+```
+
+![](companion_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+``` {.r}
+ggplot(data=pc, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
+```
+
+![](companion_files/figure-markdown_github/unnamed-chunk-9-2.png)
+
+``` {.r}
+l.test <- cbind(as.numeric(leveneTest(value ~ OBJ * DIST, data = hv)[1,]),
+      as.numeric(leveneTest(value ~ OBJ * DIST, data = hv, center = mean)[1,]),
+                as.numeric(leveneTest(value ~ OBJ * DIST, data = pc)[1,]),
+      as.numeric(leveneTest(value ~ OBJ * DIST, data = pc, center = mean)[1,]))
+
+colnames(l.test) <- c("median","mean","median","mean")
+rownames(l.test) <- c("Df", "F", "p-value")
+pander(l.test)
+```
+
+<table>
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">median</th>
+<th align="center">mean</th>
+<th align="center">median</th>
+<th align="center">mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Df</strong></td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F</strong></td>
+<td align="center">13.91</td>
+<td align="center">19.12</td>
+<td align="center">8.145</td>
+<td align="center">8.264</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>p-value</strong></td>
+<td align="center">2.924e-08</td>
+<td align="center">6.467e-11</td>
+<td align="center">3.874e-05</td>
+<td align="center">3.328e-05</td>
+</tr>
+</tbody>
+</table>
+
 ### Anova table: Hypervolume (HV)
 
 ``` {.r}
-d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
-
 ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
         facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
@@ -193,7 +253,7 @@ ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ``` {.r}
 panderOptions('digits', 4)
@@ -328,7 +388,7 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))
 my.interactionPlot(subset(DATA, VARIABLE == "HV"))
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 ``` {.r}
 my.nestedBoxplot(subset(DATA, VARIABLE == "HV"))
@@ -348,7 +408,7 @@ ggplot(na.omit(subset(DATA, VARIABLE == "PCORRECT")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 ``` {.r}
 pander(anova(d.pc.glm, test = "F"))
@@ -480,13 +540,151 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORR
 my.interactionPlot(subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
 ``` {.r}
 my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
 ![](companion_files/figure-markdown_github/pc-1.png)
+
+### Significant differences: Tukey HSD
+
+``` {.r}
+hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(hsd.pc$`OBJ:DIST`)
+```
+
+<table>
+<colgroup>
+<col width="41%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">diff</th>
+<th align="center">lwr</th>
+<th align="center">upr</th>
+<th align="center">p adj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>FI100:normal-F:normal</strong></td>
+<td align="center">0.01081</td>
+<td align="center">0.01066</td>
+<td align="center">0.01096</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F:x264-F:normal</strong></td>
+<td align="center">-0.005441</td>
+<td align="center">-0.005591</td>
+<td align="center">-0.005292</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>FI100:x264-F:normal</strong></td>
+<td align="center">0.007052</td>
+<td align="center">0.006902</td>
+<td align="center">0.007201</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F:x264-FI100:normal</strong></td>
+<td align="center">-0.01625</td>
+<td align="center">-0.0164</td>
+<td align="center">-0.01611</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>FI100:x264-FI100:normal</strong></td>
+<td align="center">-0.003762</td>
+<td align="center">-0.003911</td>
+<td align="center">-0.003612</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>FI100:x264-F:x264</strong></td>
+<td align="center">0.01249</td>
+<td align="center">0.01234</td>
+<td align="center">0.01264</td>
+<td align="center">7.572e-14</td>
+</tr>
+</tbody>
+</table>
+
+``` {.r}
+hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(hsd.pc$`OBJ:DIST`)
+```
+
+<table>
+<colgroup>
+<col width="41%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">diff</th>
+<th align="center">lwr</th>
+<th align="center">upr</th>
+<th align="center">p adj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>FI100:normal-F:normal</strong></td>
+<td align="center">0.5333</td>
+<td align="center">0.2002</td>
+<td align="center">0.8665</td>
+<td align="center">0.0002894</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F:x264-F:normal</strong></td>
+<td align="center">-4.887</td>
+<td align="center">-5.22</td>
+<td align="center">-4.554</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>FI100:x264-F:normal</strong></td>
+<td align="center">4.7</td>
+<td align="center">4.367</td>
+<td align="center">5.033</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F:x264-FI100:normal</strong></td>
+<td align="center">-5.42</td>
+<td align="center">-5.753</td>
+<td align="center">-5.087</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>FI100:x264-FI100:normal</strong></td>
+<td align="center">4.167</td>
+<td align="center">3.834</td>
+<td align="center">4.5</td>
+<td align="center">7.572e-14</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>FI100:x264-F:x264</strong></td>
+<td align="center">9.587</td>
+<td align="center">9.254</td>
+<td align="center">9.92</td>
+<td align="center">7.572e-14</td>
+</tr>
+</tbody>
+</table>
 
 Exact Replication
 =================
@@ -509,7 +707,7 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="HV")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-17-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 ``` {.r}
 ggplot(na.omit(subset(df.ase13, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
@@ -519,7 +717,7 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-17-2.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-21-2.png)
 
 ``` {.r}
 ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeTo50C")), aes(y=value, x = 1)) +
@@ -529,7 +727,7 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeTo50C")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeTo50C")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-17-3.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-21-3.png)
 
 ``` {.r}
 ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
@@ -539,7 +737,7 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-17-4.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-21-4.png)
 
 ``` {.r}
 mean <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mean)
@@ -569,7 +767,8 @@ knitr::kable(cbind(mean, sd[,2:3], median[,2:3], mad[,2:3], min[,2:3], max[,2:3]
 |PCORRECT|31.2533|10.9800|20.4951|2.0989|25.1667|10.8333|0.7413|2.2239|24.0000|6.6667|100.0000|16.0000|
 |TimeToAnyC|31687.1200|7642.1200|6073.7676|1510.4444|31263.5000|7436.5000|6621.2916|1729.4529|19241.0000|3855.0000|45109.0000|11058.0000|
 
-### Exact vs. adjusted replication
+Exact vs. adjusted replication
+==============================
 
 ``` {.r}
 df.contr <- rbind(cbind(df.ase13, EXP="exact"),
@@ -589,7 +788,7 @@ ggplot(na.omit(subset(df.contr, VARIABLE=="HV")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-20-1.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
 ``` {.r}
 ggplot(na.omit(subset(df.contr, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
@@ -599,13 +798,14 @@ ggplot(na.omit(subset(df.contr, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-20-2.png)
+![](companion_files/figure-markdown_github/unnamed-chunk-24-2.png)
 
 Detach R packages
------------------
+=================
 
 ``` {.r}
 try(detach(package:ggplot2))
 try(detach(package:reshape2))
 try(detach(package:car))
+try(detach(package:pander))
 ```

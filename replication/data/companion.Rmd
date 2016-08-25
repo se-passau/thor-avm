@@ -14,6 +14,13 @@ output:
 Prequisites
 =========================
 
+## How to (re-)generate the companion report
+
+1. Clone the repo or download its content
+2. `cd replication/data`
+3. `Rscript -e "rmarkdown::render('companion.Rmd','all')"`
+4. Open `companion.html`
+
 ## R packages
 ```{r prereq}
 wants <- c("ggplot2", "reshape2", "car", "pander")
@@ -22,6 +29,21 @@ if(any(!has)) install.packages(wants[!has], repos = "http://cran.us.r-project.or
 ```
 
 ```{r helpers, include=FALSE}
+
+QQplot <- function(y, x = rnorm(sum(!is.na(y)))) {
+  ## normalize the theoretical distribution data to scores ...
+  ## x <- (x-min(x))/(max(x)-min(x))
+
+  ## sort the data in ascending order
+  d <- data.frame(x = sort(x), y = sort(y))
+  p <- ggplot(d, aes(x=x, y=y)) + 
+                  geom_point() + 
+                      geom_smooth(method="lm", se = FALSE) + theme_bw() + 
+                          xlab("Theoretical quantiles (normalized)") + 
+                              ylab("Empirical quantiles")
+  return(p)
+}
+
 my.nestedBoxplot <- function(data, response.var = "value") {
 		 
     means <- melt(acast(data, DIST ~ OBJ,
@@ -39,7 +61,7 @@ ggplot(data) +
     geom_boxplot(aes(x = factor(OBJ), y = value, colour = DIST)) + 
     geom_point(data = means, aes(x = factor(OBJ), y = value, shape=DIST)) +
     geom_line(data = means, aes(x = factor(OBJ), y = value, group = DIST, linetype = DIST)) + 
-    theme_bw(base_size = 20) + theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), legend.justification=c(1,0), legend.position=c(1,0)) + ylab(unique(data$VARIABLE)[1]) + xlab("COST")
+    theme_bw(base_size = 16) + theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), legend.justification=c(1,0), legend.position=c(1,0)) + ylab(unique(data$VARIABLE)[1]) + xlab("FINT")
 
 }
 
@@ -145,17 +167,51 @@ Analysis of variances (for ALGO = IBEA)
 
 ```{r}
 DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI100") & DIST %in% c("normal","x264"))
+d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
+d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
 ### Checks
 
+#### Normality of residuals
 
+```{r}
+hv.res <- residuals(d.hv.glm)
+QQplot(hv.res)
+
+pc.res <- residuals(d.pc.glm)
+QQplot(pc.res)
+```
+
+#### Homogeneity of variances
+
+
+```{r}
+hv <- subset(DATA, VARIABLE == "HV")
+hv$combn <- interaction(hv$OBJ,hv$DIST)
+pc <- subset(DATA, VARIABLE == "PCORRECT")
+pc$combn <- interaction(pc$OBJ,pc$DIST)
+
+ggplot(data=hv, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
+ggplot(data=pc, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
+
+```
+
+```{r, results='asis'}
+
+l.test <- cbind(as.numeric(leveneTest(value ~ OBJ * DIST, data = hv)[1,]),
+      as.numeric(leveneTest(value ~ OBJ * DIST, data = hv, center = mean)[1,]),
+                as.numeric(leveneTest(value ~ OBJ * DIST, data = pc)[1,]),
+      as.numeric(leveneTest(value ~ OBJ * DIST, data = pc, center = mean)[1,]))
+
+colnames(l.test) <- c("median","mean","median","mean")
+rownames(l.test) <- c("Df", "F", "p-value")
+pander(l.test)
+```
 
 ### Anova table: Hypervolume (HV)
 
 ```{r}
-d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
-
 ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
         facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
@@ -256,8 +312,6 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 
-
-
 ```
 
 ```{r, results='asis'}
@@ -270,7 +324,8 @@ max <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO
 knitr::kable(cbind(mean, sd[,2:3], median[,2:3], mad[,2:3], min[,2:3], max[,2:3]), format = "markdown", digits=4)
 ```
 
-### Exact vs. adjusted replication
+Exact vs. adjusted replication
+=========================
 
 ```{r, include=TRUE}
 df.contr <- rbind(cbind(df.ase13, EXP="exact"),
