@@ -31,6 +31,18 @@ In addition, there is the complete _experimental package_ for reproducing and re
 1. `ant run` (Note: The defaults correspond to the ASE'13 study setting.)
 2. Collect the results from a newly created sub-directory `NSGAIIDMStudy`.
 
+## How to collect measurement data
+
+The ant runs result in JMetal 4 output directories (`-Dname=<outdir>`) containing the measurement data on Hypervolume (HV), PCORRECT, TimeTo50C, and TimeToAnyC. To facilitate data postprocessing and analysis, there is a helper to turn the nested dir/file structures into one R data frame (in long format):
+
+`Rscript data/collect.R <outdir> <csv>`
+
+e.g.:
+
+`Rscript data/collect.R x264-FI100 x264-FI100.csv`
+
+The resulting CSV file can be sourced using `read.table` & friends in R.
+
 # References
 
 * [A. S. Sayyad, J. Ingram, T. Menzies and H. Ammar (2013): _Scalable product line configuration: A straw to break the camel's back_, Proc. IEEE/ACM 28th Int. Conf. Automated Softw. Eng. (ASE'13), pp. 465-474, IEEE](http://dx.doi.org/10.1109/ASE.2013.6693104)
