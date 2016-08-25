@@ -11,4 +11,4 @@ This is the supplementary Web site on the manuscript entitled _Attributed Variab
 * [Stefan Sobernig](http://nm.wu.ac.at/en/sobernig)
 
 # Acknowledgements
-Special thanks are due to [Abdel Salam Sayyad](http://www.birzeit.edu/en/faculty-staff/abdel-salam-sayyad) for providing access to the JMetal material plus study data of their ASE'13 paper and his kind support in preparing our [replication](replication/) study.
+Special thanks are due to [Abdel Salam Sayyad](http://www.birzeit.edu/en/faculty-staff/abdel-salam-sayyad) (Department of Electrical and Computer Engineering Birzeit University, Palestine) for providing access to the JMetal material plus study data of their ASE'13 paper and his kind support in preparing our [replication](replication/) study.
