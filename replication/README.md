@@ -8,11 +8,22 @@ There is the [statistical companion](data/) to the robustness experiment reporte
 
 # Preparatory steps
 
+* Clone the repo or download its content.
+* `cd replication/`
+* `ant clean`
+
 # Replications
 
 ## Robustness experiment (Section IV)
 
+```
+ant run
+```
+
 ## ASE'13 experiment (exact)
+
+1. `ant run`
+2. Collect the results from a newly created sub-directory `NSGAIIDMStudy`.
 
 # References
 
