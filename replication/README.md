@@ -43,6 +43,12 @@ e.g.:
 
 The resulting CSV file can be sourced using `read.table` & friends in R.
 
+# Changelog
+
+The original setup by Sayyad et al. is a customized and extended fork of JMetal 4.0 (as released in 2011). To allow us to run a differentiated replication, as well as to parametrize the experimental runs without the need for modifying the Java sources directly, we contributed the following changes:
+
+* ...
+
 # References
 
 * [A. S. Sayyad, J. Ingram, T. Menzies and H. Ammar (2013): _Scalable product line configuration: A straw to break the camel's back_, Proc. IEEE/ACM 28th Int. Conf. Automated Softw. Eng. (ASE'13), pp. 465-474, IEEE](http://dx.doi.org/10.1109/ASE.2013.6693104)
