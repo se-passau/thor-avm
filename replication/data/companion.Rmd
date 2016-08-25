@@ -1,0 +1,305 @@
+---
+title: "Statistical companion"
+author: "Stefan Sobernig"
+date: "`r Sys.Date()`"
+output:
+   html_document:
+     toc: true
+     dev: svg	  
+   github_document:
+     toc: true
+     dev: png
+---
+
+Prequisites
+=========================
+
+## R packages
+```{r prereq}
+wants <- c("ggplot2", "reshape2", "car", "pander")
+has   <- wants %in% rownames(installed.packages())
+if(any(!has)) install.packages(wants[!has], repos = "http://cran.us.r-project.org")
+```
+
+```{r helpers, include=FALSE}
+my.nestedBoxplot <- function(data, response.var = "value") {
+		 
+    means <- melt(acast(data, DIST ~ OBJ,
+                        fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
+    
+    se <- melt(acast(data, DIST ~ OBJ,
+                     function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
+
+    
+    means$Var1 <- as.character(means$Var1)
+    means$se <- se[,3]
+    colnames(means) <- c("DIST","OBJ","value","se")
+
+ggplot(data) + 
+    geom_boxplot(aes(x = factor(OBJ), y = value, colour = DIST)) + 
+    geom_point(data = means, aes(x = factor(OBJ), y = value, shape=DIST)) +
+    geom_line(data = means, aes(x = factor(OBJ), y = value, group = DIST, linetype = DIST)) + 
+    theme_bw(base_size = 20) + theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), legend.justification=c(1,0), legend.position=c(1,0)) + ylab(unique(data$VARIABLE)[1]) + xlab("COST")
+
+}
+
+my.interactionPlot <- function(data , response.var = "value") {
+    means <- melt(acast(data, DIST ~ OBJ,
+                        fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
+    
+    se <- melt(acast(data, DIST ~ OBJ,
+                     function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
+
+    
+    means$Var1 <- as.character(means$Var1)
+    means$se <- se[,3]
+
+    ggplot(means, aes(x = factor(Var2), y = value, group = Var1)) + 
+        geom_line(aes(linetype = Var1)) + geom_point(aes(shape = Var1)) +
+            geom_errorbar(aes(ymax=value+se, ymin=value-se), width=.1) +
+                theme_bw()
+}
+
+```
+
+
+```{r data}
+library(reshape2)
+library(ggplot2)
+library(car)
+library(pander)
+
+load("toybox.RData")
+levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
+
+df.toybox <- subset(all, DIST != "origSayyadASE13")
+df.ase13 <- subset(all, DIST == "origSayyadASE13")
+```
+
+Data description
+=========================
+
+### ALGO=IBEA
+
+```{r}
+DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI20","FI100"))
+```	  
+
+```{r, include=TRUE}
+acast(DATA, DIST ~ OBJ, length)
+```
+
+```{r}
+ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
+
+ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
+
+ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
+```
+
+### ALGO=NSGAII
+
+```{r}
+DATA <- subset(df.toybox, ALGO == "NSGAII" & OBJ %in% c("F","FI20","FI100"))
+```	  
+
+```{r, include=TRUE}
+acast(DATA, DIST ~ OBJ, length)
+```
+
+
+```{r}
+ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
+
+ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT" & value < 1000)), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
+
+ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC" & value < 50000)), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
+```
+
+Analysis of variances (for ALGO = IBEA)
+=========================
+
+```{r}
+DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI100") & DIST %in% c("normal","x264"))
+```
+
+### Checks
+
+
+
+### Anova table: Hypervolume (HV)
+
+```{r}
+d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
+
+ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
+```
+
+```{r, results='asis'}
+panderOptions('digits', 4)
+## panderOptions('round', 4)
+panderOptions('keep.trailing.zeros', TRUE)
+pander(anova(d.hv.glm, test = "F"))
+```
+
+```{r, results='asis'}
+pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+```
+
+```{r}
+my.interactionPlot(subset(DATA, VARIABLE == "HV"))
+```
+
+```{r hv, fig.height=4, fig.width=4}
+my.nestedBoxplot(subset(DATA, VARIABLE == "HV"))
+```
+
+### Anova table: PCORRECT
+
+```{r}
+d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
+
+ggplot(na.omit(subset(DATA, VARIABLE == "PCORRECT")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
+```
+
+```{r, results='asis'}
+pander(anova(d.pc.glm, test = "F"))
+```
+
+
+```{r, results='asis'}
+pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+```
+
+
+```{r}
+my.interactionPlot(subset(DATA, VARIABLE == "PCORRECT"))
+```
+
+```{r pc, fig.height=4, fig.width=4}
+my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
+```
+
+### Significant differences: Tukey HSD
+
+```{r, results="asis"}
+
+hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(hsd.pc$`OBJ:DIST`)
+
+hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(hsd.pc$`OBJ:DIST`)
+```
+
+Exact Replication
+=========================
+
+```{r, include=TRUE}
+acast(df.ase13, VARIABLE ~ ALGO, length)
+```
+
+```{r}
+ggplot(na.omit(subset(df.ase13, VARIABLE=="HV")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap( ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
+
+ggplot(na.omit(subset(df.ase13, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap( ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
+
+ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeTo50C")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap( ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeTo50C")
+
+
+ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap( ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
+
+
+
+```
+
+```{r, results='asis'}
+mean <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mean)
+sd <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, sd)
+median <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, median)
+mad <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mad)
+min <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, min)
+max <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, max)
+knitr::kable(cbind(mean, sd[,2:3], median[,2:3], mad[,2:3], min[,2:3], max[,2:3]), format = "markdown", digits=4)
+```
+
+### Exact vs. adjusted replication
+
+```{r, include=TRUE}
+df.contr <- rbind(cbind(df.ase13, EXP="exact"),
+	 cbind(subset(df.toybox, OBJ == "F" & DIST == "normal"), EXP="adjusted"))
+acast(df.contr, EXP ~ ALGO, length)
+```
+
+```{r, include=TRUE}
+ggplot(na.omit(subset(df.contr, VARIABLE=="HV")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(EXP ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
+
+ggplot(na.omit(subset(df.contr, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
+    geom_violin() + geom_boxplot(width = 0.2) +
+        facet_wrap(EXP ~ ALGO, ncol = 2, drop = FALSE) +
+            stat_summary(fun.y="median", geom="point") +
+                stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
+```
+
+
+
+Detach R packages
+=========================
+
+```{r}
+try(detach(package:ggplot2))
+try(detach(package:reshape2))
+try(detach(package:car))
+try(detach(package:pander))
+```
