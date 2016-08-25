@@ -24,6 +24,8 @@ Prequisites
 How to (re-)generate the companion report
 -----------------------------------------
 
+(This assumes that the R package `rmarkdown` is installed, in doubt, run from within R: `install.packages("rmarkdown")`.)
+
 1.  Clone the repo or download its content
 2.  `cd replication/data`
 3.  `Rscript -e "rmarkdown::render('companion.Rmd','all')"`
