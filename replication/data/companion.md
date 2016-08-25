@@ -328,13 +328,13 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))
 my.interactionPlot(subset(DATA, VARIABLE == "HV"))
 ```
 
-![](companion_files/figure-markdown_github/unnamed-chunk-11-1.svg)
+![](companion_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ``` {.r}
 my.nestedBoxplot(subset(DATA, VARIABLE == "HV"))
 ```
 
-![](companion_files/figure-markdown_github/hv.svg-1.svg)
+![](companion_files/figure-markdown_github/hv-1.png)
 
 ### Anova table: PCORRECT
 
@@ -486,7 +486,7 @@ my.interactionPlot(subset(DATA, VARIABLE == "PCORRECT"))
 my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
-![](companion_files/figure-markdown_github/pc.svg-1.svg)
+![](companion_files/figure-markdown_github/pc-1.png)
 
 Exact Replication
 =================
