@@ -12,7 +12,7 @@ There is the [statistical companion](data/) to the robustness experiment reporte
 * `cd replication/`
 * `ant clean`
 
-# Replications
+# How to reproduce and replicate
 
 ## Robustness experiment (Section IV)
 
