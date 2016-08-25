@@ -1,4 +1,4 @@
-This is the supplementary Web site on the manuscript entitled _Attributed Variability Models: From Fiction to Facts_.
+This is the supplementary Web site on the manuscript entitled _Attributed Variability Models: Outside the Comfort Zone_.
 
 * [corpusData](corpusData/) contains the data set of performance measurements on 19 real-world systems (Section II).
 * [literatureStudy](literatureStudy/) contains background material on the literature study (Section III), e.g., a full bibliographical list of the reviewed papers.
