@@ -3,7 +3,7 @@ Statistical companion
 Stefan Sobernig
 2016-08-26
 
--   Prequisites
+-   Prerequisites
     -   How to (re-)generate the companion report
     -   R packages
 -   Data description
@@ -18,8 +18,8 @@ Stefan Sobernig
 -   Exact vs. adjusted replication
 -   Detach R packages
 
-Prequisites
-===========
+Prerequisites
+=============
 
 How to (re-)generate the companion report
 -----------------------------------------
@@ -46,11 +46,12 @@ library(ggplot2)
 library(car)
 library(pander)
 
-load("toybox.RData")
+## load("toybox.RData")
+all <- read.csv2("toybox.csv")
 levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
 
-df.toybox <- subset(all, DIST != "origSayyadASE13")
-df.ase13 <- subset(all, DIST == "origSayyadASE13")
+df.toybox <- droplevels(subset(all, DIST != "origSayyadASE13"))
+df.ase13 <- droplevels(subset(all, DIST == "origSayyadASE13"))
 ```
 
 Data description
@@ -59,11 +60,11 @@ Data description
 ### ALGO=IBEA
 
 ``` {.r}
-DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI20","FI100"))
+DATA <- subset(df.toybox, ALGO == "IBEA" & FINT %in% c("F","FI20","FI100"))
 ```
 
 ``` {.r}
-acast(DATA, DIST ~ OBJ, length)
+acast(DATA, DIST ~ FINT, length)
 ```
 
     ##           F FI100 FI20
@@ -74,7 +75,7 @@ acast(DATA, DIST ~ OBJ, length)
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
@@ -84,7 +85,7 @@ ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
@@ -94,7 +95,7 @@ ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 ```
@@ -104,11 +105,11 @@ ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
 ### ALGO=NSGAII
 
 ``` {.r}
-DATA <- subset(df.toybox, ALGO == "NSGAII" & OBJ %in% c("F","FI20","FI100"))
+DATA <- subset(df.toybox, ALGO == "NSGAII" & FINT %in% c("F","FI20","FI100"))
 ```
 
 ``` {.r}
-acast(DATA, DIST ~ OBJ, length)
+acast(DATA, DIST ~ FINT, length)
 ```
 
     ##           F FI100 FI20
@@ -119,7 +120,7 @@ acast(DATA, DIST ~ OBJ, length)
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
@@ -129,7 +130,7 @@ ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT" & value < 1000)), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
@@ -139,7 +140,7 @@ ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT" & value < 1000)), aes(y=value, 
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC" & value < 50000)), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 ```
@@ -150,9 +151,9 @@ Analysis of variances (for ALGO = IBEA)
 =======================================
 
 ``` {.r}
-DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI100") & DIST %in% c("normal","x264"))
-d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
-d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
+DATA <- subset(df.toybox, ALGO == "IBEA" & FINT %in% c("F","FI100") & DIST %in% c("normal","x264"))
+d.hv.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
+d.pc.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
 ### Checks
@@ -177,9 +178,9 @@ QQplot(pc.res)
 
 ``` {.r}
 hv <- subset(DATA, VARIABLE == "HV")
-hv$combn <- interaction(hv$OBJ,hv$DIST)
+hv$combn <- interaction(hv$FINT,hv$DIST)
 pc <- subset(DATA, VARIABLE == "PCORRECT")
-pc$combn <- interaction(pc$OBJ,pc$DIST)
+pc$combn <- interaction(pc$FINT,pc$DIST)
 
 ggplot(data=hv, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
 ```
@@ -193,10 +194,10 @@ ggplot(data=pc, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nr
 ![](companion_files/figure-markdown_github/unnamed-chunk-9-2.png)
 
 ``` {.r}
-l.test <- cbind(as.numeric(leveneTest(value ~ OBJ * DIST, data = hv)[1,]),
-      as.numeric(leveneTest(value ~ OBJ * DIST, data = hv, center = mean)[1,]),
-                as.numeric(leveneTest(value ~ OBJ * DIST, data = pc)[1,]),
-      as.numeric(leveneTest(value ~ OBJ * DIST, data = pc, center = mean)[1,]))
+l.test <- cbind(as.numeric(leveneTest(value ~ FINT * DIST, data = hv)[1,]),
+      as.numeric(leveneTest(value ~ FINT * DIST, data = hv, center = mean)[1,]),
+                as.numeric(leveneTest(value ~ FINT * DIST, data = pc)[1,]),
+      as.numeric(leveneTest(value ~ FINT * DIST, data = pc, center = mean)[1,]))
 
 colnames(l.test) <- c("median","mean","median","mean")
 rownames(l.test) <- c("Df", "F", "p-value")
@@ -250,7 +251,7 @@ pander(l.test)
 ``` {.r}
 ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 2, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
@@ -267,11 +268,11 @@ pander(anova(d.hv.glm, test = "F"))
 <table>
 <caption>Analysis of Deviance Table</caption>
 <colgroup>
-<col width="20%" />
+<col width="21%" />
 <col width="6%" />
 <col width="15%" />
 <col width="16%" />
-<col width="18%" />
+<col width="17%" />
 <col width="8%" />
 <col width="13%" />
 </colgroup>
@@ -297,7 +298,7 @@ pander(anova(d.hv.glm, test = "F"))
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>OBJ</strong></td>
+<td align="center"><strong>FINT</strong></td>
 <td align="center">1</td>
 <td align="center">0.00679</td>
 <td align="center">198</td>
@@ -315,7 +316,7 @@ pander(anova(d.hv.glm, test = "F"))
 <td align="center">3.371e-180</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>OBJ:DIST</strong></td>
+<td align="center"><strong>FINT:DIST</strong></td>
 <td align="center">1</td>
 <td align="center">3.527e-05</td>
 <td align="center">196</td>
@@ -327,7 +328,7 @@ pander(anova(d.hv.glm, test = "F"))
 </table>
 
 ``` {.r}
-pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
 ```
 
 <table>
@@ -352,7 +353,7 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>OBJ</strong></td>
+<td align="center"><strong>FINT</strong></td>
 <td align="center">1</td>
 <td align="center">0.00679</td>
 <td align="center">0.00679</td>
@@ -368,7 +369,7 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))
 <td align="center">3.371e-180</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>OBJ:DIST</strong></td>
+<td align="center"><strong>FINT:DIST</strong></td>
 <td align="center">1</td>
 <td align="center">3.527e-05</td>
 <td align="center">3.527e-05</td>
@@ -401,11 +402,11 @@ my.nestedBoxplot(subset(DATA, VARIABLE == "HV"))
 ### Anova table: PCORRECT
 
 ``` {.r}
-d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
+d.pc.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 
 ggplot(na.omit(subset(DATA, VARIABLE == "PCORRECT")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 2, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
@@ -419,11 +420,11 @@ pander(anova(d.pc.glm, test = "F"))
 <table>
 <caption>Analysis of Deviance Table</caption>
 <colgroup>
-<col width="20%" />
+<col width="21%" />
 <col width="6%" />
 <col width="15%" />
 <col width="16%" />
-<col width="18%" />
+<col width="17%" />
 <col width="8%" />
 <col width="13%" />
 </colgroup>
@@ -449,7 +450,7 @@ pander(anova(d.pc.glm, test = "F"))
 <td align="center">NA</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>OBJ</strong></td>
+<td align="center"><strong>FINT</strong></td>
 <td align="center">1</td>
 <td align="center">1280</td>
 <td align="center">198</td>
@@ -467,7 +468,7 @@ pander(anova(d.pc.glm, test = "F"))
 <td align="center">0.0001048</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>OBJ:DIST</strong></td>
+<td align="center"><strong>FINT:DIST</strong></td>
 <td align="center">1</td>
 <td align="center">1025</td>
 <td align="center">196</td>
@@ -479,7 +480,7 @@ pander(anova(d.pc.glm, test = "F"))
 </table>
 
 ``` {.r}
-pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
 ```
 
 <table>
@@ -504,7 +505,7 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORR
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>OBJ</strong></td>
+<td align="center"><strong>FINT</strong></td>
 <td align="center">1</td>
 <td align="center">1280</td>
 <td align="center">1280</td>
@@ -520,7 +521,7 @@ pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORR
 <td align="center">0.0001048</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>OBJ:DIST</strong></td>
+<td align="center"><strong>FINT:DIST</strong></td>
 <td align="center">1</td>
 <td align="center">1025</td>
 <td align="center">1025</td>
@@ -553,8 +554,8 @@ my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
 ### Significant differences: Tukey HSD
 
 ``` {.r}
-hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
-pander(hsd.pc$`OBJ:DIST`)
+hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(hsd.pc$`FINT:DIST`)
 ```
 
 <table>
@@ -621,8 +622,8 @@ pander(hsd.pc$`OBJ:DIST`)
 </table>
 
 ``` {.r}
-hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
-pander(hsd.pc$`OBJ:DIST`)
+hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(hsd.pc$`FINT:DIST`)
 ```
 
 <table>
@@ -762,7 +763,7 @@ Exact vs. adjusted replication
 
 ``` {.r}
 df.contr <- rbind(cbind(df.ase13, EXP="exact"),
-     cbind(subset(df.toybox, OBJ == "F" & DIST == "normal"), EXP="adjusted"))
+     cbind(subset(df.toybox, FINT == "F" & DIST == "normal"), EXP="adjusted"))
 acast(df.contr, EXP ~ ALGO, length)
 ```
 

@@ -11,7 +11,7 @@ output:
      dev: png
 ---
 
-Prequisites
+Prerequisites
 =========================
 
 ## How to (re-)generate the companion report
@@ -49,30 +49,30 @@ QQplot <- function(y, x = rnorm(sum(!is.na(y)))) {
 
 my.nestedBoxplot <- function(data, response.var = "value") {
 		 
-    means <- melt(acast(data, DIST ~ OBJ,
+    means <- melt(acast(data, DIST ~ FINT,
                         fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
     
-    se <- melt(acast(data, DIST ~ OBJ,
+    se <- melt(acast(data, DIST ~ FINT,
                      function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
 
     
     means$Var1 <- as.character(means$Var1)
     means$se <- se[,3]
-    colnames(means) <- c("DIST","OBJ","value","se")
+    colnames(means) <- c("DIST","FINT","value","se")
 
 ggplot(data) + 
-    geom_boxplot(aes(x = factor(OBJ), y = value, colour = DIST)) + 
-    geom_point(data = means, aes(x = factor(OBJ), y = value, shape=DIST)) +
-    geom_line(data = means, aes(x = factor(OBJ), y = value, group = DIST, linetype = DIST)) + 
+    geom_boxplot(aes(x = factor(FINT), y = value, colour = DIST)) + 
+    geom_point(data = means, aes(x = factor(FINT), y = value, shape=DIST)) +
+    geom_line(data = means, aes(x = factor(FINT), y = value, group = DIST, linetype = DIST)) + 
     theme_bw(base_size = 16) + theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), legend.justification=c(1,0), legend.position=c(1,0)) + ylab(unique(data$VARIABLE)[1]) + xlab("FINT")
 
 }
 
 my.interactionPlot <- function(data , response.var = "value") {
-    means <- melt(acast(data, DIST ~ OBJ,
+    means <- melt(acast(data, DIST ~ FINT,
                         fun.aggregate = mean, value.var = response.var, na.rm = TRUE))
     
-    se <- melt(acast(data, DIST ~ OBJ,
+    se <- melt(acast(data, DIST ~ FINT,
                      function(x) { sd(x, na.rm = TRUE)/sqrt(length(x[!is.na(x)])) }, value.var = response.var))
 
     
@@ -94,11 +94,11 @@ library(ggplot2)
 library(car)
 library(pander)
 
-load("toybox.RData")
+all <- read.csv2("toybox.csv")
 levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
 
-df.toybox <- subset(all, DIST != "origSayyadASE13")
-df.ase13 <- subset(all, DIST == "origSayyadASE13")
+df.toybox <- droplevels(subset(all, DIST != "origSayyadASE13"))
+df.ase13 <- droplevels(subset(all, DIST == "origSayyadASE13"))
 ```
 
 Data description
@@ -107,29 +107,29 @@ Data description
 ### ALGO=IBEA
 
 ```{r}
-DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI20","FI100"))
+DATA <- subset(df.toybox, ALGO == "IBEA" & FINT %in% c("F","FI20","FI100"))
 ```	  
 
 ```{r, include=TRUE}
-acast(DATA, DIST ~ OBJ, length)
+acast(DATA, DIST ~ FINT, length)
 ```
 
 ```{r}
 ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 
 ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 
 ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 ```
@@ -137,30 +137,30 @@ ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
 ### ALGO=NSGAII
 
 ```{r}
-DATA <- subset(df.toybox, ALGO == "NSGAII" & OBJ %in% c("F","FI20","FI100"))
+DATA <- subset(df.toybox, ALGO == "NSGAII" & FINT %in% c("F","FI20","FI100"))
 ```	  
 
 ```{r, include=TRUE}
-acast(DATA, DIST ~ OBJ, length)
+acast(DATA, DIST ~ FINT, length)
 ```
 
 
 ```{r}
 ggplot(na.omit(subset(DATA, VARIABLE=="HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 
 ggplot(na.omit(subset(DATA, VARIABLE=="PCORRECT" & value < 1000)), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 
 ggplot(na.omit(subset(DATA, VARIABLE=="TimeToAnyC" & value < 50000)), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 3, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 3, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("TimeToAnyC")
 ```
@@ -169,9 +169,9 @@ Analysis of variances (for ALGO = IBEA)
 =========================
 
 ```{r}
-DATA <- subset(df.toybox, ALGO == "IBEA" & OBJ %in% c("F","FI100") & DIST %in% c("normal","x264"))
-d.hv.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
-d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
+DATA <- subset(df.toybox, ALGO == "IBEA" & FINT %in% c("F","FI100") & DIST %in% c("normal","x264"))
+d.hv.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "HV"))
+d.pc.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 ```
 
 ### Checks
@@ -191,9 +191,9 @@ QQplot(pc.res)
 
 ```{r}
 hv <- subset(DATA, VARIABLE == "HV")
-hv$combn <- interaction(hv$OBJ,hv$DIST)
+hv$combn <- interaction(hv$FINT,hv$DIST)
 pc <- subset(DATA, VARIABLE == "PCORRECT")
-pc$combn <- interaction(pc$OBJ,pc$DIST)
+pc$combn <- interaction(pc$FINT,pc$DIST)
 
 ggplot(data=hv, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
 ggplot(data=pc, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nrow=1) + theme_bw()
@@ -202,10 +202,10 @@ ggplot(data=pc, aes(y = value, x = 1)) + geom_boxplot() + facet_wrap(~ combn, nr
 
 ```{r, results='asis'}
 
-l.test <- cbind(as.numeric(leveneTest(value ~ OBJ * DIST, data = hv)[1,]),
-      as.numeric(leveneTest(value ~ OBJ * DIST, data = hv, center = mean)[1,]),
-                as.numeric(leveneTest(value ~ OBJ * DIST, data = pc)[1,]),
-      as.numeric(leveneTest(value ~ OBJ * DIST, data = pc, center = mean)[1,]))
+l.test <- cbind(as.numeric(leveneTest(value ~ FINT * DIST, data = hv)[1,]),
+      as.numeric(leveneTest(value ~ FINT * DIST, data = hv, center = mean)[1,]),
+                as.numeric(leveneTest(value ~ FINT * DIST, data = pc)[1,]),
+      as.numeric(leveneTest(value ~ FINT * DIST, data = pc, center = mean)[1,]))
 
 colnames(l.test) <- c("median","mean","median","mean")
 rownames(l.test) <- c("Df", "F", "p-value")
@@ -217,7 +217,7 @@ pander(l.test)
 ```{r}
 ggplot(na.omit(subset(DATA, VARIABLE == "HV")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 2, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("HV")
 ```
@@ -230,7 +230,7 @@ pander(anova(d.hv.glm, test = "F"))
 ```
 
 ```{r, results='asis'}
-pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
 ```
 
 ```{r}
@@ -244,11 +244,11 @@ my.nestedBoxplot(subset(DATA, VARIABLE == "HV"))
 ### Anova table: PCORRECT
 
 ```{r}
-d.pc.glm <- glm(value ~ OBJ * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
+d.pc.glm <- glm(value ~ FINT * DIST, family = gaussian, data = subset(DATA, VARIABLE == "PCORRECT"))
 
 ggplot(na.omit(subset(DATA, VARIABLE == "PCORRECT")), aes(y=value, x = 1)) +
     geom_violin() + geom_boxplot(width = 0.2) +
-        facet_wrap(DIST ~ OBJ, ncol = 2, drop = TRUE) +
+        facet_wrap(DIST ~ FINT, ncol = 2, drop = TRUE) +
             stat_summary(fun.y="median", geom="point") +
                 stat_summary(fun.y="mean", geom="point", shape=3) + xlab("PCORRECT")
 ```
@@ -259,7 +259,7 @@ pander(anova(d.pc.glm, test = "F"))
 
 
 ```{r, results='asis'}
-pander(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
 ```
 
 
@@ -275,11 +275,11 @@ my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
 
 ```{r, results="asis"}
 
-hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
-pander(hsd.pc$`OBJ:DIST`)
+hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(hsd.pc$`FINT:DIST`)
 
-hsd.pc <- TukeyHSD(aov(value ~ OBJ * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
-pander(hsd.pc$`OBJ:DIST`)
+hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(hsd.pc$`FINT:DIST`)
 ```
 
 Exact Replication
@@ -332,7 +332,7 @@ Exact vs. adjusted replication
 
 ```{r, include=TRUE}
 df.contr <- rbind(cbind(df.ase13, EXP="exact"),
-	 cbind(subset(df.toybox, OBJ == "F" & DIST == "normal"), EXP="adjusted"))
+	 cbind(subset(df.toybox, FINT == "F" & DIST == "normal"), EXP="adjusted"))
 acast(df.contr, EXP ~ ALGO, length)
 ```
 
