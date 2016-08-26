@@ -1,0 +1,460 @@
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 50
+Lade n”tiges Paket: gridExtra
+Lade n”tiges Paket: scatterplot3d
+Variants: 18632 Time: 23818
+Matrix Calculation: 2152
+Fitnesstime: 41533
+Multiplication: 201141
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18624 Time: 31651
+Matrix Calculation: 2216
+Fitnesstime: 40554
+Multiplication: 198417
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18740 Time: 31198
+Matrix Calculation: 2162
+Fitnesstime: 38049
+Multiplication: 191291
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18648 Time: 35095
+Matrix Calculation: 2143
+Fitnesstime: 37754
+Multiplication: 189305
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18740 Time: 38008
+Matrix Calculation: 2175
+Fitnesstime: 40520
+Multiplication: 198839
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18732 Time: 40429
+Matrix Calculation: 2162
+Fitnesstime: 45632
+Multiplication: 213160
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18806 Time: 37853
+Matrix Calculation: 2156
+Fitnesstime: 36109
+Multiplication: 183750
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18742 Time: 29643
+Matrix Calculation: 2141
+Fitnesstime: 39292
+Multiplication: 192847
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18740 Time: 39508
+Matrix Calculation: 2141
+Fitnesstime: 37570
+Multiplication: 188983
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 50
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 18740 Time: 40896
+Matrix Calculation: 2138
+Fitnesstime: 44555
+Multiplication: 212172
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37448 Time: 32633
+Matrix Calculation: 4272
+Fitnesstime: 77727
+Multiplication: 387373
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37372 Time: 36953
+Matrix Calculation: 4257
+Fitnesstime: 74600
+Multiplication: 389029
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37548 Time: 38634
+Matrix Calculation: 4288
+Fitnesstime: 76142
+Multiplication: 408863
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37448 Time: 36926
+Matrix Calculation: 4270
+Fitnesstime: 76441
+Multiplication: 400382
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37396 Time: 38588
+Matrix Calculation: 4256
+Fitnesstime: 76112
+Multiplication: 395883
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37376 Time: 37814
+Matrix Calculation: 4265
+Fitnesstime: 89573
+Multiplication: 446435
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37556 Time: 38143
+Matrix Calculation: 4300
+Fitnesstime: 76234
+Multiplication: 393950
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37440 Time: 28354
+Matrix Calculation: 4271
+Fitnesstime: 77607
+Multiplication: 397302
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37360 Time: 38104
+Matrix Calculation: 4251
+Fitnesstime: 83818
+Multiplication: 425271
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 100
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 37396 Time: 38488
+Matrix Calculation: 4261
+Fitnesstime: 75539
+Multiplication: 380132
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56010 Time: 36348
+Matrix Calculation: 6377
+Fitnesstime: 113886
+Multiplication: 594376
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 55998 Time: 38892
+Matrix Calculation: 6388
+Fitnesstime: 111190
+Multiplication: 579108
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56148 Time: 39467
+Matrix Calculation: 6395
+Fitnesstime: 116514
+Multiplication: 605289
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56298 Time: 38065
+Matrix Calculation: 6423
+Fitnesstime: 112908
+Multiplication: 576652
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56306 Time: 40879
+Matrix Calculation: 6429
+Fitnesstime: 111557
+Multiplication: 586401
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56148 Time: 42798
+Matrix Calculation: 6390
+Fitnesstime: 117031
+Multiplication: 614539
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56010 Time: 34692
+Matrix Calculation: 6367
+Fitnesstime: 114445
+Multiplication: 588679
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56148 Time: 29288
+Matrix Calculation: 6388
+Fitnesstime: 118901
+Multiplication: 626932
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56148 Time: 39598
+Matrix Calculation: 6409
+Fitnesstime: 113956
+Multiplication: 591300
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 150
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 56014 Time: 36776
+Matrix Calculation: 6365
+Fitnesstime: 111148
+Multiplication: 578330
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74632 Time: 37135
+Matrix Calculation: 8479
+Fitnesstime: 151767
+Multiplication: 790040
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74726 Time: 41283
+Matrix Calculation: 8528
+Fitnesstime: 159805
+Multiplication: 838504
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74714 Time: 42909
+Matrix Calculation: 8498
+Fitnesstime: 156527
+Multiplication: 831419
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74688 Time: 41922
+Matrix Calculation: 8497
+Fitnesstime: 150753
+Multiplication: 788885
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 75048 Time: 36342
+Matrix Calculation: 8558
+Fitnesstime: 153895
+Multiplication: 802548
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 75040 Time: 42863
+Matrix Calculation: 8550
+Fitnesstime: 164413
+Multiplication: 889757
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74840 Time: 34227
+Matrix Calculation: 8516
+Fitnesstime: 166890
+Multiplication: 909941
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74688 Time: 38260
+Matrix Calculation: 8481
+Fitnesstime: 163578
+Multiplication: 877225
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 74907 Time: 38468
+Matrix Calculation: 8553
+Fitnesstime: 155664
+Multiplication: 829445
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 200
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 75029 Time: 35883
+Matrix Calculation: 8544
+Fitnesstime: 156762
+Multiplication: 826022
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93284 Time: 38645
+Matrix Calculation: 10743
+Fitnesstime: 191651
+Multiplication: 1000667
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93490 Time: 41099
+Matrix Calculation: 10653
+Fitnesstime: 197284
+Multiplication: 1064981
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 92982 Time: 35771
+Matrix Calculation: 10828
+Fitnesstime: 192223
+Multiplication: 1032278
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93288 Time: 43386
+Matrix Calculation: 10620
+Fitnesstime: 195320
+Multiplication: 1037590
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93477 Time: 41197
+Matrix Calculation: 11151
+Fitnesstime: 201407
+Multiplication: 1117644
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93240 Time: 41375
+Matrix Calculation: 10614
+Fitnesstime: 187991
+Multiplication: 991736
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93748 Time: 39572
+Matrix Calculation: 10696
+Fitnesstime: 192019
+Multiplication: 1020310
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93748 Time: 43341
+Matrix Calculation: 10704
+Fitnesstime: 193185
+Multiplication: 1028851
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93740 Time: 38821
+Matrix Calculation: 10708
+Fitnesstime: 198513
+Multiplication: 1068599
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 250
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 93490 Time: 35073
+Matrix Calculation: 10653
+Fitnesstime: 198388
+Multiplication: 1050109
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 112440 Time: 43964
+Matrix Calculation: 12843
+Fitnesstime: 238987
+Multiplication: 1279297
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 112440 Time: 40862
+Matrix Calculation: 12843
+Fitnesstime: 230969
+Multiplication: 1218836
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 112440 Time: 44136
+Matrix Calculation: 12842
+Fitnesstime: 236800
+Multiplication: 1279265
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 111912 Time: 44395
+Matrix Calculation: 12751
+Fitnesstime: 240180
+Multiplication: 1297031
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 112140 Time: 41834
+Matrix Calculation: 12780
+Fitnesstime: 237022
+Multiplication: 1280775
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 112440 Time: 42226
+Matrix Calculation: 12846
+Fitnesstime: 235419
+Multiplication: 1259883
+performing run 6 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 111856 Time: 41580
+Matrix Calculation: 12766
+Fitnesstime: 232619
+Multiplication: 1232828
+performing run 7 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 111888 Time: 42023
+Matrix Calculation: 12753
+Fitnesstime: 228698
+Multiplication: 1225411
+performing run 8 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 111852 Time: 29718
+Matrix Calculation: 12727
+Fitnesstime: 248138
+Multiplication: 1341879
+performing run 9 cmv scaledFeatures scaledInteractions scaledVariants 300
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 111852 Time: 38038
+Matrix Calculation: 12732
+Fitnesstime: 227851
+Multiplication: 1206867
+performing run 0 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 130456 Time: 40369
+Matrix Calculation: 14869
+Fitnesstime: 274415
+Multiplication: 1477135
+performing run 1 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 131140 Time: 42936
+Matrix Calculation: 14951
+Fitnesstime: 272482
+Multiplication: 1477479
+performing run 2 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 130484 Time: 42530
+Matrix Calculation: 15132
+Fitnesstime: 275062
+Multiplication: 1503525
+performing run 3 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 130488 Time: 34533
+Matrix Calculation: 14964
+Fitnesstime: 332115
+Multiplication: 1860825
+performing run 4 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 130082 Time: 37502
+Matrix Calculation: 14858
+Fitnesstime: 286573
+Multiplication: 1564493
+performing run 5 cmv scaledFeatures scaledInteractions scaledVariants 350
+Loading required package: gridExtra
+Loading required package: scatterplot3d
+Variants: 130790 Time: 44941
+Matrix Calculation: 15278

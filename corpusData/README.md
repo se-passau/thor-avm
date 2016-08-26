@@ -8,6 +8,12 @@ Berkeley DB					x264				LLVM
 ![The figure shows the distribution profiles (from left to right) of Berkeley DB, x264, and LLVM](distributions.png)
 The figure shows the distribution profiles (from left to right) of Berkeley DB, x264, and LLVM.
 
-## EvaluaionOfGoF
+## Evaluation of Performance Scaling
 
-In [EvaluaionOfGoF](EvaluaionOfGoF/), we show additional experimental data for comparing the three Goodness-of-Fit tests.
+We provide the raw performance data of the performance scaling experiment, in which we increased the sample set (see Section V).
+
+## Evaluaion of Goodnes-of-Fit (GoF)
+
+In [EvaluaionOfGoF](EvaluaionOfGoF/), we show additional experimental data for comparing the three Goodness-of-Fit tests, including a cross test of all three metrics (not discussed in the paper due to space limitations).
+
+
