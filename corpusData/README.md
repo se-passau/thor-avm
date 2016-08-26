@@ -6,4 +6,4 @@ We conducted performance, main memory, and binary size measurements of 19 config
 
 ## EvaluaionOfGoF
 
-In [EvaluaionOfGoF](/EvaluaionOfGoF), we show additional experimental data for comparing the three Goodness-of-Fit tests.
+In [EvaluaionOfGoF](EvaluaionOfGoF/), we show additional experimental data for comparing the three Goodness-of-Fit tests.
