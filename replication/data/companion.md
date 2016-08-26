@@ -748,11 +748,11 @@ tmp.median <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE
 tmp.mad <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mad)
 tmp.min <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, min))
 tmp.max <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, max))
-knitr::kable(cbind(tmp.mean, tmp.sd[,2:3], tmp.median[,2:3], tmp.mad[,2:3], tmp.min[,2:3], tmp.max[,2:3]), format = "markdown", digits=4)
+knitr::kable(cbind(mean = tmp.mean, sd = tmp.sd[,2:3], median = tmp.median[,2:3], mad = tmp.mad[,2:3], min = tmp.min[,2:3], max = tmp.max[,2:3]), format = "markdown", digits=4)
 ```
 
-|VARIABLE|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|
-|:-------|---:|-----:|---:|-----:|---:|-----:|---:|-----:|---:|-----:|---:|-----:|
+|mean.VARIABLE|mean.IBEA|mean.NSGAII|sd.IBEA|sd.NSGAII|median.IBEA|median.NSGAII|mad.IBEA|mad.NSGAII|min.IBEA|min.NSGAII|max.IBEA|max.NSGAII|
+|:------------|--------:|----------:|------:|--------:|----------:|------------:|-------:|---------:|-------:|---------:|-------:|---------:|
 |HV|0.2200|0.2119|0.0087|0.0013|0.2227|0.2121|0.0004|0.0011|0.1903|0.2081|0.2232|0.2144|
 |PCORRECT|31.2533|10.9800|20.4951|2.0989|25.1667|10.8333|0.7413|2.2239|24.0000|6.6667|100.0000|16.0000|
 |TimeToAnyC|31687.1200|7642.1200|6073.7676|1510.4444|31263.5000|7436.5000|6621.2916|1729.4529|19241.0000|3855.0000|45109.0000|11058.0000|

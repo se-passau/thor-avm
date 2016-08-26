@@ -324,7 +324,7 @@ tmp.median <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE
 tmp.mad <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mad)
 tmp.min <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, min))
 tmp.max <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, max))
-knitr::kable(cbind(tmp.mean, tmp.sd[,2:3], tmp.median[,2:3], tmp.mad[,2:3], tmp.min[,2:3], tmp.max[,2:3]), format = "markdown", digits=4)
+knitr::kable(cbind(mean = tmp.mean, sd = tmp.sd[,2:3], median = tmp.median[,2:3], mad = tmp.mad[,2:3], min = tmp.min[,2:3], max = tmp.max[,2:3]), format = "markdown", digits=4)
 ```
 
 Exact vs. adjusted replication
