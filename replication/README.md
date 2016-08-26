@@ -54,11 +54,12 @@ The original setup by Sayyad et al. is a customized and extended fork of JMetal 
 * [build.xml](build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs ([diff](https://github.com/mrcalvin/thor-avm/compare/599e204a691fe67d1d3bf235677d019ac73398e7...master#diff-2cccd7bf48b7a9cc113ff564acd802a8L1)).
 * [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java): A variant of the Ptoybox problem definition, which allows for injecting feature interactions for attribute COST (see [computeCosts](src/jmetal/problems/dimacs/Ptoybox1of3.java#L155)).
 * Datasets processed by and fed into objective function of [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java), incl.:
+
 ** [1of3normal-15-F](src/attrs/1of3normal-15-F/)
 ** [1of3normal-15-FI100](src/attrs/1of3normal-15-FI100/)
 ** [1of3normal-x264-F](src/attrs/1of3x264-15-F/)
 ** [1of3normal-x264-FI100](src/attrs/1of3x264-15-FI100/)
-** [sayyad-orig-ase13](src/attrs/sayyad-orig-ase13/)
+** [orig-sayyad-ase13](src/attrs/orig-sayyad-ase13/)
 
 ## Modifications
 * [NSGAIIDMStudy](src/jmetal/experiments/NSGAIIDMStudy.java): Has been modified to process Ant parameters, rather than setting hard-coded values on heuristics, data files (attribute-value data, true Pareto fronts), and output locations.
