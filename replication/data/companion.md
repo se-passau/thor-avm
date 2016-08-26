@@ -742,25 +742,13 @@ ggplot(na.omit(subset(df.ase13, VARIABLE=="TimeToAnyC")), aes(y=value, x = 1)) +
 ![](companion_files/figure-markdown_github/unnamed-chunk-21-4.png)
 
 ``` {.r}
-mean <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mean)
-sd <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, sd)
-median <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, median)
-mad <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mad)
-min <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, min)
-```
-
-    ## Warning in .fun(.value[0], ...): kein nicht-fehlendes Argument für min;
-    ## gebe Inf zurück
-
-``` {.r}
-max <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, max)
-```
-
-    ## Warning in .fun(.value[0], ...): kein nicht-fehlendes Argument für max;
-    ## gebe -Inf zurück
-
-``` {.r}
-knitr::kable(cbind(mean, sd[,2:3], median[,2:3], mad[,2:3], min[,2:3], max[,2:3]), format = "markdown", digits=4)
+tmp.mean <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mean)
+tmp.sd <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, sd)
+tmp.median <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, median)
+tmp.mad <- dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, mad)
+tmp.min <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, min))
+tmp.max <- suppressWarnings(dcast(na.omit(subset(df.ase13, VARIABLE != "TimeTo50C")), VARIABLE ~ ALGO, max))
+knitr::kable(cbind(tmp.mean, tmp.sd[,2:3], tmp.median[,2:3], tmp.mad[,2:3], tmp.min[,2:3], tmp.max[,2:3]), format = "markdown", digits=4)
 ```
 
 |VARIABLE|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|IBEA|NSGAII|
