@@ -48,7 +48,7 @@ The resulting CSV file can be sourced using `read.table` & friends in R.
 The original setup by Sayyad et al. is a customized and extended fork of JMetal 4.0 (as released in 2011). To allow us to run a differentiated replication, as well as to parametrize the experimental runs without the need for modifying the Java sources directly, we contributed the following changes:
 
 ## Additions
-* [build.xml](replication/build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs ([diff](https://github.com/mrcalvin/thor-avm/compare/599e204a691fe67d1d3bf235677d019ac73398e7...master#diff-2cccd7bf48b7a9cc113ff564acd802a8L1)).
+* [build.xml](build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs ([diff](https://github.com/mrcalvin/thor-avm/compare/599e204a691fe67d1d3bf235677d019ac73398e7...master#diff-2cccd7bf48b7a9cc113ff564acd802a8L1)).
 * ...
 
 # References
