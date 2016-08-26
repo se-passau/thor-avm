@@ -53,7 +53,7 @@ The original setup by Sayyad et al. is a customized and extended fork of [JMetal
 ## Additions
 * [build.xml](build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs.
 * [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java): A variant of the Ptoybox problem definition, which allows for injecting feature interactions for attribute COST (see [computeCosts](src/jmetal/problems/dimacs/Ptoybox1of3.java#L155)).
-* Datasets processed by and fed into objective function of [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java), incl.:
+* Datasets provided to and processed by the objective function in [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java), incl.:
 
   * [1of3normal-15-F](src/attrs/1of3normal-15-F/)
   * [1of3normal-15-FI100](src/attrs/1of3normal-15-FI100/)
