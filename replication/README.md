@@ -33,7 +33,7 @@ In addition, there is an _experiment package_ for reproducing and replicating a)
 
 ## How to collect measurement data
 
-The ant runs result in JMetal 4 output directories (`-Dname=<outdir>`) containing the measurement data on Hypervolume (HV), PCORRECT, TimeTo50C, and TimeToAnyC. To facilitate data postprocessing and analysis, there is a helper to turn the nested dir/file structures into one R data frame (in long format):
+The Ant runs result in JMetal 4 output directories (`-Dname=<outdir>`) containing the measurement data on Hypervolume (HV), PCORRECT, TimeTo50C, and TimeToAnyC. To facilitate data postprocessing and analysis, there is a helper to turn the nested dir/file structures into one R data frame (in long format):
 
 `Rscript data/collect.R <outdir> <csv>`
 
