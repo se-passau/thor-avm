@@ -1,211 +1,211 @@
 Papers that have been found relevant in our literature study. Note that the number of papers here is a bit higher than the 69 reported in the paper, because we excluded survey papers from our analysis as discussed in Section III. We report the found papers based on our backward and forward iterations.
-![Papers found using backward and forward search](/expProcess.png)
+![Papers found using backward and forward search](expProcess.png)
 
 For the interested reader, we further present the research domains of the analyzed papers.
-![Overview of the domains of the relevant papers](/domains.png)
+![Overview of the domains of the relevant papers](domains.png)
 
 # Initial Papers:
 
-Antkiewicz, Kacper, Michaland Bk, Alexandr Murashkin, Rafael Olaechea, Jia Hui (jimmy) Liang, and Krzysztof Czarnecki. 2013. ìClafer Tools for Product Line Engineering.î In *Proceedings of the 17th International Software Product Line Conference Co-Located Workshops*, 130ñ35. SPLC í13 Workshops. New York, NY, USA: ACM.
+Antkiewicz, Kacper, Michaland Bk, Alexandr Murashkin, Rafael Olaechea, Jia Hui (jimmy) Liang, and Krzysztof Czarnecki. 2013. ‚ÄúClafer Tools for Product Line Engineering.‚Äù In *Proceedings of the 17th International Software Product Line Conference Co-Located Workshops*, 130‚Äì35. SPLC ‚Äô13 Workshops. New York, NY, USA: ACM.
 
-Asadi, Mohsen, Samaneh Soltani, Dragan Gasevic, Marek Hatala, and Ebrahim Bagheri. 2014. ìToward Automated Feature Model Configuration with Optimizing Non-Functional Requirements.î *Information and Software Technology* 56 (9): 1144ñ65.
+Asadi, Mohsen, Samaneh Soltani, Dragan Gasevic, Marek Hatala, and Ebrahim Bagheri. 2014. ‚ÄúToward Automated Feature Model Configuration with Optimizing Non-Functional Requirements.‚Äù *Information and Software Technology* 56 (9): 1144‚Äì65.
 
-Bartholdt, J, M Medak, and R Oberhauser. 2009. ìIntegrating Quality Modeling with Feature Modeling in Software Product Lines.î In *Software Engineering Advances, 2009. ICSEA í09. Fourth International Conference on*, 365ñ70.
+Bartholdt, J, M Medak, and R Oberhauser. 2009. ‚ÄúIntegrating Quality Modeling with Feature Modeling in Software Product Lines.‚Äù In *Software Engineering Advances, 2009. ICSEA ‚Äô09. Fourth International Conference on*, 365‚Äì70.
 
-Benavides, David, Pablo Trinidad, and Antonio Ruiz-CortÈs. 2005. ìAutomated Reasoning on Feature Models.î In *Advanced Information Systems Engineering*, 491ñ503. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Benavides, David, Pablo Trinidad, and Antonio Ruiz-Cort√©s. 2005. ‚ÄúAutomated Reasoning on Feature Models.‚Äù In *Advanced Information Systems Engineering*, 491‚Äì503. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Etxeberria, Leire, Goiuria Sagardui Mendieta, and Lorea Belategi. 2007. ìModelling Variation in Quality Attributes.î *VaMoS* 7: 51ñ59.
+Etxeberria, Leire, Goiuria Sagardui Mendieta, and Lorea Belategi. 2007. ‚ÄúModelling Variation in Quality Attributes.‚Äù *VaMoS* 7: 51‚Äì59.
 
-Ghezzi, C, and A M Sharifloo. 2011. ìVerifying Non-Functional Properties of Software Product Lines: Towards an Efficient Approach Using Parametric Model Checking.î In *Software Product Line Conference (SPLC), 2011 15th International*, 170ñ74.
+Ghezzi, C, and A M Sharifloo. 2011. ‚ÄúVerifying Non-Functional Properties of Software Product Lines: Towards an Efficient Approach Using Parametric Model Checking.‚Äù In *Software Product Line Conference (SPLC), 2011 15th International*, 170‚Äì74.
 
-Guo, Jianmei, Jules White, Guangxin Wang, Jian Li, and Yinglin Wang. 2011. ìA Genetic Algorithm for Optimized Feature Selection with Resource Constraints in Software Product Lines.î *J. Syst. Softw.* 84 (12): 2208ñ21.
+Guo, Jianmei, Jules White, Guangxin Wang, Jian Li, and Yinglin Wang. 2011. ‚ÄúA Genetic Algorithm for Optimized Feature Selection with Resource Constraints in Software Product Lines.‚Äù *J. Syst. Softw.* 84 (12): 2208‚Äì21.
 
-Henard, Christopher, Mike Papadakis, Mark Harman, and Yves Le Traon. 2015. ìCombining Multi-Objective Search and Constraint Solving for Configuring Large Software Product Lines.î In *Proceedings of the 37th IEEE/ACM International Conference on Software Engineering (ICSE 2015)*.
+Henard, Christopher, Mike Papadakis, Mark Harman, and Yves Le Traon. 2015. ‚ÄúCombining Multi-Objective Search and Constraint Solving for Configuring Large Software Product Lines.‚Äù In *Proceedings of the 37th IEEE/ACM International Conference on Software Engineering (ICSE 2015)*.
 
-Murashkin, Alexandr, Derek Antkiewicz Michaland Rayside, and Krzysztof Czarnecki. 2013. ìVisualization and Exploration of Optimal Variants in Product Line Engineering.î In *Proceedings of the 17th International Software Product Line Conference*, 111ñ15. SPLC í13. New York, NY, USA: ACM.
+Murashkin, Alexandr, Derek Antkiewicz Michaland Rayside, and Krzysztof Czarnecki. 2013. ‚ÄúVisualization and Exploration of Optimal Variants in Product Line Engineering.‚Äù In *Proceedings of the 17th International Software Product Line Conference*, 111‚Äì15. SPLC ‚Äô13. New York, NY, USA: ACM.
 
-Olaechea, Rafael, Steven Stewart, Krzysztof Czarnecki, and Derek Rayside. 2012. ìModelling and Multi-Objective Optimization of Quality Attributes in Variability-Rich Software.î In *Proceedings of the Fourth International Workshop on Nonfunctional System Properties in Domain Specific Modeling Languages*, 2:1ñ2:6. NFPinDSML í12. New York, NY, USA: ACM.
+Olaechea, Rafael, Steven Stewart, Krzysztof Czarnecki, and Derek Rayside. 2012. ‚ÄúModelling and Multi-Objective Optimization of Quality Attributes in Variability-Rich Software.‚Äù In *Proceedings of the Fourth International Workshop on Nonfunctional System Properties in Domain Specific Modeling Languages*, 2:1‚Äì2:6. NFPinDSML ‚Äô12. New York, NY, USA: ACM.
 
-Raatikainen, Mikko, Eila Niemel‰, Varvana Myll‰rniemi, and Tomi M‰nnistˆ. 2008. ìSvamp-An Integrated Approach for Modeling Functional and Quality Variability.î In *VaMoS*, 89ñ96.
+Raatikainen, Mikko, Eila Niemel√§, Varvana Myll√§rniemi, and Tomi M√§nnist√∂. 2008. ‚ÄúSvamp-An Integrated Approach for Modeling Functional and Quality Variability.‚Äù In *VaMoS*, 89‚Äì96.
 
-Roos-Frantz, Fabricia, David Benavides, Antonio Ruiz-CortÈs, AndrÈ Heuer, and Kim Lauenroth. 2011. ìQuality-Aware Analysis in Product Line Engineering with the Orthogonal Variability Model.î *Software Qual J* 20 (3-4). Springer US: 519ñ65.
+Roos-Frantz, Fabricia, David Benavides, Antonio Ruiz-Cort√©s, Andr√© Heuer, and Kim Lauenroth. 2011. ‚ÄúQuality-Aware Analysis in Product Line Engineering with the Orthogonal Variability Model.‚Äù *Software Qual J* 20 (3-4). Springer US: 519‚Äì65.
 
-Sayyad, A S, J Ingram, T Menzies, and H Ammar. 2013. ìScalable Product Line Configuration: A Straw to Break the Camelís Back.î In *Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on*, 465ñ74.
+Sayyad, A S, J Ingram, T Menzies, and H Ammar. 2013. ‚ÄúScalable Product Line Configuration: A Straw to Break the Camel‚Äôs Back.‚Äù In *Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on*, 465‚Äì74.
 
-Siegmund, N, M Rosenmuller, C Kastner, P G Giarrusso, S Apel, and S S Kolesnikov. 2011. ìScalable Prediction of Non-Functional Properties in Software Product Lines.î In *Software Product Line Conference (SPLC), 2011 15th International*, 160ñ69.
+Siegmund, N, M Rosenmuller, C Kastner, P G Giarrusso, S Apel, and S S Kolesnikov. 2011. ‚ÄúScalable Prediction of Non-Functional Properties in Software Product Lines.‚Äù In *Software Product Line Conference (SPLC), 2011 15th International*, 160‚Äì69.
 
-Siegmund, Norbert, Sergiy S Kolesnikov, Christian K‰stner, Sven Apel, Don Batory, Marko Rosenm¸ller, and Gunter Saake. 2012. ìPredicting Performance via Automated Feature-Interaction Detection.î In *Proceedings of the 34th International Conference on Software Engineering*, 167ñ77. ICSE í12. Piscataway, NJ, USA: IEEE Press.
+Siegmund, Norbert, Sergiy S Kolesnikov, Christian K√§stner, Sven Apel, Don Batory, Marko Rosenm√ºller, and Gunter Saake. 2012. ‚ÄúPredicting Performance via Automated Feature-Interaction Detection.‚Äù In *Proceedings of the 34th International Conference on Software Engineering*, 167‚Äì77. ICSE ‚Äô12. Piscataway, NJ, USA: IEEE Press.
 
-Siegmund, Norbert, Marko Rosenm¸ller, Christian K‰stner, Paolo G Giarrusso, Sven Apel, and Sergiy S Kolesnikov. 2013. ìScalable Prediction of Non-Functional Properties in Software Product Lines: Footprint and Memory Consumption.î *Information and Software Technology* 55 (3): 491ñ507.
+Siegmund, Norbert, Marko Rosenm√ºller, Christian K√§stner, Paolo G Giarrusso, Sven Apel, and Sergiy S Kolesnikov. 2013. ‚ÄúScalable Prediction of Non-Functional Properties in Software Product Lines: Footprint and Memory Consumption.‚Äù *Information and Software Technology* 55 (3): 491‚Äì507.
 
-Siegmund, Norbert, Marko Rosenm¸ller, Martin Kuhlemann, Christian K‰stner, Sven Apel, and Gunter Saake. 2011. ìSPL Conqueror: Toward Optimization of Non-Functional Properties in Software Product Lines.î *Software Qual J* 20 (3-4). Springer US: 487ñ517.
+Siegmund, Norbert, Marko Rosenm√ºller, Martin Kuhlemann, Christian K√§stner, Sven Apel, and Gunter Saake. 2011. ‚ÄúSPL Conqueror: Toward Optimization of Non-Functional Properties in Software Product Lines.‚Äù *Software Qual J* 20 (3-4). Springer US: 487‚Äì517.
 
-Streitferdt, D, Matthias Riebisch, and I Philippow. 2003. ìDetails of Formalized Relations in Feature Models Using OCL.î In *Engineering of Computer-Based Systems, 2003. Proceedings. 10th IEEE International Conference and Workshop on the*, 297ñ304.
+Streitferdt, D, Matthias Riebisch, and I Philippow. 2003. ‚ÄúDetails of Formalized Relations in Feature Models Using OCL.‚Äù In *Engineering of Computer-Based Systems, 2003. Proceedings. 10th IEEE International Conference and Workshop on the*, 297‚Äì304.
 
-White, J, D C Schmidt, E Wuchner, and A Nechypurenko. 2007. ìAutomating Product-Line Variant Selection for Mobile Devices.î In *Software Product Line Conference, 2007. SPLC 2007. 11th International*, 129ñ40.
+White, J, D C Schmidt, E Wuchner, and A Nechypurenko. 2007. ‚ÄúAutomating Product-Line Variant Selection for Mobile Devices.‚Äù In *Software Product Line Conference, 2007. SPLC 2007. 11th International*, 129‚Äì40.
 
-White, Jules, Brian Dougherty, and Douglas C Schmidt. 2009. ìSelecting Highly Optimal Architectural Feature Sets with Filtered Cartesian Flattening.î *J. Syst. Softw.* 82 (8): 1268ñ84.
+White, Jules, Brian Dougherty, and Douglas C Schmidt. 2009. ‚ÄúSelecting Highly Optimal Architectural Feature Sets with Filtered Cartesian Flattening.‚Äù *J. Syst. Softw.* 82 (8): 1268‚Äì84.
 
 
 # First Round:
 
-Ali, N, Wei Wu, G Antoniol, M Di Penta, Y Gue¥he¥neuc, and J H Hayes. 2011. ìMoMS: Multi-Objective Miniaturization of Software.î In *Software Maintenance (ICSM), 2011 27th IEEE International Conference on*, 153ñ62. ieeexplore.ieee.org.
+Ali, N, Wei Wu, G Antoniol, M Di Penta, Y Gue¬¥he¬¥neuc, and J H Hayes. 2011. ‚ÄúMoMS: Multi-Objective Miniaturization of Software.‚Äù In *Software Maintenance (ICSM), 2011 27th IEEE International Conference on*, 153‚Äì62. ieeexplore.ieee.org.
 
-Bagheri, E, and F Ensan. 2014. ìReliability Estimation for Component-Based Software Product Lines.î *Can. J. Electr. Comput. Eng.* 37 (2). ieeexplore.ieee.org: 94ñ112.
+Bagheri, E, and F Ensan. 2014. ‚ÄúReliability Estimation for Component-Based Software Product Lines.‚Äù *Can. J. Electr. Comput. Eng.* 37 (2). ieeexplore.ieee.org: 94‚Äì112.
 
-Bagheri, Ebrahim, and Faezeh Ensan. 2013. ìDynamic Decision Models for Staged Software Product Line Configuration.î *Requirements Eng* 19 (2). Springer London: 187ñ212.
+Bagheri, Ebrahim, and Faezeh Ensan. 2013. ‚ÄúDynamic Decision Models for Staged Software Product Line Configuration.‚Äù *Requirements Eng* 19 (2). Springer London: 187‚Äì212.
 
-Bagheri, Ebrahim, Mohsen Asadi, Dragan Gasevic, and Samaneh Soltani. 2010. ìStratified Analytic Hierarchy Process: Prioritization and Selection of Software Features.î In *Software Product Lines: Going Beyond*, 300ñ315. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Bagheri, Ebrahim, Mohsen Asadi, Dragan Gasevic, and Samaneh Soltani. 2010. ‚ÄúStratified Analytic Hierarchy Process: Prioritization and Selection of Software Features.‚Äù In *Software Product Lines: Going Beyond*, 300‚Äì315. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Bartholdt, Joerg, Roy Oberhauser, Andreas Rytina, and Marcel Medak. 2010. ìIntegrating Quality Modeling in Software Product Lines.î *International Journal on Advances in Software* 3 (1 and 2). thinkmind.org: 161ñ74.
+Bartholdt, Joerg, Roy Oberhauser, Andreas Rytina, and Marcel Medak. 2010. ‚ÄúIntegrating Quality Modeling in Software Product Lines.‚Äù *International Journal on Advances in Software* 3 (1 and 2). thinkmind.org: 161‚Äì74.
 
-Beek, Maurice H Ter, and Erik P de Vink. 2014. ìUsing mCRL2 for the Analysis of Software Product Lines.î In *Proceedings of the 2Nd FME Workshop on Formal Methods in Software Engineering*, 31ñ37. FormaliSE 2014. New York, NY, USA: ACM.
+Beek, Maurice H Ter, and Erik P de Vink. 2014. ‚ÄúUsing mCRL2 for the Analysis of Software Product Lines.‚Äù In *Proceedings of the 2Nd FME Workshop on Formal Methods in Software Engineering*, 31‚Äì37. FormaliSE 2014. New York, NY, USA: ACM.
 
-Beek, Maurice H ter, and Erik P de Vink. 2014. ìTowards Modular Verification of Software Product Lines with mCRL2.î In *Leveraging Applications of Formal Methods, Verification and Validation. Technologies for Mastering Change*, 368ñ85. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Beek, Maurice H ter, and Erik P de Vink. 2014. ‚ÄúTowards Modular Verification of Software Product Lines with mCRL2.‚Äù In *Leveraging Applications of Formal Methods, Verification and Validation. Technologies for Mastering Change*, 368‚Äì85. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-BÈcan, Guillaume, Razieh Behjati, Arnaud Gotlieb, and Mathieu Acher. 2015. ìSynthesis of Attributed Feature Models from Product Descriptions: Foundations,î 16~feb.
+B√©can, Guillaume, Razieh Behjati, Arnaud Gotlieb, and Mathieu Acher. 2015. ‚ÄúSynthesis of Attributed Feature Models from Product Descriptions: Foundations,‚Äù 16~feb.
 
-Boskovic, M, D Gasevic, B Mohabbati, and others. 2011. ìDeveloping Families of Software Services: A Semantic Web Approach.î *Journal of Research*. search.informit.com.au.
+Boskovic, M, D Gasevic, B Mohabbati, and others. 2011. ‚ÄúDeveloping Families of Software Services: A Semantic Web Approach.‚Äù *Journal of Research*. search.informit.com.au.
 
-B¸rdek, Johannes, Sascha Lity, Malte Lochau, Markus Berens, Ursula Goltz, and Andy Sch¸rr. 2013. ìStaged Configuration of Dynamic Software Product Lines with Complex Binding Time Constraints.î In *Proceedings of the Eighth International Workshop on Variability Modelling of Software-Intensive Systems*, 16:1ñ16:8. VaMoS í14. New York, NY, USA: ACM.
+B√ºrdek, Johannes, Sascha Lity, Malte Lochau, Markus Berens, Ursula Goltz, and Andy Sch√ºrr. 2013. ‚ÄúStaged Configuration of Dynamic Software Product Lines with Complex Binding Time Constraints.‚Äù In *Proceedings of the Eighth International Workshop on Variability Modelling of Software-Intensive Systems*, 16:1‚Äì16:8. VaMoS ‚Äô14. New York, NY, USA: ACM.
 
-Configurator, Interactive Product. n.d. ìFdConfig: A Constraint-Based Interactive Product Configurator.î *Applications of Declarative Programming and Knowledge Management*. Springer, 239.
+Configurator, Interactive Product. n.d. ‚ÄúFdConfig: A Constraint-Based Interactive Product Configurator.‚Äù *Applications of Declarative Programming and Knowledge Management*. Springer, 239.
 
-Dubslaff, Clemens, Sascha Kl¸ppelholz, and Christel Baier. 2014. ìProbabilistic Model Checking for Energy Analysis in Software Product Lines.î In *Modularity*, 169ñ80. ACM.
+Dubslaff, Clemens, Sascha Kl√ºppelholz, and Christel Baier. 2014. ‚ÄúProbabilistic Model Checking for Energy Analysis in Software Product Lines.‚Äù In *Modularity*, 169‚Äì80. ACM.
 
-Galindo, JosÈ A, Hamilton Turner, David Benavides, and Jules White. 2014. ìTesting Variability-Intensive Systems Using Automated Analysis: An Application to Android.î *Software Qual J*, 12~nov. Springer US, 1ñ41.
+Galindo, Jos√© A, Hamilton Turner, David Benavides, and Jules White. 2014. ‚ÄúTesting Variability-Intensive Systems Using Automated Analysis: An Application to Android.‚Äù *Software Qual J*, 12~nov. Springer US, 1‚Äì41.
 
-GarcÌa Pascual, Gustavo, MÛnica Pinto, and Lidia Fuentes Fern·ndez. 2013. ìRun-Time Adaptation of Mobile Applications Using Genetic Algorithms.î IEEE Press.
+Garc√≠a Pascual, Gustavo, M√≥nica Pinto, and Lidia Fuentes Fern√°ndez. 2013. ‚ÄúRun-Time Adaptation of Mobile Applications Using Genetic Algorithms.‚Äù IEEE Press.
 
-GarcÌa-Gal·n, Jes˙s, Liliana Pasquale, Pablo Trinidad, and Antonio Ruiz-CortÈs. 2014. ìUser-Centric Adaptation of Multi-Tenant Services: Preference-Based Analysis for Service Reconfiguration.î In *Proceedings of the 9th International Symposium on Software Engineering for Adaptive and Self-Managing Systems*, 65ñ74. SEAMS 2014. New York, NY, USA: ACM.
+Garc√≠a-Gal√°n, Jes√∫s, Liliana Pasquale, Pablo Trinidad, and Antonio Ruiz-Cort√©s. 2014. ‚ÄúUser-Centric Adaptation of Multi-Tenant Services: Preference-Based Analysis for Service Reconfiguration.‚Äù In *Proceedings of the 9th International Symposium on Software Engineering for Adaptive and Self-Managing Systems*, 65‚Äì74. SEAMS 2014. New York, NY, USA: ACM.
 
-Grebhahn, Alexander, Sebastian Kuckuk, Christian Schmitt, Harald Kˆstler, Norbert Siegmund, Sven Apel, Frank Hannig, and J¸rgen Teich. 2014. ìExperiments on Optimizing the Performance of Stencil Codes with SPL Conqueror.î *Parallel Process. Lett.* 24 (03). World Scientific: 1441001.
+Grebhahn, Alexander, Sebastian Kuckuk, Christian Schmitt, Harald K√∂stler, Norbert Siegmund, Sven Apel, Frank Hannig, and J√ºrgen Teich. 2014. ‚ÄúExperiments on Optimizing the Performance of Stencil Codes with SPL Conqueror.‚Äù *Parallel Process. Lett.* 24 (03). World Scientific: 1441001.
 
-Guana, Victor, and Dario Correal. 2011. ìVariability Quality Evaluation on Component-Based Software Product Lines.î In *Proceedings of the 15th International Software Product Line Conference, Volume 2*, 19:1ñ19:8. SPLC í11. New York, NY, USA: ACM.
+Guana, Victor, and Dario Correal. 2011. ‚ÄúVariability Quality Evaluation on Component-Based Software Product Lines.‚Äù In *Proceedings of the 15th International Software Product Line Conference, Volume 2*, 19:1‚Äì19:8. SPLC ‚Äô11. New York, NY, USA: ACM.
 
-óóó. 2013. ìImproving Software Product Line Configuration: A Quality Attribute-Driven Approach.î *Information and Software Technology* 55 (3). Elsevier: 541ñ62.
+‚Äî‚Äî‚Äî. 2013. ‚ÄúImproving Software Product Line Configuration: A Quality Attribute-Driven Approach.‚Äù *Information and Software Technology* 55 (3). Elsevier: 541‚Äì62.
 
-Guo, J, K Czarnecki, S Apel, N Siegmund, and A Wasowski. n.d. ìWhy CART Works for Variability-Aware Performance Prediction? An Empirical Study on Performance Distributions.î
+Guo, J, K Czarnecki, S Apel, N Siegmund, and A Wasowski. n.d. ‚ÄúWhy CART Works for Variability-Aware Performance Prediction? An Empirical Study on Performance Distributions.‚Äù
 
-Guo, Jianmei, K Czarnecki, S Apel, N Siegmund, and A Wasowski. 2013. ìVariability-Aware Performance Prediction: A Statistical Learning Approach.î In *Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on*, 301ñ11.
+Guo, Jianmei, K Czarnecki, S Apel, N Siegmund, and A Wasowski. 2013. ‚ÄúVariability-Aware Performance Prediction: A Statistical Learning Approach.‚Äù In *Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on*, 301‚Äì11.
 
-Guo, Jianmei, Edward Zulkoski, Rafael Olaechea, Derek Rayside, Krzysztof Czarnecki, Sven Apel, and Joanne M Atlee. 2014. ìScaling Exact Multi-Objective Combinatorial Optimization by Parallelization.î In *Proceedings of the 29th ACM/IEEE International Conference on Automated Software Engineering*, 409ñ20. ASE í14. New York, NY, USA: ACM.
+Guo, Jianmei, Edward Zulkoski, Rafael Olaechea, Derek Rayside, Krzysztof Czarnecki, Sven Apel, and Joanne M Atlee. 2014. ‚ÄúScaling Exact Multi-Objective Combinatorial Optimization by Parallelization.‚Äù In *Proceedings of the 29th ACM/IEEE International Conference on Automated Software Engineering*, 409‚Äì20. ASE ‚Äô14. New York, NY, USA: ACM.
 
-Harman, Mark, S Afshin Mansouri, and Yuanyuan Zhang. 2009. ìSearch Based Software Engineering: A Comprehensive Analysis and Review of Trends Techniques and Applications.î *Department of Computer Science, Kingís College London, Tech. Rep. TR-09-03*.
+Harman, Mark, S Afshin Mansouri, and Yuanyuan Zhang. 2009. ‚ÄúSearch Based Software Engineering: A Comprehensive Analysis and Review of Trends Techniques and Applications.‚Äù *Department of Computer Science, King‚Äôs College London, Tech. Rep. TR-09-03*.
 
-Heijblom, R. 2013. ìPotential of Integer Programming for Optimization Analysis of Extended Feature Models.î fmt.cs.utwente.nl.
+Heijblom, R. 2013. ‚ÄúPotential of Integer Programming for Optimization Analysis of Extended Feature Models.‚Äù fmt.cs.utwente.nl.
 
-Henard, Christopher, Mike Papadakis, Gilles Perrouin, Jacques Klein, and Yves Le Traon. 2013. ìMulti-Objective Test Generation for Software Product Lines.î In *Proceedings of the 17th International Software Product Line Conference*, 62ñ71. SPLC í13. New York, NY, USA: ACM.
+Henard, Christopher, Mike Papadakis, Gilles Perrouin, Jacques Klein, and Yves Le Traon. 2013. ‚ÄúMulti-Objective Test Generation for Software Product Lines.‚Äù In *Proceedings of the 17th International Software Product Line Conference*, 62‚Äì71. SPLC ‚Äô13. New York, NY, USA: ACM.
 
-Karatas, Ahmet Serkan, and Halit Oguzt¸z¸n. 2014. ìAttribute-Based Variability in Feature Models.î *Requirements Eng*, 6~nov. Springer London, 1ñ24.
+Karatas, Ahmet Serkan, and Halit Oguzt√ºz√ºn. 2014. ‚ÄúAttribute-Based Variability in Feature Models.‚Äù *Requirements Eng*, 6~nov. Springer London, 1‚Äì24.
 
-Karatas, Ahmet Serkan, Halit Oguzt¸z¸n, and Ali Dogru. 2010. ìGlobal Constraints on Feature Models.î In *Principles and Practice of Constraint Programming ñ CP 2010*, 537ñ51. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Karatas, Ahmet Serkan, Halit Oguzt√ºz√ºn, and Ali Dogru. 2010. ‚ÄúGlobal Constraints on Feature Models.‚Äù In *Principles and Practice of Constraint Programming ‚Äì CP 2010*, 537‚Äì51. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-óóó. 2013. ìFrom Extended Feature Models to Constraint Logic Programming.î *Science of Computer Programming* 78 (12). Elsevier: 2295ñ2312.
+‚Äî‚Äî‚Äî. 2013. ‚ÄúFrom Extended Feature Models to Constraint Logic Programming.‚Äù *Science of Computer Programming* 78 (12). Elsevier: 2295‚Äì2312.
 
-Krogmann, K, M Kuperberg, and R Reussner. 2010. ìUsing Genetic Search for Reverse Engineering of Parametric Behavior Models for Performance Prediction.î *IEEE Trans. Software Eng.* 36 (6): 865ñ77.
+Krogmann, K, M Kuperberg, and R Reussner. 2010. ‚ÄúUsing Genetic Search for Reverse Engineering of Parametric Behavior Models for Performance Prediction.‚Äù *IEEE Trans. Software Eng.* 36 (6): 865‚Äì77.
 
-Lesta, Uwe, Ina Schaefer, and Tim Winkelmann. 2015. ìDetecting and Explaining Conflicts in Attributed Feature Models,î 14~apr.
+Lesta, Uwe, Ina Schaefer, and Tim Winkelmann. 2015. ‚ÄúDetecting and Explaining Conflicts in Attributed Feature Models,‚Äù 14~apr.
 
-Lian, Xiaoli, and Li Zhang. 2015. ìOptimized Feature Selection Towards Functional and Non-Functional Requirements in Software Product Lines.î In *Software Analysis, Evolution and Reengineering (SANER), 2015 IEEE 22nd International Conference on*, 191ñ200. ieeexplore.ieee.org.
+Lian, Xiaoli, and Li Zhang. 2015. ‚ÄúOptimized Feature Selection Towards Functional and Non-Functional Requirements in Software Product Lines.‚Äù In *Software Analysis, Evolution and Reengineering (SANER), 2015 IEEE 22nd International Conference on*, 191‚Äì200. ieeexplore.ieee.org.
 
-Liang, Jimmy. 2012. ìSolving Clafer Models with Choco.î GSDLab-TR.
+Liang, Jimmy. 2012. ‚ÄúSolving Clafer Models with Choco.‚Äù GSDLab-TR.
 
-Lillack, M, J M¸ller, and U W Eisenecker. 2013. ìImproved Prediction of Non-Functional Properties in Software Product Lines with Domain Context.î *Software Engineering*. Citeseer.
+Lillack, M, J M√ºller, and U W Eisenecker. 2013. ‚ÄúImproved Prediction of Non-Functional Properties in Software Product Lines with Domain Context.‚Äù *Software Engineering*. Citeseer.
 
-LiZhang, Xiaoli Lian. 2013. ìAn Evolutionary Methodology for Optimized Feature Selection in Software Product Lines.î In *International Conference on Software Engineering & Knowledge Engineering (SEKE)*. Knowledge Systems Institute Graduate School.
+LiZhang, Xiaoli Lian. 2013. ‚ÄúAn Evolutionary Methodology for Optimized Feature Selection in Software Product Lines.‚Äù In *International Conference on Software Engineering & Knowledge Engineering (SEKE)*. Knowledge Systems Institute Graduate School.
 
-Machado, Lucas, Juliana Pereira, Lucas Garcia, and Eduardo Figueiredo. 2014. ìSPLConfig: Product Configuration in Software Product Line.î In *Brazilian Congress on Software (CBSoft), Tools Session*, 1ñ8. homepages.dcc.ufmg.br.
+Machado, Lucas, Juliana Pereira, Lucas Garcia, and Eduardo Figueiredo. 2014. ‚ÄúSPLConfig: Product Configuration in Software Product Line.‚Äù In *Brazilian Congress on Software (CBSoft), Tools Session*, 1‚Äì8. homepages.dcc.ufmg.br.
 
-Ognjanovic, I, B Mohabbati, D Gaevic, E Bagheri, and M Bokovic. 2012. ìA Metaheuristic Approach for the Configuration of Business Process Families.î In *Services Computing (SCC), 2012 IEEE Ninth International Conference on*, 25ñ32. ieeexplore.ieee.org.
+Ognjanovic, I, B Mohabbati, D Gaevic, E Bagheri, and M Bokovic. 2012. ‚ÄúA Metaheuristic Approach for the Configuration of Business Process Families.‚Äù In *Services Computing (SCC), 2012 IEEE Ninth International Conference on*, 25‚Äì32. ieeexplore.ieee.org.
 
-Olaechea, Rafael, Derek Rayside, Jianmei Guo, and Krzysztof Czarnecki. 2014. ìComparison of Exact and Approximate Multi-Objective Optimization for Software Product Lines.î In *Proceedings of the 18th International Software Product Line Conference - Volume 1*, 92ñ101. SPLC í14. New York, NY, USA: ACM.
+Olaechea, Rafael, Derek Rayside, Jianmei Guo, and Krzysztof Czarnecki. 2014. ‚ÄúComparison of Exact and Approximate Multi-Objective Optimization for Software Product Lines.‚Äù In *Proceedings of the 18th International Software Product Line Conference - Volume 1*, 92‚Äì101. SPLC ‚Äô14. New York, NY, USA: ACM.
 
-Pascual, Gustavo G, Roberto E Lopez-Herrejon, MÛnica Pinto, Lidia Fuentes, and Alexander Egyed. 2015. ìApplying Multiobjective Evolutionary Algorithms to Dynamic Software Product Lines for Reconfiguring Mobile Applications.î *J. Syst. Softw.* 103 (0). Elsevier: 392ñ411.
+Pascual, Gustavo G, Roberto E Lopez-Herrejon, M√≥nica Pinto, Lidia Fuentes, and Alexander Egyed. 2015. ‚ÄúApplying Multiobjective Evolutionary Algorithms to Dynamic Software Product Lines for Reconfiguring Mobile Applications.‚Äù *J. Syst. Softw.* 103 (0). Elsevier: 392‚Äì411.
 
-Pascual, Gustavo G, MÛnica Pinto, and Lidia Fuentes. 2014. ìSelf-Adaptation of Mobile Systems Driven by the Common Variability.î researchgate.net.
+Pascual, Gustavo G, M√≥nica Pinto, and Lidia Fuentes. 2014. ‚ÄúSelf-Adaptation of Mobile Systems Driven by the Common Variability.‚Äù researchgate.net.
 
-Quinton, C, D Romero, and L Duchien. 2014. ìAutomated Selection and Configuration of Cloud Environments Using Software Product Lines Principles.î In *Cloud Computing (CLOUD), 2014 IEEE 7th International Conference on*, 144ñ51. ieeexplore.ieee.org.
+Quinton, C, D Romero, and L Duchien. 2014. ‚ÄúAutomated Selection and Configuration of Cloud Environments Using Software Product Lines Principles.‚Äù In *Cloud Computing (CLOUD), 2014 IEEE 7th International Conference on*, 144‚Äì51. ieeexplore.ieee.org.
 
-Quinton, ClÈment, Romain Rouvoy, and Laurence Duchien. 2012. ìLeveraging Feature Models to Configure Virtual Appliances.î In *Proceedings of the 2Nd International Workshop on Cloud Computing Platforms*, 2:1ñ2:6. CloudCP í12. New York, NY, USA: ACM.
+Quinton, Cl√©ment, Romain Rouvoy, and Laurence Duchien. 2012. ‚ÄúLeveraging Feature Models to Configure Virtual Appliances.‚Äù In *Proceedings of the 2Nd International Workshop on Cloud Computing Platforms*, 2:1‚Äì2:6. CloudCP ‚Äô12. New York, NY, USA: ACM.
 
-Rocha Soares, L, P Potena, I Do Carmo Machado, I Crnkovic, and E Santana de Almeida. 2014. ìAnalysis of Non-Functional Properties in Software Product Lines: A Systematic Review.î In *Software Engineering and Advanced Applications (SEAA), 2014 40th EUROMICRO Conference on*, 328ñ35. ieeexplore.ieee.org.
+Rocha Soares, L, P Potena, I Do Carmo Machado, I Crnkovic, and E Santana de Almeida. 2014. ‚ÄúAnalysis of Non-Functional Properties in Software Product Lines: A Systematic Review.‚Äù In *Software Engineering and Advanced Applications (SEAA), 2014 40th EUROMICRO Conference on*, 328‚Äì35. ieeexplore.ieee.org.
 
-Sanchez, L E, J A Diaz-Pace, A Zunino, S Moisan, and J-P Rigault. 2014. ìAn Approach for Managing Quality Attributes at Runtime Using Feature Models.î In *Software Components, Architectures and Reuse (SBCARS), 2014 Eighth Brazilian Symposium on*, 11ñ20. ieeexplore.ieee.org.
+Sanchez, L E, J A Diaz-Pace, A Zunino, S Moisan, and J-P Rigault. 2014. ‚ÄúAn Approach for Managing Quality Attributes at Runtime Using Feature Models.‚Äù In *Software Components, Architectures and Reuse (SBCARS), 2014 Eighth Brazilian Symposium on*, 11‚Äì20. ieeexplore.ieee.org.
 
-Sanchez, L E, S Moisan, and J-P Rigault. 2013. ìMetrics on Feature Models to Optimize Configuration Adaptation at Run Time.î In *Combining Modelling and Search-Based Software Engineering (CMSBSE), 2013 1st International Workshop on*, 39ñ44. ieeexplore.ieee.org.
+Sanchez, L E, S Moisan, and J-P Rigault. 2013. ‚ÄúMetrics on Feature Models to Optimize Configuration Adaptation at Run Time.‚Äù In *Combining Modelling and Search-Based Software Engineering (CMSBSE), 2013 1st International Workshop on*, 39‚Äì44. ieeexplore.ieee.org.
 
-Sayyad, A S, and H Ammar. 2013. ìPareto-Optimal Search-Based Software Engineering: A Literature Survey.î *Proc. RAISE*.
+Sayyad, A S, and H Ammar. 2013. ‚ÄúPareto-Optimal Search-Based Software Engineering: A Literature Survey.‚Äù *Proc. RAISE*.
 
-Sayyad, A S, K Goseva-Popstojanova, T Menzies, and H Ammar. 2013. ìOn Parameter Tuning in Search Based Software Engineering: A Replicated Empirical Study.î In *Replication in Empirical Software Engineering Research (RESER), 2013 3rd International Workshop on*, 84ñ90.
+Sayyad, A S, K Goseva-Popstojanova, T Menzies, and H Ammar. 2013. ‚ÄúOn Parameter Tuning in Search Based Software Engineering: A Replicated Empirical Study.‚Äù In *Replication in Empirical Software Engineering Research (RESER), 2013 3rd International Workshop on*, 84‚Äì90.
 
-Sayyad, A S, J Ingram, T Menzies, and H Ammar. 2013. ìOptimum Feature Selection in Software Product Lines: Let Your Model and Values Guide Your Search.î In *Combining Modelling and Search-Based Software Engineering (CMSBSE), 2013 1st International Workshop on*, 22ñ27. ieeexplore.ieee.org.
+Sayyad, A S, J Ingram, T Menzies, and H Ammar. 2013. ‚ÄúOptimum Feature Selection in Software Product Lines: Let Your Model and Values Guide Your Search.‚Äù In *Combining Modelling and Search-Based Software Engineering (CMSBSE), 2013 1st International Workshop on*, 22‚Äì27. ieeexplore.ieee.org.
 
-Sayyad, A S, T Menzies, and H Ammar. 2013. ìOn the Value of User Preferences in Search-Based Software Engineering: A Case Study in Software Product Lines.î In *Software Engineering (ICSE), 2013 35th International Conference on*, 492ñ501.
+Sayyad, A S, T Menzies, and H Ammar. 2013. ‚ÄúOn the Value of User Preferences in Search-Based Software Engineering: A Case Study in Software Product Lines.‚Äù In *Software Engineering (ICSE), 2013 35th International Conference on*, 492‚Äì501.
 
-Shi, Runyu, Jianmei Guo, and Yinglin Wang. 2010. ìA Preliminary Experimental Study on Optimal Feature Selection for Product Derivation Using Knapsack Approximation.î In *Progress in Informatics and Computing (PIC), 2010 IEEE International Conference on*, 1:665ñ69. ieeexplore.ieee.org.
+Shi, Runyu, Jianmei Guo, and Yinglin Wang. 2010. ‚ÄúA Preliminary Experimental Study on Optimal Feature Selection for Product Derivation Using Knapsack Approximation.‚Äù In *Progress in Informatics and Computing (PIC), 2010 IEEE International Conference on*, 1:665‚Äì69. ieeexplore.ieee.org.
 
-Siegmund, Norbert, Sergiy S Kolesnikov, Christian K‰stner, Sven Apel, Don S Batory, Marko Rosenm¸ller, and Gunter Saake. 2014. ìPerformance Prediction in the Presence of Feature Interactions.î In *Software Engineering*, 33ñ34. researchgate.net.
+Siegmund, Norbert, Sergiy S Kolesnikov, Christian K√§stner, Sven Apel, Don S Batory, Marko Rosenm√ºller, and Gunter Saake. 2014. ‚ÄúPerformance Prediction in the Presence of Feature Interactions.‚Äù In *Software Engineering*, 33‚Äì34. researchgate.net.
 
-Siegmund, Norbert, Alexander von Rhein, and Sven Apel. 2013. ìFamily-Based Performance Measurement.î In *Proceedings of the 12th International Conference on Generative Programming: Concepts & Experiences*, 95ñ104. GPCE í13. New York, NY, USA: ACM.
+Siegmund, Norbert, Alexander von Rhein, and Sven Apel. 2013. ‚ÄúFamily-Based Performance Measurement.‚Äù In *Proceedings of the 12th International Conference on Generative Programming: Concepts & Experiences*, 95‚Äì104. GPCE ‚Äô13. New York, NY, USA: ACM.
 
-Sincero, Julio, Olaf Spinczyk, and Wolfgang Schrˆder-Preikschat. 2007. ìOn the Configuration of Non-Functional Properties in Software Product Lines.î In *SPLC (2)*, 167ñ73.
+Sincero, Julio, Olaf Spinczyk, and Wolfgang Schr√∂der-Preikschat. 2007. ‚ÄúOn the Configuration of Non-Functional Properties in Software Product Lines.‚Äù In *SPLC (2)*, 167‚Äì73.
 
-Soltani, Samaneh, Mohsen Asadi, Dragan Gaöevic, Marek Hatala, and Ebrahim Bagheri. 2012. ìAutomated Planning for Feature Model Configuration Based on Functional and Non-Functional Requirements.î In *Proceedings of the 16th International Software Product Line Conference - Volume 1*, 56ñ65. SPLC í12. New York, NY, USA: ACM.
+Soltani, Samaneh, Mohsen Asadi, Dragan Ga≈°evic, Marek Hatala, and Ebrahim Bagheri. 2012. ‚ÄúAutomated Planning for Feature Model Configuration Based on Functional and Non-Functional Requirements.‚Äù In *Proceedings of the 16th International Software Product Line Conference - Volume 1*, 56‚Äì65. SPLC ‚Äô12. New York, NY, USA: ACM.
 
-Soltani, Samaneh, Mohsen Asadi, Marek Hatala, Dragan Gasevic, and Ebrahim Bagheri. 2011. ìAutomated Planning for Feature Model Configuration Based on Stakeholdersí Business Concerns.î In *Proceedings of the 2011 26th IEEE/ACM International Conference on Automated Software Engineering*, 536ñ39. ASE í11. Washington, DC, USA: IEEE Computer Society.
+Soltani, Samaneh, Mohsen Asadi, Marek Hatala, Dragan Gasevic, and Ebrahim Bagheri. 2011. ‚ÄúAutomated Planning for Feature Model Configuration Based on Stakeholders‚Äô Business Concerns.‚Äù In *Proceedings of the 2011 26th IEEE/ACM International Conference on Automated Software Engineering*, 536‚Äì39. ASE ‚Äô11. Washington, DC, USA: IEEE Computer Society.
 
-Stein, Jacob, Ingrid Nunes, and Elder Cirilo. 2014. ìPreference-Based Feature Model Configuration with Multiple Stakeholders.î In *Proceedings of the 18th International Software Product Line Conference - Volume 1*, 132ñ41. SPLC í14. New York, NY, USA: ACM.
+Stein, Jacob, Ingrid Nunes, and Elder Cirilo. 2014. ‚ÄúPreference-Based Feature Model Configuration with Multiple Stakeholders.‚Äù In *Proceedings of the 18th International Software Product Line Conference - Volume 1*, 132‚Äì41. SPLC ‚Äô14. New York, NY, USA: ACM.
 
-Tawhid, Rasha, and Dorina Petriu. 2008. ìIntegrating Performance Analysis in the Model Driven Development of Software Product Lines.î In *Model Driven Engineering Languages and Systems*, 490ñ504. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Tawhid, Rasha, and Dorina Petriu. 2008. ‚ÄúIntegrating Performance Analysis in the Model Driven Development of Software Product Lines.‚Äù In *Model Driven Engineering Languages and Systems*, 490‚Äì504. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Trendowicz, Adam, Teade Punter, and Others. 2003. ìQuality Modeling for Software Product Lines.î In *7th ECOOP Workshop on Quantitative Approaches in Object-Oriented Software Engineering (QAOOSEí03)*. Citeseer.
+Trendowicz, Adam, Teade Punter, and Others. 2003. ‚ÄúQuality Modeling for Software Product Lines.‚Äù In *7th ECOOP Workshop on Quantitative Approaches in Object-Oriented Software Engineering (QAOOSE‚Äô03)*. Citeseer.
 
-White, J, B Doughtery, and D C Schmidt. 2008. ìFiltered Cartesian Flattening: An Approximation Technique for Optimally Selecting Features While Adhering to Resource Constraints.î *SPLC (2)*. cs.wustl.edu.
+White, J, B Doughtery, and D C Schmidt. 2008. ‚ÄúFiltered Cartesian Flattening: An Approximation Technique for Optimally Selecting Features While Adhering to Resource Constraints.‚Äù *SPLC (2)*. cs.wustl.edu.
 
-White, Jules, Douglas C Schmidt, Egon Wuchner, and Andrey Nechypurenko. 2008. ìAutomatically Composing Reusable Software Components for Mobile Devices.î *J. Braz. Comput. Soc.* 14 (1). Sociedade Brasileira de ComputaÁ„o: 25ñ44.
+White, Jules, Douglas C Schmidt, Egon Wuchner, and Andrey Nechypurenko. 2008. ‚ÄúAutomatically Composing Reusable Software Components for Mobile Devices.‚Äù *J. Braz. Comput. Soc.* 14 (1). Sociedade Brasileira de Computa√ß√£o: 25‚Äì44.
 
-Wittern, Erik, and Christian Zirpins. 2014. ìService Feature Modeling: Modeling and Participatory Ranking of Service Design Alternatives.î *Softw Syst Model*, 23~may. Springer Berlin Heidelberg, 1ñ26.
+Wittern, Erik, and Christian Zirpins. 2014. ‚ÄúService Feature Modeling: Modeling and Participatory Ranking of Service Design Alternatives.‚Äù *Softw Syst Model*, 23~may. Springer Berlin Heidelberg, 1‚Äì26.
 
-Wu, Zhiqiao, Jiafu Tang, C K Kwong, and C Y Chan. 2011. ìAN OPTIMIZATION MODEL FOR REUSE SCENARIO SELECTION CONSIDERING RELIABILITY AND COST IN SOFTWARE PRODUCT LINE DEVELOPMENT.î *Int. J. Inf. Technol. Decis. Mak.* 10 (05): 811ñ41.
+Wu, Zhiqiao, Jiafu Tang, C K Kwong, and C Y Chan. 2011. ‚ÄúAN OPTIMIZATION MODEL FOR REUSE SCENARIO SELECTION CONSIDERING RELIABILITY AND COST IN SOFTWARE PRODUCT LINE DEVELOPMENT.‚Äù *Int. J. Inf. Technol. Decis. Mak.* 10 (05): 811‚Äì41.
 
-Zhang, Guoheng, Huilin Ye, and Yuqing Lin. 2011. ìUsing Knowledge-Based Systems to Manage Quality Attributes in Software Product Lines.î In *Proceedings of the 15th International Software Product Line Conference, Volume 2*, 32:1ñ32:7. SPLC í11. New York, NY, USA: ACM.
+Zhang, Guoheng, Huilin Ye, and Yuqing Lin. 2011. ‚ÄúUsing Knowledge-Based Systems to Manage Quality Attributes in Software Product Lines.‚Äù In *Proceedings of the 15th International Software Product Line Conference, Volume 2*, 32:1‚Äì32:7. SPLC ‚Äô11. New York, NY, USA: ACM.
 
-óóó. 2013. ìQuality Attribute Modeling and Quality Aware Product Configuration in Software Product Lines.î *Software Qual J* 22 (3). Springer US: 365ñ401.
+‚Äî‚Äî‚Äî. 2013. ‚ÄúQuality Attribute Modeling and Quality Aware Product Configuration in Software Product Lines.‚Äù *Software Qual J* 22 (3). Springer US: 365‚Äì401.
 
-Zhang, Hongyu, Stan Jarzabek, and Bo Yang. 2003. ìQuality Prediction and Assessment for Product Lines.î In *Advanced Information Systems Engineering*, 681ñ95. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Zhang, Hongyu, Stan Jarzabek, and Bo Yang. 2003. ‚ÄúQuality Prediction and Assessment for Product Lines.‚Äù In *Advanced Information Systems Engineering*, 681‚Äì95. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Zulkoski, Ed, Chris Kleynhans, Ming-Ho Yee, Derek Rayside, and Krzysztof Czarnecki. 2014. ìOptimizing Alloy for Multi-Objective Software Product Line Configuration.î In *Abstract State Machines, Alloy, B, TLA, VDM, and Z*, 328ñ33. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Zulkoski, Ed, Chris Kleynhans, Ming-Ho Yee, Derek Rayside, and Krzysztof Czarnecki. 2014. ‚ÄúOptimizing Alloy for Multi-Objective Software Product Line Configuration.‚Äù In *Abstract State Machines, Alloy, B, TLA, VDM, and Z*, 328‚Äì33. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Zuluaga, Marcela, Guillaume Sergent, Andreas Krause, and Markus P¸schel. 2013. ìActive Learning for Multi-Objective Optimization.î In *Proceedings of the 30th International Conference on Machine Learning*, 462ñ70. jmlr.org.
+Zuluaga, Marcela, Guillaume Sergent, Andreas Krause, and Markus P√ºschel. 2013. ‚ÄúActive Learning for Multi-Objective Optimization.‚Äù In *Proceedings of the 30th International Conference on Machine Learning*, 462‚Äì70. jmlr.org.
 
 
 
 # Second Round:
 
-Beek, Maurice H ter, Axel Legay, Alberto Lluch Lafuente, and Andrea Vandin. 2015. ìQuantitative Analysis of Probabilistic Models of Software Product Lines with Statistical Model Checking,î 14~apr.
+Beek, Maurice H ter, Axel Legay, Alberto Lluch Lafuente, and Andrea Vandin. 2015. ‚ÄúQuantitative Analysis of Probabilistic Models of Software Product Lines with Statistical Model Checking,‚Äù 14~apr.
 
-GarcÌa-Gal·n, Jes˙s, Pablo Trinidad, Omer F Rana, and Antonio Ruiz-CortÈs. n.d. ìAutomated Configuration Support for Infrastructure Migration to the Cloud.î *Future Gener. Comput. Syst.*
+Garc√≠a-Gal√°n, Jes√∫s, Pablo Trinidad, Omer F Rana, and Antonio Ruiz-Cort√©s. n.d. ‚ÄúAutomated Configuration Support for Infrastructure Migration to the Cloud.‚Äù *Future Gener. Comput. Syst.*
 
-Olaechea, Rafael, Steven Stewart, Krzysztof Czarnecki, and Derek Rayside. 2012. ìModelling and Optimization of Quality Attributes in Variability-Rich Software.î In *NFPinDSML Workshop at MODELS Conference*.
+Olaechea, Rafael, Steven Stewart, Krzysztof Czarnecki, and Derek Rayside. 2012. ‚ÄúModelling and Optimization of Quality Attributes in Variability-Rich Software.‚Äù In *NFPinDSML Workshop at MODELS Conference*.
 
-Pasquale, Liliana, Pablo Trinidad, and Antonio Ruiz-CortÈs. 2014. ìUser-Centric Adaptation Analysis of Multi-Tenant Services.î In *International Symposium on Software Engineering for Adaptive and Self-Managing Systems*, 65ñ74.
+Pasquale, Liliana, Pablo Trinidad, and Antonio Ruiz-Cort√©s. 2014. ‚ÄúUser-Centric Adaptation Analysis of Multi-Tenant Services.‚Äù In *International Symposium on Software Engineering for Adaptive and Self-Managing Systems*, 65‚Äì74.
 
-Sanchez, L Emiliano, J Andres Diaz-Pace, Alejandro Zunino, Sabine Moisan, and Jean-Paul Rigault. 2015. ìAn Approach Based on Feature Models and Quality Criteria for Adapting Component-Based Systems.î *Journal of Software Engineering Research and Development* 3 (1). Springer: 1ñ30.
+Sanchez, L Emiliano, J Andres Diaz-Pace, Alejandro Zunino, Sabine Moisan, and Jean-Paul Rigault. 2015. ‚ÄúAn Approach Based on Feature Models and Quality Criteria for Adapting Component-Based Systems.‚Äù *Journal of Software Engineering Research and Development* 3 (1). Springer: 1‚Äì30.
 
-Song, Hui, Stephen Barrett, Aidan Clarke, and Siobh·n Clarke. 2013. ìSelf-Adaptation with End-User Preferences: Using Run-Time Models and Constraint Solving.î In *Model-Driven Engineering Languages and Systems*, 555ñ71. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
+Song, Hui, Stephen Barrett, Aidan Clarke, and Siobh√°n Clarke. 2013. ‚ÄúSelf-Adaptation with End-User Preferences: Using Run-Time Models and Constraint Solving.‚Äù In *Model-Driven Engineering Languages and Systems*, 555‚Äì71. Lecture Notes in Computer Science. Springer Berlin Heidelberg.
 
-Tan, Tian Huat, Yinxing Xue, Manman Chen, Jun Sun, Yang Liu, and Jin Song Dong. 2015. ìOptimizing Selection of Competing Features via Feedback-Directed Evolutionary Algorithms.î In *Proceedings of the 2015 International Symposium on Software Testing and Analysis*, 246ñ56. ISSTA 2015. New York, NY, USA: ACM.
+Tan, Tian Huat, Yinxing Xue, Manman Chen, Jun Sun, Yang Liu, and Jin Song Dong. 2015. ‚ÄúOptimizing Selection of Competing Features via Feedback-Directed Evolutionary Algorithms.‚Äù In *Proceedings of the 2015 International Symposium on Software Testing and Analysis*, 246‚Äì56. ISSTA 2015. New York, NY, USA: ACM.
 
-Wittern, E, A Lenk, S Bartenbach, and T Braeuer. 2014. ìFeature-Based Configuration of Vendor-Independent Deployments on IaaS.î In *Enterprise Distributed Object Computing Conference (EDOC), 2014 IEEE 18th International*, 128ñ35.
+Wittern, E, A Lenk, S Bartenbach, and T Braeuer. 2014. ‚ÄúFeature-Based Configuration of Vendor-Independent Deployments on IaaS.‚Äù In *Enterprise Distributed Object Computing Conference (EDOC), 2014 IEEE 18th International*, 128‚Äì35.
 
 
 
 
 # Third Round:
 
-Beek, M H ter, A Legay, A Lluch Lafuente, and A Vandin. 2015. ìStatistical Analysis of Probabilistic Models of Software Product Lines with Quantitative Constraints.î In *Proceedings of the 19th International Conference on Software Product Line*, 11ñ15. SPLC í15. New York, NY, USA: ACM.
+Beek, M H ter, A Legay, A Lluch Lafuente, and A Vandin. 2015. ‚ÄúStatistical Analysis of Probabilistic Models of Software Product Lines with Quantitative Constraints.‚Äù In *Proceedings of the 19th International Conference on Software Product Line*, 11‚Äì15. SPLC ‚Äô15. New York, NY, USA: ACM.
 
-Garcia-Gal·n, J, L Pasquale, P Trinidad, and A R CortÈs. 2014. ìUser-Centric Adaptation Analysis of Multi-Tenant Services.î *Transactions on Autonomous and Adaptive Systems*, 158.
+Garcia-Gal√°n, J, L Pasquale, P Trinidad, and A R Cort√©s. 2014. ‚ÄúUser-Centric Adaptation Analysis of Multi-Tenant Services.‚Äù *Transactions on Autonomous and Adaptive Systems*, 158.
 
 
