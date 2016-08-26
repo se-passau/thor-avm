@@ -1,8 +1,8 @@
 Papers that have been found relevant in our literature study. Note that the number of papers here is a bit higher than the 69 reported in the paper, because we excluded survey papers from our analysis as discussed in Section III. We report the found papers based on our backward and forward iterations.
-[Papers found using backward and forward search](/expProcess.png)
+![Papers found using backward and forward search](/expProcess.png)
 
 For the interested reader, we further present the research domains of the analyzed papers.
-[Overview of the domains of the relevant papers](/domains.png)
+![Overview of the domains of the relevant papers](/domains.png)
 
 # Initial Papers:
 
