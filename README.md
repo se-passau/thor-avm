@@ -1,6 +1,6 @@
 This is the supplementary Web site on the manuscript entitled _Attributed Variability Models: Outside the Comfort Zone_.
 
-* [corpusData](corpusData/) contains the data set of performance measurements on 19 real-world systems (Section II).
+* [corpusData](corpusData/) contains the data set of performance, main memory, and binary size measurements on 19 real-world systems (Section II). It further contains experimental data of the GoF evaluation (Section V).
 * [literatureStudy](literatureStudy/) contains background material on the literature study (Section III), e.g., a full bibliographical list of the reviewed papers.
 * [replication](replication/) contains the replication package of our robustness study (Section IV), e.g., JMetal sources, deployment scripts, and data sets.
 * [Thor](Thor/) contains the sources of the generator tool for attributed variability models (Section V).
