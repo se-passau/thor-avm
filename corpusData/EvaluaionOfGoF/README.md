@@ -67,3 +67,9 @@ Normal
 		
 	Evolutions	15000
 
+## Results
+
+The following plots show the test statistic of the Kolmogorov-Smirnov test of the 4 different experimental setup using the three GoF tests. We show the results for feature distribution and interaction distribution separately.
+
+![Evaluation of statistical tests of features as means of a goodness-of-fit metric regarding the distribution profiles. CmV: Cram\'{e}r--von Mises; Euc.: Euclidean distance; Chi-squared; KS: Kolmogorov--Smirnov test](/metricFeature.png)
+![Evaluation of statistical tests of interactions as means of a goodness-of-fit metric regarding the distribution profiles. CmV: Cram\'{e}r--von Mises; Euc.: Euclidean distance; Chi-squared; KS: Kolmogorov--Smirnov test](/metricInteractions.png)
