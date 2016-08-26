@@ -5,11 +5,12 @@ In addition, there is an _experiment package_ for reproducing and replicating a)
 # Dependencies
 
 (for executing the JMetal experiments)
-* Java SDK 1.7+
+* Java SDK 1.7
 * Apache Ant 1.9.6
 
 (for re-generating the companion)
 * R 3.3.1 plus `rmarkdown` package
+* Pandoc 1.12.3+
 
 # Preparatory steps
 
