@@ -15,6 +15,12 @@ In addition, there is an _experiment package_ for reproducing and replicating a)
 
 * Clone the repo or download its content.
 * `cd replication/`
+* Make sure that `JAVA_HOME` is set, e.g.:
+
+  ```
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+  ```
+  
 * `ant clean`
 
 # How to reproduce and replicate
