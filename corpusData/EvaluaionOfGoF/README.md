@@ -1,4 +1,4 @@
---Raw data of the Goodness-of-Fit evaluation
+# Raw data of the Goodness-of-Fit evaluation
 
 We executed the genetic algorithm using the Cramer--von Mises Test, Euclidean Test, and Chi-squared Test.
 Each execution has been repeated 10 times to account for random factors. We use the following test setup:
