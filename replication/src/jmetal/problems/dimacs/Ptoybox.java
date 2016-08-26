@@ -81,9 +81,7 @@ public class Ptoybox extends Problem {
 	double actual_cost = 0;
 	
 	num_violations = dfm.numViolations(variable);
-	System.out.println("+++ RULES: " + dfm.rules.length);
-	System.out.println("+++ SKIP RULES: " + dfm.skipRules.length);
-
+	
 	int numSR = 0;
 	for(int i=0; i < dfm.skipRules.length; i++) {
 	    if(dfm.skipRules[i]) {
