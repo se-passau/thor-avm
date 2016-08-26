@@ -48,10 +48,10 @@ The resulting CSV file can be sourced using `read.table` & friends in R.
 
 # Changelog
 
-The original setup by Sayyad et al. is a customized and extended fork of JMetal 4.0 (as released in 2011). To allow us to run a differentiated replication, as well as to parametrize the experimental runs without the need for modifying the Java sources directly, we contributed the following changes:
+The original setup by Sayyad et al. is a customized and extended fork of [JMetal 4.0](https://sourceforge.net/projects/jmetal/files/jmetal.4.0.tar.gz) (as released in 2011). To allow us to run a differentiated replication, as well as to parametrize the experimental runs without the need for modifying the Java sources directly, we contributed the following changes:
 
 ## Additions
-* [build.xml](build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs ([diff](https://github.com/mrcalvin/thor-avm/compare/599e204a691fe67d1d3bf235677d019ac73398e7...master#diff-2cccd7bf48b7a9cc113ff564acd802a8L1)).
+* [build.xml](build.xml): Added an Ant build descriptor allowing for parametrizing experimental runs.
 * [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java): A variant of the Ptoybox problem definition, which allows for injecting feature interactions for attribute COST (see [computeCosts](src/jmetal/problems/dimacs/Ptoybox1of3.java#L155)).
 * Datasets processed by and fed into objective function of [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java), incl.:
 
@@ -62,7 +62,7 @@ The original setup by Sayyad et al. is a customized and extended fork of JMetal 
   * [orig-sayyad-ase13](src/attrs/orig-sayyad-ase13/)
 
 ## Modifications
-* [NSGAIIDMStudy](src/jmetal/experiments/NSGAIIDMStudy.java): Has been modified to process Ant parameters, rather than setting hard-coded values on heuristics, data files (attribute-value data, true Pareto fronts), and output locations.
+* [NSGAIIDMStudy](src/jmetal/experiments/NSGAIIDMStudy.java): Has been modified to process Ant parameters, rather than setting hard-coded values on heuristics, data files (attribute-value data, true Pareto fronts), and output locations ([diff](https://github.com/mrcalvin/thor-avm/blame/master/replication/src/jmetal/experiments/NSGAIIDMStudy.java)).
 
 # References
 
