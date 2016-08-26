@@ -1,8 +1,8 @@
 Papers that have been found relevant in our literature study. Note that the number of papers here is a bit higher than the 69 reported in the paper, because we excluded survey papers from our analysis as discussed in Section III. We report the found papers based on our backward and forward iterations.
-[Papers found using backward and forward search](/expProcess.pdf)
+[Papers found using backward and forward search](/expProcess.png)
 
 For the interested reader, we further present the research domains of the analyzed papers.
-[Overview of the domains of the relevant papers](/domains.pdf)
+[Overview of the domains of the relevant papers](/domains.png)
 
 # Initial Papers:
 
@@ -47,7 +47,7 @@ White, J, D C Schmidt, E Wuchner, and A Nechypurenko. 2007. “Automating Product-
 White, Jules, Brian Dougherty, and Douglas C Schmidt. 2009. “Selecting Highly Optimal Architectural Feature Sets with Filtered Cartesian Flattening.” *J. Syst. Softw.* 82 (8): 1268–84.
 
 
-First Round:
+# First Round:
 
 Ali, N, Wei Wu, G Antoniol, M Di Penta, Y Gue´he´neuc, and J H Hayes. 2011. “MoMS: Multi-Objective Miniaturization of Software.” In *Software Maintenance (ICSM), 2011 27th IEEE International Conference on*, 153–62. ieeexplore.ieee.org.
 
