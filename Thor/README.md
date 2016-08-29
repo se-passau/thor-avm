@@ -4,7 +4,7 @@ We implemented Thor to enable the systematic testing of approaches and tools tha
 
 ## Technical Basis
 
-Thor uses kernel density estimation (Section V) to scale an existing attribute-value distribution to any given variability model. That is, we adapat the number of values in the selected distribution file to meet the number of features and interactions of the new variability model.
+Thor uses kernel density estimation (Section V) to scale an existing attribute-value distribution to any given variability model. That is, we adapt the number of values in the selected distribution file to meet the number of features and interactions of the new variability model.
 
 A second key technique is a genetic algorithm (NSGA-II) that solves our multi-objective optimization for generating similar distributions for features, interactions, and system variants as the target (user-selected) ones.
 
