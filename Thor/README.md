@@ -4,7 +4,7 @@ We implemented Thor to enable the systematic testing of approaches and tools tha
 
 ## Technical Basis
 
-Thor uses kernel density estimation (Section V) to scale an existing attribute-value distribution to any given variability model. That is, we adapat the number of values in the selected distribution file to meet the number of features and interactions of the new variability model.
+Thor uses kernel density estimation (Section V) to scale an existing attribute-value distribution to any given variability model. That is, we adapt the number of values in the selected distribution file to meet the number of features and interactions of the new variability model.
 
 A second key technique is a genetic algorithm (NSGA-II) that solves our multi-objective optimization for generating similar distributions for features, interactions, and system variants as the target (user-selected) ones.
 
@@ -24,4 +24,4 @@ We rely on a number of libraries. First, we use [R](https://www.r-project.org/) 
 Second, we use [SPL Conqueror](https://github.com/nsiegmun/SPLConqueror) for the internal representation of an attributed variability model. Furthermore, we use the capabilities of SPL Conqueror to generate feature interactions, use the sampling techniques, and call the SAT/CSP solver.
 Third, we use via SPL Conqeror the Microsoft Solver Foundation in version 2.0.50727 as a SAT/CSP solver. Microsoft Solver Foundation is free for academic use (do not use the free, but limited version). If you have trouble in getting the right version, just send an email to the contributors of this project.
 
-A detailed installation instruction as well as a short How To will be soon available.
+A detailed installation instruction as well as a short How To can be found at the [Quickstart-Guide](https://github.com/passau-se/Thor/Tutorial)
