@@ -9,10 +9,10 @@ namespace InteracGenerator.FitnessCalculation
     internal class FitnessCalculator
     {
         private readonly int _counter;
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private long _fitnessTime;
 
-        public FitnessCalculator(InterGen model, int counter)
+        public FitnessCalculator(Thor model, int counter)
         {
             _model = model;
             _counter = counter;   

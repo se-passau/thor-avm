@@ -15,11 +15,11 @@ namespace IntergenDesktop.UserControls
     {
 
         private SolutionContainer _solCon;
-        private InterGen _model;
+        private Thor _model;
         private int _index ;
         private string[] picArray;
 
-        public SolutionPic(SolutionContainer solutionContainer, InterGen model,  int index)
+        public SolutionPic(SolutionContainer solutionContainer, Thor model,  int index)
         {
             InitializeComponent();
             _solCon = solutionContainer;

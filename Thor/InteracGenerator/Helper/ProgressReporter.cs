@@ -7,9 +7,9 @@ namespace InteracGenerator.Helper
     public static class ProgressReporter
     {
 
-        private static InterGen _model;
+        private static Thor _model;
 
-        public static void Init(InterGen model)
+        public static void Init(Thor model)
         {
             _model = model;
         }

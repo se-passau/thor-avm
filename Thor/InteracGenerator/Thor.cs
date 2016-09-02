@@ -27,7 +27,7 @@ using Newtonsoft.Json;
 
 namespace InteracGenerator
 {
-    public class InterGen : INotifyPropertyChanged
+    public class Thor : INotifyPropertyChanged
     {
 
         public List<Distribution> AvailableDistributions;
@@ -458,7 +458,7 @@ namespace InteracGenerator
 
         public DistStore DStore;
 
-        public InterGen()
+        public Thor()
         {
             Setting = new Settings();
             DStore = new DistStore(this);

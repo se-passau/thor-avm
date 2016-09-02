@@ -8,11 +8,11 @@ namespace InteracGenerator.Helper
     {
 
         private static int _counter;
-        private static InterGen _model;
+        private static Thor _model;
 
       
 
-        public static void SetModel(InterGen mdl)
+        public static void SetModel(Thor mdl)
         {
             _model = mdl;
         }

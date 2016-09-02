@@ -50,8 +50,8 @@ namespace InteracGenerator.Problem
         public static double VariantPerc;
         public static double FeatPerc;
         public static double InteracPerc;
-        public static InterGen Model;
-        public static void Init(InterGen model)
+        public static Thor Model;
+        public static void Init(Thor model)
         {
             Model = model;
             _fitnessValues = new List<Fitness>();

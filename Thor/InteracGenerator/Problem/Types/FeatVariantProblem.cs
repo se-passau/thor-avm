@@ -10,7 +10,7 @@ namespace InteracGenerator.Problem.Types
     internal class FeatVariantProblem : IntergenProblem
     {
 
-        public FeatVariantProblem(InterGen model) : base(model)
+        public FeatVariantProblem(Thor model) : base(model)
         {
             ProblemName = "FeatAndVariantProblem";
             NumberOfObjectives = 2;

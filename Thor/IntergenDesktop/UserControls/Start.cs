@@ -8,10 +8,10 @@ namespace IntergenDesktop.UserControls
 {
     public partial class Start : UserControl
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private readonly Mainframe _frame;
 
-        public Start(InterGen model, Mainframe frame)
+        public Start(Thor model, Mainframe frame)
         {
             InitializeComponent();
             _model = model;

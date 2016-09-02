@@ -57,9 +57,9 @@ namespace InteracGenerator
             set { _interacToStrap = value; RIntegrator.PlotValues(_interacToStrap, _model.Setting.FeatureAdjust); }
         }
 
-        private readonly InterGen _model;
+        private readonly Thor _model;
 
-        public DistStore(InterGen model)
+        public DistStore(Thor model)
         {
             _model = model;
         }

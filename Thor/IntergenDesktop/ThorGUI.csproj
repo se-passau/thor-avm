@@ -221,9 +221,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InteracGenerator\InteracGenerator.csproj">
+    <ProjectReference Include="..\InteracGenerator\THOR.csproj">
       <Project>{c2303974-c66f-467c-abca-6c17cbc5337a}</Project>
-      <Name>InteracGenerator</Name>
+      <Name>THOR</Name>
     </ProjectReference>
     <ProjectReference Include="..\JMetalCSharp\JMetalCSharp.csproj">
       <Project>{88b27c90-4c97-43d5-99d2-e1437da8d154}</Project>

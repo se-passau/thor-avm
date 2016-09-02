@@ -10,7 +10,7 @@ namespace IntergenDesktop.UserControls
 {
     public partial class VariantGenerationControl : UserControl, IStateModelLoader
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private readonly Button _nextButton;
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace IntergenDesktop.UserControls
         /// </summary>
         /// <param name="model"></param>
         /// <param name="nextButton"></param>
-        public VariantGenerationControl(InterGen model, Button nextButton)
+        public VariantGenerationControl(Thor model, Button nextButton)
         {
             InitializeComponent();
             _nextButton = nextButton;

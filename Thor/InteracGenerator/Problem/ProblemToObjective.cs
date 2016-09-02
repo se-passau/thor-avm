@@ -19,23 +19,23 @@ namespace InteracGenerator.Problem
         public static List<bool> InteracVariant = new List<bool> {false, true, true};
         public static List<bool> Complete = new List<bool> {true, true, true};
 
-        public static List<bool> GetList(InterGen.ProbType type)
+        public static List<bool> GetList(Thor.ProbType type)
         {
             switch (type)
             {
-                case InterGen.ProbType.Feat:
+                case Thor.ProbType.Feat:
                     return Feat;
-                case InterGen.ProbType.Interac:
+                case Thor.ProbType.Interac:
                     return Interac;
-                case InterGen.ProbType.InteracVariant:
+                case Thor.ProbType.InteracVariant:
                     return InteracVariant;
-                case InterGen.ProbType.Complete:
+                case Thor.ProbType.Complete:
                     return Complete;
-                case InterGen.ProbType.Variant:
+                case Thor.ProbType.Variant:
                     return Variant;
-                case InterGen.ProbType.FeatInterac:
+                case Thor.ProbType.FeatInterac:
                     return FeatInterac;
-                case InterGen.ProbType.FeatVariant:
+                case Thor.ProbType.FeatVariant:
                     return FeatVariant;
             }
             return null;

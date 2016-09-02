@@ -12,7 +12,7 @@ namespace InteracGenerator.Problem.Types
 {
     public class InteractionProblem : IntergenProblem
     {
-        public InteractionProblem(InterGen model) : base(model)
+        public InteractionProblem(Thor model) : base(model)
         {
             ProblemName = "InteractionProblem";
             NumberOfObjectives = 1;

@@ -10,7 +10,7 @@ namespace InteracGenerator.InteracWeaving
         private VariabilityModel _vm;
         private InfluenceModel _influenceModel;
 
-        public BinaryOptionWeaver(InterGen model) : base(model)
+        public BinaryOptionWeaver(Thor model) : base(model)
         {
         }
 

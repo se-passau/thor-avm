@@ -11,10 +11,10 @@ namespace InteracGenerator.FitnessCalculation
 {
     public class Euclidean : IFitnessTest
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private readonly int _counter;
 
-        public Euclidean(InterGen model, int counter)
+        public Euclidean(Thor model, int counter)
         {
             _model = model;
             _counter = counter;

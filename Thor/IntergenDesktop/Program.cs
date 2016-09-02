@@ -17,7 +17,7 @@ namespace IntergenDesktop
         static void Main()
         {
 
-            InterGen g = new InterGen();
+            Thor g = new Thor();
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");

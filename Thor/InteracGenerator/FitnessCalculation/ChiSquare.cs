@@ -6,10 +6,10 @@ namespace InteracGenerator.FitnessCalculation
 {
     public class ChiSquare : IFitnessTest
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private readonly int _counter;
 
-        public ChiSquare(InterGen model, int counter)
+        public ChiSquare(Thor model, int counter)
         {
             _model = model;
             _counter = counter;
@@ -52,26 +52,10 @@ namespace InteracGenerator.FitnessCalculation
             for (var i = 0; i < x.Count; i++)
             {
                 var quot = Math.Pow(x[i].Value - y[i].Value, 2);
-                if (double.IsNaN(quot))
-                {
-                    Console.WriteLine("Wat");
-                }
                 double div = x[i].Value + y[i].Value;
 
-                if (double.IsNaN(div))
-                {
-                    Console.WriteLine("Wat");
-                }
                 if (div != 0) result += quot/div;
-                if (double.IsNaN(result))
-                {
-                    Console.WriteLine(quot);
-                    Console.WriteLine(div);
-                }
-            }
-            if (double.IsNaN(result))
-            {
-                Console.WriteLine("Why");
+               
             }
             return result/2.0;
         }

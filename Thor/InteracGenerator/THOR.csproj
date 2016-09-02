@@ -115,7 +115,7 @@
     <Compile Include="Helper\FMScaling.cs" />
     <Compile Include="VariantGenerators\HeuristicOption.cs" />
     <Compile Include="VariantGenerators\IHeuristic.cs" />
-    <Compile Include="InterGen.cs" />
+    <Compile Include="Thor.cs" />
     <Compile Include="VariantGenerators\IVariantGenerator.cs" />
     <Compile Include="Parser\DimacsParser.cs" />
     <Compile Include="Parser\SplotParser.cs" />

@@ -10,13 +10,13 @@ namespace InteracGenerator.InteracWeaving
     {
         protected double[] FeatureValues;
         protected double[] InteractionValues;
-        protected InterGen Model;
+        protected Thor Model;
         protected BackgroundWorker Worker;
         protected Random Rand;
         protected List<T> FeatureList;
         protected List<List<T>> FoundInteractions; 
 
-        protected AbstractWeaver(InterGen model)
+        protected AbstractWeaver(Thor model)
         {
             Rand = new Random();
             Model = model;
