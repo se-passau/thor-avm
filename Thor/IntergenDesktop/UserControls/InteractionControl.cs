@@ -10,11 +10,11 @@ namespace IntergenDesktop.UserControls
     public partial class InteractionControl : UserControl
     {
 
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private bool _afterBootstrap;
         private readonly Button _nextButton;
 
-        public InteractionControl(InterGen model, Button nextButton)
+        public InteractionControl(Thor model, Button nextButton)
         {
             InitializeComponent();
             _nextButton = nextButton;

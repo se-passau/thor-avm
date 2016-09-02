@@ -14,10 +14,10 @@ namespace IntergenDesktop
     public partial class NormalDistGen : Form
     {
 
-        private InterGen Model;
+        private Thor Model;
         private Distribution.DistributionType Type;
 
-        public NormalDistGen(InterGen Model, Distribution.DistributionType type)
+        public NormalDistGen(Thor Model, Distribution.DistributionType type)
         {
             InitializeComponent();
             this.Model = Model;

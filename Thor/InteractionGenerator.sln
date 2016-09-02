@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMetalCSharp", "JMetalCSharp\JMetalCSharp.csproj", "{88B27C90-4C97-43D5-99D2-E1437DA8D154}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergenDesktop", "IntergenDesktop\IntergenDesktop.csproj", "{9C3BEB1C-C070-4630-A8B0-8700DA032679}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThorGUI", "IntergenDesktop\ThorGUI.csproj", "{9C3BEB1C-C070-4630-A8B0-8700DA032679}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPLConqueror_Core", "SPLConqueror\SPLConqueror_Core.csproj", "{1F035958-15B1-450A-BFC5-BEBD95376C40}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolverFoundationWrapper", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{AEBDC4EA-60AD-4A95-8407-059B07150782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteracGenerator", "InteracGenerator\InteracGenerator.csproj", "{C2303974-C66F-467C-ABCA-6C17CBC5337A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THOR", "InteracGenerator\THOR.csproj", "{C2303974-C66F-467C-ABCA-6C17CBC5337A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,8 +8,8 @@ namespace IntergenDesktop.UserControls
     public partial class TargetVariant : UserControl
     {
         private readonly Button _nextButton;
-        private readonly InterGen _model ;
-        public TargetVariant(InterGen model, Button nextButton)
+        private readonly Thor _model ;
+        public TargetVariant(Thor model, Button nextButton)
         {
             InitializeComponent();
             _model = model;

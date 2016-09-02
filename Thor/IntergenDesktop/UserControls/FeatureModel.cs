@@ -13,7 +13,7 @@ namespace IntergenDesktop.UserControls
     public partial class FeatureModel : UserControl, IStateModelLoader
     {
         private double _sum;
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private bool _dontRaiseEvent;
         private List<double> orderValues;
         private List<TextBox> interactionBoxes;
@@ -21,7 +21,7 @@ namespace IntergenDesktop.UserControls
         private List<Label> interactionErrorLabel;
         private Button _nextButton;
 
-        public FeatureModel(InterGen model, Button nextButton)
+        public FeatureModel(Thor model, Button nextButton)
         {
             InitializeComponent();
             _model = model;

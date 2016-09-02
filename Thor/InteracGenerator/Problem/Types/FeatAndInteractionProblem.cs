@@ -17,7 +17,7 @@ namespace InteracGenerator.Problem
         private int _counter = 0;
         private InterGen Model { get; set; } */
 
-        public FeatAndInteractionProblem(InterGen model) : base(model)
+        public FeatAndInteractionProblem(Thor model) : base(model)
         {
             Model = model;
             ProblemName = "FeatAndInteractionProblem";

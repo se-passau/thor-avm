@@ -19,7 +19,7 @@ namespace InteracGenerator.InteractionProblem
     {
         //private Distribution target;
        
-        public InterGen Model { get; set; }
+        public Thor Model { get; set; }
     
         //Distribution Featurevalues;
         //Distribution interactions;
@@ -28,7 +28,7 @@ namespace InteracGenerator.InteractionProblem
         
         public double[,] calculated;
 
-        public InterGen.ProbType ProblemType;
+        public Thor.ProbType ProblemType;
         public BackgroundWorker Worker;
         //public List<List<BinaryOption>> FoundInteractions { get; set; }
         //public double[] InteractionValuesPerConfig { get; set; }
@@ -48,7 +48,7 @@ namespace InteracGenerator.InteractionProblem
 
         public IntergenProblem() { }
 
-        public IntergenProblem(InterGen model)
+        public IntergenProblem(Thor model)
         {
 
          
@@ -99,7 +99,7 @@ namespace InteracGenerator.InteractionProblem
 
       
 
-        public InterGen GetModel()
+        public Thor GetModel()
         {
             return Model;
         }

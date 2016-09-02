@@ -57,7 +57,7 @@ namespace InteracGenerator
         private bool _useCustom ;
         private double _slope;
         private double _yinterc;
-        private readonly InterGen _model;
+        private readonly Thor _model;
 
         public bool UseCustomStatic {
             get { return _useCustom;  }
@@ -81,7 +81,7 @@ namespace InteracGenerator
         public int EndBins { get; set; }
         public int Stepping { get; set; }
 
-        public DynamicHist(InterGen model)
+        public DynamicHist(Thor model)
         {
             _model = model;
         }

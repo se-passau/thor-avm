@@ -11,10 +11,10 @@ namespace IntergenDesktop.UserControls
     public partial class EvolutionSettings : UserControl, IStateModelLoader
     {
 
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private readonly Button _nextButton;
 
-        public EvolutionSettings(InterGen model, Button nextButton)
+        public EvolutionSettings(Thor model, Button nextButton)
         {
             InitializeComponent();
             _model = model;

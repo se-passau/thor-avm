@@ -25,7 +25,7 @@ namespace InteracGenerator
             " + scale_y_continuous(labels = percent_format(), name = 'Density', expand = c(0, 0))" +
             " + scale_x_continuous(labels=comma, name = \"Attribute values\", expand = c(0, 0))";
 
-        private static InterGen _model;
+        private static Thor _model;
 
         public static void SetFeatureValues(string name, double[] values)
         {
@@ -35,7 +35,7 @@ namespace InteracGenerator
             StoredValues.Add(name);
         }
 
-        public static void Init(InterGen model)
+        public static void Init(Thor model)
         {
             _model = model;
             Engine.AutoPrint = false;

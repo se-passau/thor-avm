@@ -18,14 +18,14 @@ namespace IntergenDesktop.UserControls
     public partial class SolutionVis : UserControl
     {
 
-        private readonly InterGen _model;
+        private readonly Thor _model;
 
         private double _w1;
         private double _w2;
         private double _w3;
         private double _sum;
 
-        public SolutionVis(InterGen model)
+        public SolutionVis(Thor model)
         {
             InitializeComponent();
             _model = model;

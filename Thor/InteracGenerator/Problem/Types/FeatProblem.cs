@@ -11,7 +11,7 @@ namespace InteracGenerator.Problem.Types
     {
        
         private int _counter;
-        public FeatProblem(InterGen model) : base(model)
+        public FeatProblem(Thor model) : base(model)
         {
             ProblemName = "FeatProblem";
             NumberOfObjectives = 1;

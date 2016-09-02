@@ -22,9 +22,9 @@ namespace IntergenDesktop.Forms
 
         private State _current;
         private UserControl _currentControl;
-        private readonly InterGen _model;
+        private readonly Thor _model;
         public Button Next;
-        public Mainframe(InterGen model)
+        public Mainframe(Thor model)
         {
             InitializeComponent();
 

@@ -15,7 +15,7 @@ namespace InteracGenerator
         private VariabilityModel _varModel;
         private InfluenceModel _influenceModel;
 
-        private readonly InterGen _model;
+        private readonly Thor _model;
 
         public double[] FeatureValues;
         public double[] InteractionValues;
@@ -32,7 +32,7 @@ namespace InteracGenerator
         {
         }
 
-        public FMScaling(InterGen model)
+        public FMScaling(Thor model)
         {
             _model = model;
             _rand = new Random();

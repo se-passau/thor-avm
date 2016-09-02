@@ -7,7 +7,7 @@ namespace InteracGenerator.InteracWeaving
     {
         private string[] _lines;
 
-        public DimacsWeaver(InterGen model) : base(model)
+        public DimacsWeaver(Thor model) : base(model)
         {
         }
 

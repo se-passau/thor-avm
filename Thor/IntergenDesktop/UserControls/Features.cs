@@ -11,7 +11,7 @@ namespace IntergenDesktop.UserControls
 {
     public partial class Features : UserControl, IStateModelLoader
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private bool AfterBootstrap { get; set; }
         private readonly Button _nextButton;
         public bool OwnValues { get; set; }
@@ -21,7 +21,7 @@ namespace IntergenDesktop.UserControls
         /// </summary>
         /// <param name="model"></param>
         /// <param name="nextButton"></param>
-        public Features(InterGen model, Button nextButton)
+        public Features(Thor model, Button nextButton)
         {
             _model = model;
             _nextButton = nextButton;

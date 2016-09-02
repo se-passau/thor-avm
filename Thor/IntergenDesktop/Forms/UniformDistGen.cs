@@ -13,10 +13,10 @@ namespace IntergenDesktop
 {
     public partial class UniformDistGen : Form
     {
-        private InterGen model;
+        private Thor model;
         private Distribution.DistributionType Type;
 
-        public UniformDistGen(InterGen model, Distribution.DistributionType Type)
+        public UniformDistGen(Thor model, Distribution.DistributionType Type)
         {
             this.model = model;
             this.Type = Type;

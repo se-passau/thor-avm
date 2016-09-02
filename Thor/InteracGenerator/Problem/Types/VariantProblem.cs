@@ -11,7 +11,7 @@ namespace InteracGenerator.Problem.Types
     public class VariantProblem : IntergenProblem
     {
 
-        public VariantProblem(InterGen model) : base(model)
+        public VariantProblem(Thor model) : base(model)
         {
             ProblemName = "VariantIntergenProblem";
             NumberOfObjectives = 1;

@@ -10,7 +10,7 @@ namespace IntergenDesktop.UserControls
 {
     public partial class Evolution : UserControl
     {
-        private readonly InterGen _model;
+        private readonly Thor _model;
         private int _ticks;
         private int _currMax;
         private bool _doneGenerating;
@@ -21,7 +21,7 @@ namespace IntergenDesktop.UserControls
         /// </summary>
         /// <param name="model"></param>
         /// <param name="nextButton"></param>
-        public Evolution(InterGen model, Button nextButton)
+        public Evolution(Thor model, Button nextButton)
         {
             InitializeComponent();
 
@@ -51,7 +51,7 @@ namespace IntergenDesktop.UserControls
 
 
 
-            var mdl = e.Argument as InterGen;
+            var mdl = e.Argument as Thor;
             mdl.Setting.WriteSetting();
             var bw = sender as BackgroundWorker;
             mdl?.CreateInteractions(e, bw);
@@ -81,7 +81,7 @@ namespace IntergenDesktop.UserControls
         #region Generate Variants
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            var mdl = e.Argument as InterGen;
+            var mdl = e.Argument as Thor;
             var bw = sender as BackgroundWorker;
             mdl?.CreateVariants(bw, e);
         }
@@ -126,7 +126,7 @@ namespace IntergenDesktop.UserControls
 
         private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
         {
-            var mdl = e.Argument as InterGen;
+            var mdl = e.Argument as Thor;
             var bw = sender as BackgroundWorker;
             mdl?.StartEvolution(bw, e);
         }

@@ -14,9 +14,9 @@ namespace IntergenDesktop.Forms
     public partial class DynamicBins : Form
     {
         private readonly DynamicHist _dynHist;
-        private readonly InterGen _model;
+        private readonly Thor _model;
 
-        public DynamicBins(DynamicHist dynamicHist, InterGen model)
+        public DynamicBins(DynamicHist dynamicHist, Thor model)
         {
             InitializeComponent();
             _dynHist = dynamicHist;
