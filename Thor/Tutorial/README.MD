@@ -6,6 +6,8 @@ With the help of:
 * [SPLConqueror] (https://github.com/nsiegmun/SPLConqueror)
 * [JMetal.Net] (http://jmetalnet.sourceforge.net/)
 * [Accord.Net] (http://accord-framework.net/)
+* [ILNumerics] (https://ilnumerics.net/)
+* [MS Solver Foundation] (https://msdn.microsoft.com/en-us/devlabs/hh145003)
 
 <p align="center">
 <img alt="overview" src="https://github.com/leutheus/TeenageMutantFeatureModels/blob/master/docs/overview.png" width="546">
@@ -21,6 +23,9 @@ This chapter describes the steps to get started.
 * .NET Framework 4.5 or higher
 * R (Version 3.2+)
 * VisualStudio 2013+ (TODO)
+* MS Solver Foundation (Academic License) Version 2.0.2x(retrievable via [MSDNAA / Dreamspark] (https://www.dreamspark.com/Default.aspx))
+* ILNumerics (automatically installed via Nuget)
+* Accord (automatically installed via Nuget)
 
 ### Compilation
 
@@ -30,7 +35,11 @@ This chapter describes the steps to get started.
  * scatterplot3d
  * scales
  * gridExtra
+* Install [MS Solver Foundation] (https://msdn.microsoft.com/en-us/devlabs/hh145003) in Version 2.0.2x 
+ * It is planned to upgrade to Version 3.1 in future
+ * If you have trouble getting the right version, please contact us
 * Open solution and restore the Nuget packages
+* Make sure that "Microsoft.Solver.Foundation.dll" and "ILNumerics.dll" are place in Thor's main folder.
 * Compile (TODO)
  * TODO
  * TODO
