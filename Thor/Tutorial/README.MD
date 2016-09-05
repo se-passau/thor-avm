@@ -6,8 +6,8 @@ With the help of:
 * [SPLConqueror] (https://github.com/nsiegmun/SPLConqueror)
 * [JMetal.Net] (http://jmetalnet.sourceforge.net/)
 * [Accord.Net] (http://accord-framework.net/)
-* [ILNumerics] (http:///)
-* [MS Solver Foundation] ()
+* [ILNumerics] (https://ilnumerics.net/)
+* [MS Solver Foundation] (https://msdn.microsoft.com/en-us/devlabs/hh145003)
 
 <p align="center">
 <img alt="overview" src="https://github.com/leutheus/TeenageMutantFeatureModels/blob/master/docs/overview.png" width="546">
