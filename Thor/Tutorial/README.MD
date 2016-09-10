@@ -38,11 +38,10 @@ This chapter describes the steps to get started.
 * Install [MS Solver Foundation] (https://msdn.microsoft.com/en-us/devlabs/hh145003) in Version 2.0.2x 
  * It is planned to upgrade to Version 3.1 in future
  * If you have trouble getting the right version, please contact us
-* Open solution and restore the Nuget packages
 * Make sure that "Microsoft.Solver.Foundation.dll" and "ILNumerics.dll" are place in Thor's main folder.
-* Compile (TODO)
- * TODO
- * TODO
+* Reference Microsoft.Solver.Foundation.dll in the SolverFoundationWrapper project!
+* Build Solution and let Nuget fetch the required packages
+* Start ThorGUI
 
 ### 3. Get Started
 #### Variability Model Settings and Fitness Selection
