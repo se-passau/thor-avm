@@ -341,6 +341,7 @@
             this.PseudoRND1Configs.Name = "PseudoRND1Configs";
             this.PseudoRND1Configs.Size = new System.Drawing.Size(380, 20);
             this.PseudoRND1Configs.TabIndex = 18;
+            this.PseudoRND1Configs.Text = "50";
             this.PseudoRND1Configs.TextChanged += new System.EventHandler(this.PseudoRND1Configs_TextChanged);
             // 
             // checkBox6

@@ -35,34 +35,43 @@ namespace InteracGenerator
             StoredValues.Add(name);
         }
 
-        public static void Init(Thor model)
+        public static bool Init(Thor model)
         {
-            _model = model;
-            Engine.AutoPrint = false;
-            Engine.Evaluate("suppressMessages(require('ks', quietly=TRUE))");
-            //Engine.Evaluate("install.packages('ggplot2')");
-            Engine.Evaluate("suppressMessages(library(ks))");
-            Engine.Evaluate("require('ggplot2', quietly=TRUE)");
-            Engine.Evaluate("suppressMessages(library(ggplot2))");
-            Engine.Evaluate("require('scales', quietly=TRUE)");
-            Engine.Evaluate("suppressMessages(library(scales))");
-            Engine.Evaluate("require(gridExtra)");
-            Engine.Evaluate("require(scatterplot3d)");
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            try
+            {
+                _model = model;
+                Engine.AutoPrint = false;
+                Engine.Evaluate("suppressMessages(require('ks', quietly=TRUE))");
+                Engine.Evaluate("suppressMessages(library(ks))");
+                Engine.Evaluate("require('ggplot2', quietly=TRUE)");
+                Engine.Evaluate("suppressMessages(library(ggplot2))");
+                Engine.Evaluate("require('scales', quietly=TRUE)");
+                Engine.Evaluate("suppressMessages(library(scales))");
+                Engine.Evaluate("require(gridExtra)");
+                Engine.Evaluate("require(scatterplot3d)");
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                return true;
+            }
+            catch (EvaluationException)
+            {
+                return false;
+            }
         }
 
-        public static Distribution BootStrapValues(Distribution dist, int size) {
-            
+        public static Distribution BootStrapValues(Distribution dist, int size)
+        {
 
-            if (!StoredValues.Contains(dist.Name)) {
+
+            if (!StoredValues.Contains(dist.Name))
+            {
                 Console.WriteLine("Error");
             }
             var result = new double[size];
-           
+
             Engine.Evaluate(string.Format("fhat <- kde({0} , h = hpi({0}));", dist.Name));
             Engine.Evaluate(dist.Name + "Fit <-rkde (fhat = fhat, n = " + size + ")");
 
-            
+
             var answer = Engine.Evaluate(dist.Name + "Fit");
             if (answer.IsVector())
             {
@@ -78,7 +87,7 @@ namespace InteracGenerator
             var newDist = new Distribution(result)
             {
                 Name = dist.Name,
-                DisplayName = dist.DisplayName, 
+                DisplayName = dist.DisplayName,
                 DistType = dist.DistType,
                 Scaled = true
             };
@@ -93,12 +102,13 @@ namespace InteracGenerator
             var data = Engine.CreateNumericVector(dist.Values);
             Engine.SetSymbol(dist.Name, data);
             //StoredValues.Add(dist.Name);
-           
+
             PlotValues(dist.Name, dist.ImagePath, adjust, dist.DistType);
         }
 
 
-        public static void PlotValues(Distribution dist, double adjust) {
+        public static void PlotValues(Distribution dist, double adjust)
+        {
             //Console.WriteLine("Loading ggplot2");
             //Engine.Evaluate("require('ggplot2')");
             var data = Engine.CreateNumericVector(dist.Values);
@@ -126,7 +136,8 @@ namespace InteracGenerator
             //PlotValues(name);
         } */
 
-        public static void PlotValues(SolutionSet currentBestSolutions, IntergenProblem problem) {
+        public static void PlotValues(SolutionSet currentBestSolutions, IntergenProblem problem)
+        {
 
             /*if (currentBestSolutions.Size() < 2) { return; }
 
@@ -272,7 +283,8 @@ namespace InteracGenerator
 
         internal static double[] GenerateNormalDistribution(double min, double max, int numberOfFeatures)
         {
-            try {
+            try
+            {
                 /*    Engine.Evaluate($"rnorm.between <- function(n, minimum = 0, maximum = 1)");
                     Engine.Evaluate("{");
                     Engine.Evaluate($"x <- rnorm(n)");
@@ -297,14 +309,15 @@ namespace InteracGenerator
                 var param1 = Engine.CreateInteger(numberOfFeatures);
                 var param2 = Engine.CreateNumeric(min);
                 var param3 = Engine.CreateNumeric(max);
-                return func.Invoke(new SymbolicExpression[] { param1, param2, param3 } ).AsNumeric().ToArray();
+                return func.Invoke(new SymbolicExpression[] { param1, param2, param3 }).AsNumeric().ToArray();
                 //return Engine.Evaluate($"result <- rnorm.between({numberOfFeatures}, {min}, {max})").AsNumeric().ToArray();
             }
-            catch(Exception e)
+            catch (Exception e)
             { Console.WriteLine(e.ToString()); return new double[] { 0 }; }
         }
 
-        public static void PlotMultiple(string name) {
+        public static void PlotMultiple(string name)
+        {
             Engine.Evaluate("plot(density(" + name + "))");
         }
 
@@ -329,12 +342,12 @@ namespace InteracGenerator
             Engine.Evaluate(
                 $"ggplot() + geom_density(aes(x = Original, colour='Scaled'), adjust = 0.5, alpha = 0.3, fill = '{color}')" +
                 $" + geom_density(aes(x = Scaled, colour='Target'), adjust = 0.5) + labs(title = 'Scaled and Original')" +
-                $" + scale_colour_manual(values = c('Target' = 'black', 'Scaled' = '{color}'), name = 'Densities')" + 
+                $" + scale_colour_manual(values = c('Target' = 'black', 'Scaled' = '{color}'), name = 'Densities')" +
                 LegendNoFill + DensityPercent + PanelGrid);
             Engine.Evaluate($"ggsave(file='{imagePath}', width=7, height=5)");
             return imagePath;
 
-          
+
         }
 
         public static string PlotFeatureTarget(double[] first, double[] second, double adjust)
@@ -347,7 +360,7 @@ namespace InteracGenerator
 
             var imagePath = "featuresComp.png";
             //Console.WriteLine("The current culture is {0}",
-              //          System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+            //          System.Threading.Thread.CurrentThread.CurrentCulture.Name);
             Engine.Evaluate(
                $"ggplot() + geom_density(aes( x = Features, colour='Population'), adjust=0.5, alpha=0.4, fill='green') " +
                $" + geom_density(aes( x = secondF, colour='Target'), adjust=0.5)" +
@@ -357,7 +370,7 @@ namespace InteracGenerator
             {
                 Engine.Evaluate($"unlink('{imagePath}')");
                 Engine.Evaluate($"ggsave(file='{imagePath}', width=7, height=5)");
-               
+
             }
             catch (EvaluationException exc)
             {
@@ -368,7 +381,7 @@ namespace InteracGenerator
             return imagePath;
         }
 
-    
+
 
         public static string FeatureComparisonHist(double[] first, double[] second)
         {
@@ -428,10 +441,10 @@ namespace InteracGenerator
             // Engine.Evaluate("popul <- data.frame(first)");
 
             //Engine.Evaluate("vTarget <- data.frame('second')");
-           Engine.Evaluate(
-                "ggplot() + geom_density(aes( x = population, colour='Population'), adjust=0.5, alpha=0.4, fill='red') " +
-                " + geom_density(aes( x = second, colour='Target'), adjust=0.5) + labs(title='Interactions vs Target Interactions')" +
-                " + scale_colour_manual(values = c('Target' = 'black', 'Population' = 'red'), name = 'Densities') " + DensityPercent + LegendNoFill + PanelGrid);
+            Engine.Evaluate(
+                 "ggplot() + geom_density(aes( x = population, colour='Population'), adjust=0.5, alpha=0.4, fill='red') " +
+                 " + geom_density(aes( x = second, colour='Target'), adjust=0.5) + labs(title='Interactions vs Target Interactions')" +
+                 " + scale_colour_manual(values = c('Target' = 'black', 'Population' = 'red'), name = 'Densities') " + DensityPercent + LegendNoFill + PanelGrid);
             try
             {
                 Engine.Evaluate($"unlink('{imagePath}')");
@@ -456,8 +469,8 @@ namespace InteracGenerator
 
             string imagePath = "variantComp.png";
 
-           // Engine.Evaluate("popul <- data.frame(first)");
-        
+            // Engine.Evaluate("popul <- data.frame(first)");
+
             //Engine.Evaluate("vTarget <- data.frame('second')");
             Engine.Evaluate(
                 "ggplot() + geom_density(aes( x = Variant, colour='Population'), adjust=0.5, alpha=0.4, fill='blue') " +
@@ -551,22 +564,22 @@ namespace InteracGenerator
         public static void PlotPseudoLinear(int linearRndSize, int features)
         {
             var halfSize = features + linearRndSize;
-            float slope = linearRndSize/(float) features;
+            float slope = linearRndSize / (float)features;
             var function =
-                $"indi.f <- function(x) {{ (0) * (x <= 0) + (({2 *slope} * x) + {linearRndSize}) * (0 < x & x <= {features / 2}) + ((-{2*slope} * x) + {3*linearRndSize}) * (x > {features/2} & x <= {features}) + (0) + (x < {features}) }}";
+                $"indi.f <- function(x) {{ (0) * (x <= 0) + (({2 * slope} * x) + {linearRndSize}) * (0 < x & x <= {features / 2}) + ((-{2 * slope} * x) + {3 * linearRndSize}) * (x > {features / 2} & x <= {features}) + (0) + (x < {features}) }}";
             Engine.Evaluate(function);
             Engine.Evaluate("p <- ggplot(data = data.frame(x = 0), mapping = aes(x=x))");
-            Engine.Evaluate($"p + stat_function(fun = indi.f) + xlim(-5, {features + 5}) + ylim(0, { 5 + 2.0* linearRndSize}) + xlab('Configuration Size') + ylab('Number of Configurations')");
+            Engine.Evaluate($"p + stat_function(fun = indi.f) + xlim(-5, {features + 5}) + ylim(0, { 5 + 2.0 * linearRndSize}) + xlab('Configuration Size') + ylab('Number of Configurations')");
             Engine.Evaluate("ggsave(file='VariantGenerationFunction.png', width=15, height=5)");
         }
 
         public static void PlotQuadraticRandom(double quadraticRandomScale, int numberOfFeatures)
         {
             var function =
-                $"indi.f <- function(x) {{ (0) * (x <= 0) + ({quadraticRandomScale} * -((x-{numberOfFeatures/2})^2) + {quadraticRandomScale} * {Math.Pow(numberOfFeatures/2, 2)})  * (0 < x & x <= {numberOfFeatures}) + (0) * (x > {numberOfFeatures}) }}";
+                $"indi.f <- function(x) {{ (0) * (x <= 0) + ({quadraticRandomScale} * -((x-{numberOfFeatures / 2})^2) + {quadraticRandomScale} * {Math.Pow(numberOfFeatures / 2, 2)})  * (0 < x & x <= {numberOfFeatures}) + (0) * (x > {numberOfFeatures}) }}";
             Engine.Evaluate(function);
             Engine.Evaluate("p <- ggplot(data = data.frame(x = 0), mapping = aes(x=x))");
-            Engine.Evaluate($"p + stat_function(fun = indi.f) + xlim(-5, {numberOfFeatures + 5}) + ylim(-5, {quadraticRandomScale} * {Math.Pow(numberOfFeatures/2, 2)} + 5) + xlab('Configuration Size') + ylab('Number of Configurations')");
+            Engine.Evaluate($"p + stat_function(fun = indi.f) + xlim(-5, {numberOfFeatures + 5}) + ylim(-5, {quadraticRandomScale} * {Math.Pow(numberOfFeatures / 2, 2)} + 5) + xlab('Configuration Size') + ylab('Number of Configurations')");
             Engine.Evaluate("ggsave(file='VariantGenerationFunction.png', width=15, height=5)");
         }
 
@@ -605,7 +618,7 @@ namespace InteracGenerator
               "varPlot <- ggplot() + geom_density(aes( x = varValues), adjust=0.5, alpha=0.4, fill='red')  + labs(title='Calculated Variants')");
             }
 
-          
+
             Engine.Evaluate("png(file='solutionBest.png', width=2024, height=550)");
             Engine.Evaluate($"grid.arrange(featplot, interacPlot, varPlot, ncol = 3, top='Solution {index}')");
             Engine.Evaluate("dev.off()");
@@ -643,7 +656,7 @@ namespace InteracGenerator
             Engine.Evaluate("dev.off()");
         }
 
-        public static void Draw3dPareto(double[] featFit, double[] interacFit, double[] variantFit, int angle=55)
+        public static void Draw3dPareto(double[] featFit, double[] interacFit, double[] variantFit, int angle = 55)
         {
             NumericVector featFitn = Engine.CreateNumericVector(featFit);
             NumericVector interacFitn = Engine.CreateNumericVector(interacFit);
@@ -734,7 +747,7 @@ namespace InteracGenerator
                 "ggplot() + geom_histogram(aes( x = Interactions), alpha=0.5, fill='red')  + geom_histogram(aes( x = secondF), fill='white', colour='black', alpha=0.2)  + labs(title='Interaction Target vs Interaction Population')");
             Engine.Evaluate($"unlink('{imagePath}')");
             Engine.Evaluate($"ggsave(file='{imagePath}', width=7, height=5)");
-           
+
         }
 
         public static void PlotFitnSeries(List<double> featMax, List<double> featMin, string fileName)

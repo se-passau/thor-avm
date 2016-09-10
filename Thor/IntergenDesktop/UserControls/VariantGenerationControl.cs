@@ -28,7 +28,8 @@ namespace IntergenDesktop.UserControls
             checkBox3.Checked = false;
             checkBox4.Checked = false;
             checkBox5.Checked = true;
-
+            _model.Setting.PseudoRndSize = 50;
+            _model.Setting.UsePseudoRnd = true;
             RandomModulo.Enabled = false;
             RandomSeconds.Enabled = false;
             RandomTreshold.Enabled = false;
@@ -194,7 +195,7 @@ namespace IntergenDesktop.UserControls
             try
             {
                 var random1ConfigSize = Convert.ToInt32(PseudoRND1Configs.Text);
-                if (random1ConfigSize < 0)
+                if (random1ConfigSize <= 0)
                 {
                     throw new WarningException("Must be greater 0");
                 }
@@ -203,8 +204,9 @@ namespace IntergenDesktop.UserControls
                 label51.Text = $"Configs at most: {configs}";
                 label51.ForeColor = Color.Black;
             }
-            catch (Exception)
+            catch (Exception exc)
             {
+                label51.Text = exc.Message;
                 label51.ForeColor = Color.Red;
             }
         }
@@ -271,6 +273,11 @@ namespace IntergenDesktop.UserControls
             var check = checkBox5.Checked;
             _model.Setting.UsePseudoRnd = check;
             PseudoRND1Configs.Enabled = check;
+            if (!check)
+            {
+                label51.ForeColor = Color.Black;
+                label51.Text = @"Config Size";
+            }
         }
 
         #endregion
@@ -416,6 +423,7 @@ namespace IntergenDesktop.UserControls
 
         public void LoadSettings()
         {
+            _nextButton.Enabled = false;
             if (_model.Setting.LinearRandom)
             {
                 checkBox6.Checked = true;
