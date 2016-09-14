@@ -466,7 +466,10 @@ namespace InteracGenerator
             History = new Dictionary<int, SolutionContainer>();
             BestSolutions = new List<SolutionContainer>();
             FeatureTestMethod = "KS-Test";
-            RIntegrator.Init(this);
+            if (!RIntegrator.Init(this))
+            {
+                return;
+            }
             SolutionPlotter.SetModel(this);
             ProgressReporter.Init(this);
             FitnessTracker.Init(this);

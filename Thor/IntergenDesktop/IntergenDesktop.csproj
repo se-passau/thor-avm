@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C3BEB1C-C070-4630-A8B0-8700DA032679}</ProjectGuid>
+    <ProjectGuid>{863E6297-0535-4FB1-9AC4-D8387199E2C4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IntergenDesktop</RootNamespace>
@@ -54,12 +54,6 @@
     </Compile>
     <Compile Include="Forms\DynamicBins.Designer.cs">
       <DependentUpon>DynamicBins.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ErrorFrame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ErrorFrame.Designer.cs">
-      <DependentUpon>ErrorFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\VariantGenerationFunction.cs">
       <SubType>Form</SubType>
@@ -157,9 +151,6 @@
     <EmbeddedResource Include="Forms\DynamicBins.resx">
       <DependentUpon>DynamicBins.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ErrorFrame.resx">
-      <DependentUpon>ErrorFrame.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\VariantGenerationFunction.resx">
       <DependentUpon>VariantGenerationFunction.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,9 +221,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InteracGenerator\THOR.csproj">
+    <ProjectReference Include="..\InteracGenerator\InteracGenerator.csproj">
       <Project>{c2303974-c66f-467c-abca-6c17cbc5337a}</Project>
-      <Name>THOR</Name>
+      <Name>InteracGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\JMetalCSharp\JMetalCSharp.csproj">
       <Project>{88b27c90-4c97-43d5-99d2-e1437da8d154}</Project>
