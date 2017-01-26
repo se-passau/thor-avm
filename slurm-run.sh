@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ALGO=$1
 SPL=$2
 DATABED=$3
@@ -11,28 +11,26 @@ LOCAL=/local/${USER}/${SLURM_JOB_ID}
 ## staging to nodes
 cp -R ${PREFIX}/sayyad ${LOCAL}
 (
+    exec 100>${PREFIX}/.slurmlock || exit 1
     cd ${LOCAL}
     ant clean
     ## trigger the run
     ## (assuming `ant compile` was performed once on the SLURM server: debussy).
     ant -Dalgo=${ALGO} -Dspl=${SPL} -Drepeats=1 -Ddatabed=${DATABED} -Dname=${DIR} run
 
-    mkdir -p "${PREFIX}/$(dirname "${file}")"
-    
     ## copy-merge the result data back to the SLURM server 
+
     for file in $(find ${DIR}/data -type f ! -name "FUN.*" ! -name "VAR.*"); do
 	## echo "${file}"
-	## mkdir -p "${PREFIX}/$(dirname "${file}")"
-	(
-	    flock -n 100 || exit 1
-	    cat "${file}" >> "${PREFIX}/${file}"
-	    
-	) 100>${PREFIX}/.slurmlock
+	mkdir -p "${PREFIX}/$(dirname "${file}")"
+        flock -x 100 || { echo "ERROR: flock() failed." >&2; exit 1; }    
+	cat "${file}" >> "${PREFIX}/${file}"
+        flock -u 100
     done
 
     for file in $(find ${DIR}/data -type f -name "FUN.*" -o -name "VAR.*"); do
 	## echo "${file}"
-	## mkdir -p "${PREFIX}/$(dirname "${file}")"
+	mkdir -p "${PREFIX}/$(dirname "${file}")"
 	cat "${file}" > "${PREFIX}/${file}.${SLURM_JOB_ID}"
     done
 )
