@@ -3,7 +3,6 @@ package jmetal.problems.dimacs;
 import jmetal.core.*;
 import jmetal.encodings.solutionType.BinarySolutionType;
 import jmetal.encodings.variable.Binary;
-import static jmetal.problems.dimacs.P286.FEATURES;
 import jmetal.util.JMException;
 import jmetal.util.Configuration.*;
 import main.DimacsFM;
@@ -80,7 +79,7 @@ public class Ptoybox1of3 extends Problem {
 	numberOfVariables_  = 1;
 	numberOfObjectives_ = numberOfObjectives.intValue();
 	numberOfConstraints_= 0;
-	problemName_        = "544";
+	problemName_        = numberOfBits.toString();
       
 	lowerLimit_ = new double[numberOfVariables_];
 	upperLimit_ = new double[numberOfVariables_];        

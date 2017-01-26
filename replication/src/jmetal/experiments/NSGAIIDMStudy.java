@@ -98,11 +98,14 @@ public class NSGAIIDMStudy extends Experiment {
   } // algorithmSettings
     
     private static String[] paretoFrontFiles = {
-	    "FM544_5obj.pf",
-	    "FM544_5obj.pf",
-	    "toybox.pf",
-	    "toybox-1.pf",
-	    "toybox.pf",
+	    "toybox.pf", /* 7 replication settings */
+	    "axtls.pf",
+	    "ecos.pf",
+	    "freebsd.pf",
+	    "fiasco.pf",
+	    "uclinux.pf",
+	    "linux.pf",
+	    "FM544_5obj.pf", /* 7 original settings */
 	    "FM684_5obj.pf",
 	    "FM1244_5obj.pf",
 	    "FM1396_5obj.pf",
@@ -112,11 +115,14 @@ public class NSGAIIDMStudy extends Experiment {
 	};
     
     private static List<String> availProblems = Arrays.asList(
-	"Ptoybox",
-	"Ptoybox2",
-	"Ptoybox3",
-	"Ptoybox1",
-	"Ptoybox1of3",
+	"Ptoybox1of3", /* 7 replication settings */
+	"Paxtls1of3",
+	"Pecos1of3",
+	"Pfreebsd1of3",
+	"Pfiasco1of3",
+	"Puclinux1of3",
+	"Plinux1of3",
+	"Ptoybox", /* 7 original settings */
 	"PaxTLS",
 	"Pecos",
 	"Pfreebsd",
