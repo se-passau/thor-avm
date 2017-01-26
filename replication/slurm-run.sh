@@ -9,7 +9,7 @@ PREFIX=/home/${USER}
 
 LOCAL=/local/${USER}/${SLURM_JOB_ID}
 ## staging to nodes
-cp -R ${PREFIX}/sayyad ${LOCAL}
+cp -R ${PREFIX}/thor-avm/replication ${LOCAL}
 (
     exec 100>${PREFIX}/.slurmlock || exit 1
     cd ${LOCAL}
