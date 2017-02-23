@@ -1,6 +1,16 @@
-There is the [statistical companion](data/companion.md) to the robustness experiment reported on in Section IV. 
+There are six statistical companions to the robustness experiment
+reported on in Section 4, one for each replication/ model:
 
-In addition, there is an _experiment package_ for reproducing and replicating a) the robustness experiment and b) the original ASE'13 experiment.
+* [ToyBox](data/Ptoybox1of3.md) (in particular Section 4.1)
+* [axTLS](data/Paxtls1of3.md)
+* [eCos](data/Pecos1of3.md)
+* [FreeBSD](data/Pfreebsd1of3.md)
+* [Fiasco](data/Pfiasco1of3.md)
+* [uClinux](data/PuClinux1of3.md)
+
+In addition, there is an _experiment package_ for reproducing and
+replicating a) the robustness experiment (for all models) and b) the
+original ASE'13 experiment (baseline).
 
 # Dependencies
 
@@ -28,13 +38,24 @@ In addition, there is an _experiment package_ for reproducing and replicating a)
 
 ## Robustness experiment (Section IV)
 
+This is how to re-run each of the seven robustness experiments
+(ToyBox, axTLS):
+
 (There are four factor combinations, each requires a separate experimental run.)
 
-1. `ant run -Dspl=Ptoybox1of3 -Dname=normal-F -Ddatabed=1of3normal-15-F -Drepeats=50 -Dalgo=IBEA` (normal distribution, without feature interactions)
-2. `ant run -Dspl=Ptoybox1of3 -Dname=normal-FI100 -Ddatabed=1of3normal-15-FI100 -Drepeats=50 -Dalgo=IBEA` (normal distribution, with feature interactions)
-3. `ant run -Dspl=Ptoybox1of3 -Dname=x264-F -Ddatabed=1of3x264-15-F -Drepeats=50 -Dalgo=IBEA` (x264 distribution, without feature interactions)
-4. `ant run -Dspl=Ptoybox1of3 -Dname=x264-FI100 -Ddatabed=1of3x264-15-FI100 -Drepeats=50 -Dalgo=IBEA` (x264 distribution, with feature interactions)
-5. [Collect](#how-to-collect-measurement-data) the results from the four newly created sub-directories: `normal-F`, `normal-FI100`, `x264-F`, and `x264-FI100`
+1. `ant run -Dspl=Ptoybox1of3 -Dname=normal-F -Ddatabed=Ptoybox1of3-normal-15-F -Drepeats=50 -Dalgo=IBEA` (normal distribution, without feature interactions)
+2. `ant run -Dspl=Ptoybox1of3 -Dname=normal-FI100 -Ddatabed=Ptoybox1of3-normal-15-FI100 -Drepeats=50 -Dalgo=IBEA` (normal distribution, with feature interactions)
+3. `ant run -Dspl=Ptoybox1of3 -Dname=x264-F -Ddatabed=Ptoybox1of3-normal-15-F -Drepeats=50 -Dalgo=IBEA` (x264 distribution, without feature interactions)
+4. `ant run -Dspl=Ptoybox1of3 -Dname=x264-FI100 -Ddatabed=Ptoybox1of3-normal-15-FI100 -Drepeats=50 -Dalgo=IBEA` (x264 distribution, with feature interactions)
+5. [Collect](#how-to-collect-measurement-data) the results from the
+   four newly created sub-directories: `normal-F`, `normal-FI100`,
+   `x264-F`, and `x264-FI100`
+
+Repeat the above steps for the following pairwise combinations of JMetal problem
+classes and databeds:
+
+* [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java) and Paxtls1of3-* databeds
+* ...
 
 ## ASE'13 experiment (exact)
 
@@ -62,11 +83,13 @@ The original setup by Sayyad et al. is a customized and extended fork of [JMetal
 * [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java): A variant of the Ptoybox problem definition, which allows for injecting feature interactions for attribute COST (see [computeCosts](src/jmetal/problems/dimacs/Ptoybox1of3.java#L155)).
 * Datasets provided to and processed by the objective function in [Ptoybox1of3](src/jmetal/problems/dimacs/Ptoybox1of3.java), incl.:
 
-  * [1of3normal-15-F](src/attrs/1of3normal-15-F/)
-  * [1of3normal-15-FI100](src/attrs/1of3normal-15-FI100/)
-  * [1of3normal-x264-F](src/attrs/1of3x264-15-F/)
-  * [1of3normal-x264-FI100](src/attrs/1of3x264-15-FI100/)
+  * [Ptoybox1of3-normal-15-F](src/attrs/1of3normal-15-F/)
+  * [Ptoybox1of3-normal-15-FI100](src/attrs/1of3normal-15-FI100/)
+  * [Ptoybox1of3-normal-x264-F](src/attrs/1of3x264-15-F/)
+  * [Ptoybox1of3-normal-x264-FI100](src/attrs/1of3x264-15-FI100/)
   * [orig-sayyad-ase13](src/attrs/orig-sayyad-ase13/)
+
+(For each model/problem, there is one Java class and the four databeds.)
 
 ## Modifications
 * [NSGAIIDMStudy](src/jmetal/experiments/NSGAIIDMStudy.java): Has been modified to process Ant parameters, rather than setting hard-coded values on heuristics, data files (attribute-value data, true Pareto fronts), and output locations ([diff](https://github.com/mrcalvin/thor-avm/blame/master/replication/src/jmetal/experiments/NSGAIIDMStudy.java)).
