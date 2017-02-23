@@ -4,7 +4,7 @@ SPL=$2
 DATABED=$3
 DIR=$4
 
-USER=sobernig
+USER=johndoe
 PREFIX=/home/${USER}
 
 LOCAL=/local/${USER}/${SLURM_JOB_ID}

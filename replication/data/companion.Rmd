@@ -1,6 +1,9 @@
 ---
 title: "Statistical companion"
-author: "Stefan Sobernig"
+author: "n/a"
+params:
+   spl: "Ptoybox1of3"
+   data: "toybox.csv"
 date: "`r Sys.Date()`"
 output:
    html_document:
@@ -94,7 +97,7 @@ library(ggplot2)
 library(car)
 library(pander)
 
-all <- read.csv2("toybox.csv")
+all <- read.csv2(params$data)
 levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
 
 df.toybox <- droplevels(subset(all, DIST != "origSayyadASE13"))

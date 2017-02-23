@@ -1,8 +1,3 @@
-##
-## stefan.sobernig@wu.ac.at
-##
-## 
-
 library(reshape2)
 
 args <- commandArgs(TRUE)
