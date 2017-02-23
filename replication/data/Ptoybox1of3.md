@@ -1,7 +1,7 @@
 Statistical companion
 ================
-Stefan Sobernig
-2016-08-26
+n/a
+2017-02-15
 
 -   Prerequisites
     -   How to (re-)generate the companion report
@@ -43,11 +43,15 @@ if(any(!has)) install.packages(wants[!has], repos = "http://cran.us.r-project.or
 ``` {.r}
 library(reshape2)
 library(ggplot2)
+```
+
+    ## Warning: package 'ggplot2' was built under R version 3.3.2
+
+``` {.r}
 library(car)
 library(pander)
 
-## load("toybox.RData")
-all <- read.csv2("toybox.csv")
+all <- read.csv2(params$data)
 levels(all$DIST) <- c("normal", "uniform", "x264", "origSayyadASE13")
 
 df.toybox <- droplevels(subset(all, DIST != "origSayyadASE13"))
