@@ -88,6 +88,11 @@ my.interactionPlot <- function(data , response.var = "value") {
                 theme_bw()
 }
 
+my.etasq <- function(aov) {
+    ss <- summary(aov)[[1]][[2]][1:3]
+    rbind(labels(aov$terms),ss/sum(ss))
+}
+
 ```
 
 
@@ -246,7 +251,11 @@ pander(anova(d.hv.glm, test = "F"))
 ```
 
 ```{r, results='asis'}
-pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+aov.hv <- aov(value ~ FINT * DIST,
+              data = droplevels(subset(DATA, VARIABLE == "HV")))
+pander(aov.hv)
+
+pander(my.etasq(aov.hv))
 ```
 
 ```{r}
@@ -275,7 +284,9 @@ pander(anova(d.pc.glm, test = "F"))
 
 
 ```{r, results='asis'}
-pander(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+aov.pc <- aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT")))
+pander(aov.pc)
+pander(my.etasq(aov.pc))
 ```
 
 
@@ -291,10 +302,15 @@ my.nestedBoxplot(subset(DATA, VARIABLE == "PCORRECT"))
 
 ```{r, results="asis"}
 
-hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
-pander(hsd.pc$`FINT:DIST`)
+
+hsd.hv <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "HV"))))
+pander(hsd.hv$FINT)
+pander(hsd.hv$DIST)
+pander(hsd.hv$`FINT:DIST`)
 
 hsd.pc <- TukeyHSD(aov(value ~ FINT * DIST, data = droplevels(subset(DATA, VARIABLE == "PCORRECT"))))
+pander(hsd.pc$FINT)
+pander(hsd.pc$DIST)
 pander(hsd.pc$`FINT:DIST`)
 ```
 

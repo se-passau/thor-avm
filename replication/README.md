@@ -6,7 +6,7 @@ reported on in Section 4, one for each replication/ model:
 * [eCos](data/Pecos1of3.md)
 * [FreeBSD](data/Pfreebsd1of3.md)
 * [Fiasco](data/Pfiasco1of3.md)
-* [uClinux](data/PuClinux1of3.md)
+* [uClinux](data/Puclinux1of3.md)
 
 In addition, there is an _experiment package_ for reproducing and
 replicating a) the robustness experiment (for all models) and b) the
