@@ -1,0 +1,17 @@
+no_deblock#no_mbtree: 165.198102048157
+rc_lookahead_40#ref: 328.560422187022
+no_8x8dct#no_deblock: 306.98326407163
+no_weightb#rc_lookahead: 53.4839491533087
+ref_5#rc_lookahead_40: 123.937475235946
+ref_5#rc_lookahead_20: 7.66467204018775
+ref_5#no_deblock: 206.762217074901
+ref_9#rc_lookahead_60: 125.629668926365
+no_8x8dct#ref_1: 58.4825604960791
+ref#rc_lookahead_20: 325.080903143127
+rc_lookahead#rc_lookahead_20: 17.2520535805955
+rc_lookahead_40#ref_9: 119.937212404778
+no_asm#rc_lookahead_40: 343.207433912527
+no_deblock#ref_1: 329.658243935239
+no_mbtree#no_cabac#rc_lookahead_20: 221.210694945253
+no_cabac#rc_lookahead_20#no_weightb: 299.783975243315
+ref#no_weightb#no_fast_pskip: 40.7013663475453

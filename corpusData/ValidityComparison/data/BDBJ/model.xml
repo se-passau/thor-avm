@@ -1,0 +1,392 @@
+<vm name="BerkeleyDB">
+  <binaryOptions>
+    <configurationOption>
+      <name>Base</name>
+      <outputString>Base</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Persistence</name>
+      <outputString>Persistence</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>IO</name>
+      <outputString>IO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>Persistence</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>OldIO</name>
+      <outputString>OldIO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>IO</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>NewIO</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>NewIO</name>
+      <outputString>NewIO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>IO</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>OldIO</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>NIOBase</name>
+      <outputString>NIOBase</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>NewIO</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>NIOType</name>
+      <outputString>NIOType</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>NewIO</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ChunkedNIO</name>
+      <outputString>ChunkedNIO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>NIOType</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>SingleWriteNIO</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>SingleWriteNIO</name>
+      <outputString>SingleWriteNIO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>NIOType</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>ChunkedNIO</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>DirectNIO</name>
+      <outputString>DirectNIO</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>NewIO</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>LogSize</name>
+      <outputString>LogSize</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>Persistence</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>S100MiB</name>
+      <outputString>S100MiB</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>LogSize</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>S1MiB</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>S1MiB</name>
+      <outputString>S1MiB</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>LogSize</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>S100MiB</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Checksum</name>
+      <outputString>Checksum</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>Persistence</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>BTreeFeatures</name>
+      <outputString>BTreeFeatures</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>INCompressor</name>
+      <outputString>INCompressor</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>BTreeFeatures</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>IEvictor</name>
+      <outputString>IEvictor</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>BTreeFeatures</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Evictor</name>
+      <outputString>Evictor</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>IEvictor</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Critical_Eviction</name>
+      <outputString>Critical_Eviction</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>IEvictor</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Verifier</name>
+      <outputString>Verifier</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>BTreeFeatures</parent>
+      <children />
+      <impliedOptions>
+        <options>INCompressor</options>
+      </impliedOptions>
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ITracing</name>
+      <outputString>ITracing</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Tracing</name>
+      <outputString>Tracing</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>ITracing</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>TracingLevel</name>
+      <outputString>TracingLevel</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>ITracing</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Severe</name>
+      <outputString>Severe</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>TracingLevel</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>Finest</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Finest</name>
+      <outputString>Finest</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>TracingLevel</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>Severe</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>Statistics</name>
+      <outputString>Statistics</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+  </binaryOptions>
+  <numericOptions />
+</vm>

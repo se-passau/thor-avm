@@ -1,0 +1,257 @@
+<vm name="H264">
+  <binaryOptions>
+    <configurationOption>
+      <name>no_asm</name>
+      <outputString>no_asm</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_8x8dct</name>
+      <outputString>no_8x8dct</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_cabac</name>
+      <outputString>no_cabac</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_deblock</name>
+      <outputString>no_deblock</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_fast_pskip</name>
+      <outputString>no_fast_pskip</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_mbtree</name>
+      <outputString>no_mbtree</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_mixed_refs</name>
+      <outputString>no_mixed_refs</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>no_weightb</name>
+      <outputString>no_weightb</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>True</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>rc_lookahead</name>
+      <outputString>rc_lookahead</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>rc_lookahead_20</name>
+      <outputString>rc_lookahead_20</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>rc_lookahead</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>rc_lookahead_40</options>
+        <options>rc_lookahead_60</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>rc_lookahead_40</name>
+      <outputString>rc_lookahead_40</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>rc_lookahead</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>rc_lookahead_20</options>
+        <options>rc_lookahead_60</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>rc_lookahead_60</name>
+      <outputString>rc_lookahead_60</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>rc_lookahead</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>rc_lookahead_20</options>
+        <options>rc_lookahead_40</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ref</name>
+      <outputString>ref</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>
+      </parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions />
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ref_1</name>
+      <outputString>ref_1</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>ref</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>ref_5</options>
+        <options>ref_9</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ref_5</name>
+      <outputString>ref_5</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>ref</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>ref_1</options>
+        <options>ref_9</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+    <configurationOption>
+      <name>ref_9</name>
+      <outputString>ref_9</outputString>
+      <prefix>
+      </prefix>
+      <postfix>
+      </postfix>
+      <parent>ref</parent>
+      <children />
+      <impliedOptions />
+      <excludedOptions>
+        <options>ref_1</options>
+        <options>ref_5</options>
+      </excludedOptions>
+      <defaultValue>Selected</defaultValue>
+      <optional>False</optional>
+    </configurationOption>
+  </binaryOptions>
+  <numericOptions />
+</vm>

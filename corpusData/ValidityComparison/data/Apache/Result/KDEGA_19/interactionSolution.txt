@@ -1,0 +1,16 @@
+ExtendedStatus#HostnameLookups: -179.746638565359
+KeepAlive#ExtendedStatus: 64.1195206703555
+Handle#FollowSymLinks: 169.801297162392
+InMemory#EnableSendfile: -151.093495196972
+EnableSendfile#Handle: 298.688214390534
+AccessLog#HostnameLookups: -191.638912326009
+Handle#ExtendedStatus: 217.21104968893
+KeepAlive#HostnameLookups: 316.880113494388
+InMemory#FollowSymLinks: 250.940679824219
+AccessLog#InMemory: 240.671254119524
+Base#ExtendedStatus: -29.2820365239777
+AccessLog#Handle: -1.14114573222231
+Base#InMemory: 162.905117762157
+HostnameLookups#EnableSendfile#Base: 279.24855038244
+AccessLog#KeepAlive#Base: -130.303543986773
+ExtendedStatus#AccessLog#EnableSendfile: 288.843820956668
