@@ -1,13 +1,61 @@
-Papers that have been found relevant in our literature study. Note that the number of papers here is a bit higher than the 69 reported in the paper, because we excluded survey papers from our analysis as discussed in Section 2.2. We report the found papers based on our backward and forward iterations.
-![Papers found using backward and forward search]()
+# Literatur Study
+
+We conducted a literature study to obtain an overview of (a) the extent to which generated and real values for attributed variability models are used in the literature and (b) the assumptions and choices made by researchers that use generated attribute values. Following standard guidelines for literature studies by Kitchenham and others[2007], we specify the following research questions: 
+
+* RQ1: From the papers that rely on attributed variability models, how many use generated or user-defined attribute values?
+* RQ2: What techniques are used for generation?
+* RQ3: Are interactions between features considered in the variability model?
+
+Addressing RQ1 and RQ2, we want to learn how often artificial attribute values are used (RQ1) and how they are actually generated in the literature (RQ2), compared to real-world attribute values. The data-generation technique can have a substantial effect on the performance of algorithms and tools operating on attributed variability models. 
+Furthermore, we are interested in how the generated attribute values diverge from real-world values. 
+
+Answering RQ3 gives us an impression of whether researchers consider interactions and, thus, account for the exponential complexity of variability models. With n features, there are 2^n potential interactions. Managing this complexity is usually the main challenge for computationally feasible techniques. Considering only feature values reduce the exponential problem to a linear one. 
+
+
+## Method
+Attributed variability models are used in different research areas, typically as a means to evaluate a research algorithm or tool.
+This situation makes it difficult to track relevant papers and impossible to perform automated searches based on paper titles and abstracts. Hence, we started from a set of 20 initial papers from which we know due to our experience in this area. Then, we performed a systematic forward and backward search strategy (see Jalali and others 2012). That is, we included papers in our search that cite the initial papers or are cited by them. This way, we obtained 2346 papers, which we analyzed to determine whether they met our selection criteria (see below). After each iteration, based on the newly identified relevant papers, we again performed a forward and backward search. We stopped the process after we found no relevant papers anymore (3 iterations).
+
+### Selection Criteria 
+We considered a paper relevant if:
+* it describes an algorithm, tool, or technique that uses attributed variability models for training or evaluation, and
+* the values of the attributes are quantitative (i.e., interval or ratio scale), or
+* it conducts a literature review that may point to papers that satisfy the first two criteria. 
+
+
+### Procedure 
+The first author of this paper skimmed over the whole content of a paper searching for keywords, such as ``variability model'', ``feature model'', ``attribute'', ``generate'', ``distribution''. Papers that met the criteria or that were unclear have been reviewed again by the third author to make the final decision.
+
+Papers that have been found relevant in our literature study. Note that the number of papers here is a bit higher than the 69 reported in the paper, because we excluded survey papers from our analysis. We report the found papers based on our backward and forward iterations.
+After paper selection (69, in total), we conducted a fine-grained analysis to answer our research questions. We list all relevant papers at the supplementary Web site.
 
 <img src="expProcess.png" width="55%" align="middle">
+As the representativeness and diversity of the final paper corpus depends on the set of initial papers, we made sure that they come from major conferences (e.g., ICSE, ASE, etc.) and cover several applications (configuration optimization, variability analysis, runtime adaptation). We did not consider papers that were not written in English or represent a thesis, because we wanted to avoid duplicate publications and have been subject to a peer-review check. Tool-wise, we used Paperpile, which automatically searches for cited papers and merges already considered papers. Paperpile searches in Google Scholar, PubMed, ArXiv, Google search results, and journal sites for citations of a paper. 
+
+
+## Results
+
+As a result of the selection process, we finally reviewed 69 papers. For RQ1, we show the results in the following figures: 52 of the 69 papers use generated attribute values. Only 8 papers rely on 
+real-world values, either obtained by actual measurements or extracted from other sources (e.g., the Web).
+
+<img src="synthReal.png" width="55%" align="middle">
+
+To understand how artificial attribute values have been generated (RQ2), we show the frequency of the adopted techniques in the following Figure: 21 papers used a random value generator following a uniform distribution. Recall that, we found no real-world software system in the published data sets, in which attribute values exhibit a uniform distribution. Furthermore, 10 papers use normal distributions, and 13 papers assign values in an ad-hoc manner without target distribution. 17 papers do not specify the way how they generated the data. %In such cases, a replication is impossible. 
+
+<img src="synth.png" width="55%" align="middle">
+
+To answer RQ3, we investigated whether interactions among features have been taken into account. Remarkably, from the 69 papers we analyzed, not a single paper considered interactions. Only 8 papers (12\%) discuss the absence of interactions as a threat to validity.
+ 
+
+![Papers found using backward and forward search]()
+
+
 
 For the interested reader, we further present the research domains of the analyzed papers.
 
 <img src="domains.png" width="65%">
 
-# Initial Papers:
+### Initial Papers:
 
 Antkiewicz, Kacper, Michaland Bk, Alexandr Murashkin, Rafael Olaechea, Jia Hui (jimmy) Liang, and Krzysztof Czarnecki. 2013. “Clafer Tools for Product Line Engineering.” In *Proceedings of the 17th International Software Product Line Conference Co-Located Workshops*, 130–35. SPLC ’13 Workshops. New York, NY, USA: ACM.
 
@@ -50,7 +98,7 @@ White, J, D C Schmidt, E Wuchner, and A Nechypurenko. 2007. “Automating Produc
 White, Jules, Brian Dougherty, and Douglas C Schmidt. 2009. “Selecting Highly Optimal Architectural Feature Sets with Filtered Cartesian Flattening.” *J. Syst. Softw.* 82 (8): 1268–84.
 
 
-# First Round:
+### First Round:
 
 Ali, N, Wei Wu, G Antoniol, M Di Penta, Y Gue´he´neuc, and J H Hayes. 2011. “MoMS: Multi-Objective Miniaturization of Software.” In *Software Maintenance (ICSM), 2011 27th IEEE International Conference on*, 153–62. ieeexplore.ieee.org.
 
@@ -184,7 +232,7 @@ Zuluaga, Marcela, Guillaume Sergent, Andreas Krause, and Markus Püschel. 2013. 
 
 
 
-# Second Round:
+### Second Round:
 
 Beek, Maurice H ter, Axel Legay, Alberto Lluch Lafuente, and Andrea Vandin. 2015. “Quantitative Analysis of Probabilistic Models of Software Product Lines with Statistical Model Checking,” 14~apr.
 
@@ -205,7 +253,7 @@ Wittern, E, A Lenk, S Bartenbach, and T Braeuer. 2014. “Feature-Based Configur
 
 
 
-# Third Round:
+### Third Round:
 
 Beek, M H ter, A Legay, A Lluch Lafuente, and A Vandin. 2015. “Statistical Analysis of Probabilistic Models of Software Product Lines with Quantitative Constraints.” In *Proceedings of the 19th International Conference on Software Product Line*, 11–15. SPLC ’15. New York, NY, USA: ACM.
 
