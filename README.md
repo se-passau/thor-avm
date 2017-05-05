@@ -6,5 +6,10 @@ This is the supplementary Web site on the manuscript entitled _Attributed Variab
 * [Thor](Thor/) contains the sources of the generator tool for attributed variability models (Section 3).
 
 # Contributors
+* [Sven Apel](http://www.infosun.fim.uni-passau.de/se/apel/)
+* [Norbert Siegmund](https://www.uni-weimar.de/de/medien/professuren/intelligente-softwaresysteme/)
+* [Stefan Sobernig](http://nm.wu.ac.at/en/sobernig)
+* [Thomas Leutheusser]()
 
-(Anonymous Contributor(s))
+# Acknowledgements
+Special thanks are due to [Abdel Salam Sayyad](http://www.birzeit.edu/en/faculty-staff/abdel-salam-sayyad) (Department of Electrical and Computer Engineering Birzeit University, Palestine) for providing access to the JMetal material plus study data of their ASE'13 paper and his kind support in preparing our [replication](replication/) study.
