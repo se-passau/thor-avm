@@ -15,7 +15,7 @@ namespace IntergenDesktop.Forms
         public VariantGenerationFunction()
         {
             InitializeComponent();
-            pictureBox1.ImageLocation = @"VariantGenerationFunction.png";
+            pictureBox1.ImageLocation = "VariantGenerationFunction.png";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

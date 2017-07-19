@@ -299,7 +299,7 @@ namespace JMetalCSharp.Core
 							{
 								outFile.Write(s.Variable[i].ToString() + " ");
 							}
-							outFile.Write("\r\n");
+							outFile.Write(Environment.NewLine);
 						}
 					}
 				}

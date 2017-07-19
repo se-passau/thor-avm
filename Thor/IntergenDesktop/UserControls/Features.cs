@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using InteracGenerator;
+using System.Drawing;
 
 namespace IntergenDesktop.UserControls
 {
@@ -95,9 +96,12 @@ namespace IntergenDesktop.UserControls
             var dist = (Distribution)RealFeatureValuesBox.SelectedItem;
             //_model.DStore.SelectedFeatureDistribution = dist;
             _model.DStore.FeatureToStrap = dist;
-            pictureBox1.ImageLocation = Environment.CurrentDirectory +  @"/fDist.png";
+			var loc = Environment.CurrentDirectory +  Path.DirectorySeparatorChar +"fDist.png";
+			pictureBox1.ImageLocation = Environment.CurrentDirectory +  Path.DirectorySeparatorChar +"fDist.png";
             pictureBox3.ImageLocation = null;
-           
+			pictureBox1.Image = Image.FromFile(loc); 
+			pictureBox1.Visible = true;
+		   
         }
 
 
@@ -295,7 +299,7 @@ namespace IntergenDesktop.UserControls
                 return;
             }
             _model.DStore.LoadDistribution("scaledFeatures.txt");
-            pictureBox1.LoadAsync(Environment.CurrentDirectory + @"/fDist.png");
+			pictureBox1.LoadAsync(Environment.CurrentDirectory + Path.DirectorySeparatorChar +"fDist.png");
             pictureBox3.ImageLocation = null;
             _nextButton.Enabled = true;
             label1.Text = @"Current Min: " + _model.DStore.SelectedFeatureDistribution.Values.Min();
@@ -342,7 +346,7 @@ namespace IntergenDesktop.UserControls
                 };
 
                 _model.DStore.SelectedFeatureDistribution = featdist;
-                pictureBox1.ImageLocation = Environment.CurrentDirectory + @"/fDist.png";
+				pictureBox1.ImageLocation = Environment.CurrentDirectory + Path.DirectorySeparatorChar + "fDist.png";
                 SelectSecondDist.Text = @"Selected";
                 if (featdist.Values.Length != _model.Setting.NumberOfFeatures)
                 {

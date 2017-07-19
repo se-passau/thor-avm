@@ -86,7 +86,7 @@
             this.tableLayoutPanel5.Controls.Add(this.RealFeatureValuesBox, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.label26, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.FeatureNFPBox, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.BootstrapClick, 1, 3);
             this.tableLayoutPanel5.Controls.Add(this.button1, 1, 5);
             this.tableLayoutPanel5.Controls.Add(this.button3, 0, 5);
@@ -203,6 +203,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1224, 461);
             this.tableLayoutPanel7.TabIndex = 12;
+			this.tableLayoutPanel7.Visible = true;
             // 
             // SelectSecondDist
             // 

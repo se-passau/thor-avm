@@ -165,8 +165,11 @@ namespace IntergenDesktop.UserControls
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
-            _model.WriteResult();
+			var folderDialog = new FolderBrowserDialog ();
+			if (folderDialog.ShowDialog () == DialogResult.OK) {
+				_model.WriteResult(folderDialog.SelectedPath);				
+			}
+
             //_model.BestSolution.WriteSolution(_model.Setting.LogFolder);
         }
     }

@@ -52,10 +52,10 @@ namespace InteracGenerator
         {
             var path = "";
             if (variant) {
-                path = Path.Combine(Environment.CurrentDirectory, @"FeatureValues\" + SelectedNfProperty + Path.DirectorySeparatorChar + "variants\\"+ Name);
+				path = Path.Combine(Environment.CurrentDirectory, "FeatureValues"+ Path.DirectorySeparatorChar + SelectedNfProperty + Path.DirectorySeparatorChar + "variants"+ Path.DirectorySeparatorChar + Name);
             }
             else {
-                path = Path.Combine(Environment.CurrentDirectory, @"FeatureValues\" + SelectedNfProperty + Path.DirectorySeparatorChar + Name);
+				path = Path.Combine(Environment.CurrentDirectory, "FeatureValues"+ Path.DirectorySeparatorChar + SelectedNfProperty + Path.DirectorySeparatorChar + Name);
             }
  
             string[] lines = File.ReadAllLines(path);

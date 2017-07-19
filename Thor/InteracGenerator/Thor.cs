@@ -1256,7 +1256,7 @@ namespace InteracGenerator
 
 
             if (selectedFeatureProperty == "") selectedFeatureProperty = "binarySize";
-            var files = Directory.GetFiles(Environment.CurrentDirectory + @"\FeatureValues\" + selectedFeatureProperty + @"\");
+			var files = Directory.GetFiles(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "FeatureValues"+ Path.DirectorySeparatorChar + selectedFeatureProperty+ Path.DirectorySeparatorChar);
 
             foreach (string file in files)
             {
@@ -1294,7 +1294,7 @@ namespace InteracGenerator
             }
 
             if (selectedFeatureProperty == "") selectedFeatureProperty = "binarySize";
-            var files = Directory.GetFiles(Environment.CurrentDirectory + @"\FeatureValues\" + selectedFeatureProperty + @"\variants\");
+			var files = Directory.GetFiles(Environment.CurrentDirectory + Path.DirectorySeparatorChar +"FeatureValues"+ Path.DirectorySeparatorChar + selectedFeatureProperty + Path.DirectorySeparatorChar + "variants" + Path.DirectorySeparatorChar);
             foreach (string file in files)
             {
                 var split = file.Split(Path.DirectorySeparatorChar);
@@ -1309,7 +1309,7 @@ namespace InteracGenerator
 
         public Distribution LoadSingleDistribution(string NFP, string Name)
         {
-            string filename = Environment.CurrentDirectory + @"\FeatureValues\" + NFP + @"\" + Name;
+			string filename = Environment.CurrentDirectory + Path.DirectorySeparatorChar + "FeatureValues" + Path.DirectorySeparatorChar + NFP + Path.DirectorySeparatorChar + Name;
             //LoadFeaturesForProperty(NFP);
             return AvailableDistributions.Find(x => x.DisplayName == Name && x.DistType == Distribution.DistributionType.Interaction);
         }
@@ -1336,11 +1336,13 @@ namespace InteracGenerator
             }
         }
 
-        public void WriteResult()
+		public void WriteResult(String targetFolder)
         {
-            if (File.Exists(Setting.LogFolder + Path.DirectorySeparatorChar + "interactionSolution.txt")) File.Delete(Setting.LogFolder + Path.DirectorySeparatorChar + "interactionSolution.txt");
-            if (File.Exists(Setting.LogFolder + Path.DirectorySeparatorChar + "variantSolution.txt")) File.Delete(Setting.LogFolder + Path.DirectorySeparatorChar + "variantSolution.txt");
-            if (File.Exists(Setting.LogFolder + Path.DirectorySeparatorChar + "featSolution.txt")) File.Delete(Setting.LogFolder + Path.DirectorySeparatorChar + "featSolution.txt");
+			writeVariantsToCSV (targetFolder);
+
+			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt");
+			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "variantSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "variantSolution.txt");
+			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "featSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "featSolution.txt");
             var sf = new StringBuilder();
            
             for (var i = 0; i < Vm.BinaryOptions.Count; i++)
@@ -1360,7 +1362,7 @@ namespace InteracGenerator
                     si.Append(interac[interac.Count - 1]);
                     si.AppendLine(": " + BestSolution.Interaction.Values[i]);
                 }
-                File.WriteAllText(Setting.LogFolder + Path.DirectorySeparatorChar + "interactionSolution.txt", si.ToString());
+				File.WriteAllText(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt", si.ToString());
                 
             }
             var sv = new StringBuilder();
@@ -1377,9 +1379,35 @@ namespace InteracGenerator
                 sv = sv.Remove(sv.Length - 1, 1);
                 sv.AppendLine(": " + BestSolution.Variant.Values[i]);
             }
-            File.WriteAllText(Setting.LogFolder + Path.DirectorySeparatorChar + "variantSolution.txt", sv.ToString());
-            File.WriteAllText(Setting.LogFolder + Path.DirectorySeparatorChar + "featSolution.txt", sf.ToString());
+			File.WriteAllText(targetFolder + Path.DirectorySeparatorChar + "variantSolution.txt", sv.ToString());
+			File.WriteAllText(targetFolder + Path.DirectorySeparatorChar + "featSolution.txt", sf.ToString());
 
         }
+
+		private void writeVariantsToCSV(String targetFolder){
+			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "variantSolution.csv")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "variantSolution.csv");
+
+			var sv = new StringBuilder();
+
+			for (int i = 0; i < Vm.BinaryOptions.Count (); i++) {
+				sv.Append (Vm.BinaryOptions [i].Name + ";");
+			}
+			sv.AppendLine ("nfp");
+
+			for (int i = 0; i <=FeatureMatrix.GetUpperBound(0); i++)
+			{
+				for (int j = 0; j <= FeatureMatrix.GetUpperBound(1); j++)
+				{
+					if (FeatureMatrix [i, j] == 1) {
+						sv.Append (1 + ";");
+					} else {
+						sv.Append (0 + ";");
+					}
+
+				}
+				sv.AppendLine(""+BestSolution.Variant.Values[i]);
+			}
+			File.WriteAllText(targetFolder + Path.DirectorySeparatorChar + "variantSolution.csv", sv.ToString());
+		}
     }
 }

@@ -206,7 +206,7 @@ namespace JMetalCSharp.Metaheuristics.MOEAD
 				try
 				{
 					// Open the file
-					using (StreamReader reader = new StreamReader(dataDirectory + "/" + dataFileName))
+					using (StreamReader reader = new StreamReader(dataDirectory + Path.DirectorySeparatorChar + dataFileName))
 					{
 
 						int numberOfObjectives = 0;
@@ -232,8 +232,8 @@ namespace JMetalCSharp.Metaheuristics.MOEAD
 				}
 				catch (Exception ex)
 				{
-					Logger.Log.Error("InitUniformWeight: failed when reading for file: " + dataDirectory + "/" + dataFileName, ex);
-					Console.WriteLine("InitUniformWeight: failed when reading for file: " + dataDirectory + "/" + dataFileName);
+					Logger.Log.Error("InitUniformWeight: failed when reading for file: " + dataDirectory + Path.DirectorySeparatorChar + dataFileName, ex);
+					Console.WriteLine("InitUniformWeight: failed when reading for file: " + dataDirectory + Path.DirectorySeparatorChar + dataFileName);
 				}
 			}
 		}

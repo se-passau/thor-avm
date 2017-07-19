@@ -91,7 +91,7 @@ namespace IntergenDesktop.Forms
         private void button1_Click(object sender, EventArgs e)
         {
              _dynHist.CalcLinear();
-            pictureBox1.ImageLocation = @"dynamicHist.png";
+            pictureBox1.ImageLocation = "dynamicHist.png";
         }
 
         private void startStep_TextChanged(object sender, EventArgs e)

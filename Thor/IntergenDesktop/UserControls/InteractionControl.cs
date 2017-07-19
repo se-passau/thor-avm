@@ -248,7 +248,7 @@ namespace IntergenDesktop.UserControls
                 };
 
                 _model.DStore.SelectedInteractionDistribution = featdist;
-                pictureBox2.ImageLocation = Environment.CurrentDirectory + @"/iDist.png";
+				pictureBox2.ImageLocation = Environment.CurrentDirectory + Path.DirectorySeparatorChar + "iDist.png";
                 if (featdist.Values.Length != _model.Setting.NumberOfInteractions)
                 {
                     _nextButton.Enabled = false;
@@ -322,7 +322,7 @@ namespace IntergenDesktop.UserControls
                 MessageBox.Show(@"scaledInteractions.txt - Wrong amount of Interactions");
                 return;
             }
-            pictureBox2.LoadAsync(Environment.CurrentDirectory + @"/fDist.png");
+			pictureBox2.LoadAsync(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "fDist.png");
             pictureBox4.ImageLocation = null;
             _nextButton.Enabled = true;
             label1.Text = @"Current Min: " + _model.DStore.SelectedInteractionDistribution.Values.Min();

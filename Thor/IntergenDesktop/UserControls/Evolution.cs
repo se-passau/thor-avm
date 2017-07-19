@@ -16,6 +16,25 @@ namespace IntergenDesktop.UserControls
         private bool _doneGenerating;
         private readonly Button _nextButton;
 
+		public class CustomPictureBox : PictureBox
+		{
+			public event EventHandler ImageChanged;
+
+			public Image Image
+			{
+				get
+				{
+					return base.Image;
+				}
+				set
+				{
+					base.Image = value;
+					if (this.ImageChanged != null)
+						this.ImageChanged(this, new EventArgs());
+				}
+			}
+		}
+
         /// <summary>
         /// 
         /// </summary>
@@ -131,78 +150,130 @@ namespace IntergenDesktop.UserControls
             mdl?.StartEvolution(bw, e);
         }
 
-        private void backgroundWorker3_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
+		string picBox1Image = "";
+		string picBox2Image = "";
+		string picBox3Image = "";
 
-            progressBar3.Value = e.ProgressPercentage;
-            var curDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
-            if (_model.Setting.DrawDensity || _model.Setting.DrawHistogram)
-            {
-                if (!_model.Setting.NoVariantCalculation)
-                {
-                    pictureBox1.ImageLocation = curDir + @"variantComp.png";
-                    pictureBox1.LoadAsync();
-                }
+		bool isInitialized = false;
 
-                pictureBox2.ImageLocation = curDir + @"featuresComp.png";
-                pictureBox2.LoadAsync();
+		private void fileSystemWatcher()
+		{
+			if (!isInitialized) {
+				isInitialized = true;
 
-                if (_model.Setting.NumberOfInteractions > 0)
-                {
-                    pictureBox3.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
-                                                @"interacComp.png";
-                    pictureBox3.LoadAsync();
-                }
-            }
-            else
-            {
-                pictureBox1.ImageLocation = null;
-                pictureBox2.ImageLocation = null;
-                pictureBox3.ImageLocation = null;
-            }
+				FileSystemWatcher fsm = new FileSystemWatcher ();
+				var curDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+				fsm.Path = curDir;
+				fsm.Filter = "*.png";
+				fsm.Changed += new FileSystemEventHandler(OnChanged);
+				// Begin watching.
+				fsm.EnableRaisingEvents = true;
+			}
+		}
 
-            var state = (UserProgress)e.UserState;
-            if (state == null) return;
-            if (_model.Setting.ChiAndCmv || _model.Setting.EuclAndCmv)
-            {
-                label5.Text =
-                    $"V: {state.VariantP} F: {state.FeatureP} F-CmV: {state.FeatureCmV} V-CmV: {state.VariantCmV}";
-            }
-            else
-            {
-                label10.Text = state.InteracP == 0 ? "No Interactions Fitness" : $"Interac: {state.InteracP}";
-                label6.Text = state.FeatureP == 0 ? "No Feature Fitness" : $"Feature: {state.FeatureP}";
-                label5.Text = state.VariantP == 0 ? "No Variant Fitness" : $"Variant: {state.VariantP}";
-            }
-            label9.Text = $"{state.EvolutionStep} / {_model.Setting.MaxEvaluations}";
-            if (_model.Setting.DrawFitness)
-            {
-                if (_model.Setting.FeatureFitness)
-                {
-                    pictureBox4.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
-                                                @"featFit.png";
-                    label13.Text = $"PercentChange: {(FitnessTracker.FeatPerc - 1)*100}%";
-                }
-                if (_model.Setting.VariantFitness)
-                {
-                    pictureBox6.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
-                                                @"variantFit.png";
-                    label12.Text = $"PercentChange: {(FitnessTracker.VariantPerc - 1)*100}%";
-                }
-                if (_model.Setting.InteracFitness)
-                {
-                    pictureBox5.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
-                                                @"interacFit.png";
-                    label14.Text = $"PercentChange: {(FitnessTracker.InteracPerc - 1)*100}%";
-                }
-            }
-            else
-            {
-                pictureBox4.ImageLocation = null;
-                pictureBox6.ImageLocation = null;
-                pictureBox5.ImageLocation = null;
-            }
-        }
+		private void OnChanged(object source, FileSystemEventArgs e)
+		{
+			if (e.Name is String) {
+				if (e.Name.Contains ("variantComp.png"))
+					pictureBox1.Load ();
+				else if (e.Name.Contains ("featuresComp.png"))
+					pictureBox2.Load ();
+				else if (e.Name.Contains ("interacComp.png")) {
+					pictureBox3.Load ();
+					pictureBox3.Show ();
+				}
+			}
+		}
+
+		bool init = false;
+
+		private void backgroundWorker3_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		{
+			//fileSystemWatcher ();
+			System.Threading.Thread.SpinWait (500);
+			progressBar3.Value = e.ProgressPercentage;
+			var curDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+			if (_model.Setting.DrawDensity || _model.Setting.DrawHistogram)
+			{
+				if (!_model.Setting.NoVariantCalculation)
+				{
+					if (!init) {
+						init = true;
+						pictureBox1.Image = Image.FromFile (curDir + @"variantComp.png");
+						pictureBox1.ImageLocation = curDir + @"variantComp.png";
+						pictureBox1.Load ();
+						pictureBox1.Show ();
+					}
+				}
+
+				if (!init) {
+					init = true;
+					pictureBox2.Image = Image.FromFile (curDir + @"featuresComp.png");
+					pictureBox2.ImageLocation = curDir + @"featuresComp.png";
+					pictureBox2.Load ();
+					pictureBox2.Show ();
+				}
+
+				if (_model.Setting.NumberOfInteractions > 0)
+				{
+					if (!init) {
+						init = true;
+						pictureBox3.ImageLocation = curDir + @"interacComp.png";
+						pictureBox3.Image = Image.FromFile (curDir + @"featuresComp.png");
+						pictureBox3.Load ();
+						pictureBox3.Show ();
+					}
+				}
+			}
+			else
+			{
+				pictureBox1.ImageLocation = null;
+				pictureBox2.ImageLocation = null;
+				pictureBox3.ImageLocation = null;
+			}
+
+			var state = (UserProgress)e.UserState;
+			if (state == null) return;
+			if (_model.Setting.ChiAndCmv || _model.Setting.EuclAndCmv)
+			{
+				label5.Text =
+					$"V: {state.VariantP} F: {state.FeatureP} F-CmV: {state.FeatureCmV} V-CmV: {state.VariantCmV}";
+			}
+			else
+			{
+				label10.Text = state.InteracP == 0 ? "No Interactions Fitness" : $"Interac: {state.InteracP}";
+				label6.Text = state.FeatureP == 0 ? "No Feature Fitness" : $"Feature: {state.FeatureP}";
+				label5.Text = state.VariantP == 0 ? "No Variant Fitness" : $"Variant: {state.VariantP}";
+			}
+			label9.Text = $"{state.EvolutionStep} / {_model.Setting.MaxEvaluations}";
+			if (_model.Setting.DrawFitness)
+			{
+				if (_model.Setting.FeatureFitness)
+				{
+					pictureBox4.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
+						@"featFit.png";
+					label13.Text = $"PercentChange: {(FitnessTracker.FeatPerc - 1)*100}%";
+				}
+				if (_model.Setting.VariantFitness)
+				{
+					pictureBox6.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
+						@"variantFit.png";
+					label12.Text = $"PercentChange: {(FitnessTracker.VariantPerc - 1)*100}%";
+				}
+				if (_model.Setting.InteracFitness)
+				{
+					pictureBox5.ImageLocation = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar +
+						@"interacFit.png";
+					label14.Text = $"PercentChange: {(FitnessTracker.InteracPerc - 1)*100}%";
+				}
+			}
+			else
+			{
+				pictureBox4.ImageLocation = null;
+				pictureBox6.ImageLocation = null;
+				pictureBox5.ImageLocation = null;
+			}
+		}
 
         private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
