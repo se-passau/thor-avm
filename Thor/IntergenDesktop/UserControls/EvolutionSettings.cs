@@ -179,5 +179,20 @@ namespace IntergenDesktop.UserControls
             var val = (double)numericUpDown1.Value;
             _model.Setting.StopEarlyLevel = val;
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

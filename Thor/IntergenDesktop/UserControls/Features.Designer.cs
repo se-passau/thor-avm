@@ -203,7 +203,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1224, 461);
             this.tableLayoutPanel7.TabIndex = 12;
-			this.tableLayoutPanel7.Visible = true;
             // 
             // SelectSecondDist
             // 
@@ -236,6 +235,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox3
             // 
@@ -257,6 +257,7 @@
             this.FirstPLabel.TabIndex = 7;
             this.FirstPLabel.Text = "Preview";
             this.FirstPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FirstPLabel.Click += new System.EventHandler(this.FirstPLabel_Click);
             // 
             // SecondPLabel
             // 

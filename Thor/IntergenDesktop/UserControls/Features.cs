@@ -407,5 +407,15 @@ namespace IntergenDesktop.UserControls
             Console.WriteLine("Loading Settings");
             textBox2.Text = _model.Setting.FeatureScaleMax.ToString(CultureInfo.InvariantCulture);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FirstPLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

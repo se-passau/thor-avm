@@ -175,7 +175,6 @@ namespace InteracGenerator
         {
             var featVals = GetFeatureValues(sol);
             var interacVals = GetInteractionValues(sol);
-
             var variant = FeatureMatrix.Dot(featVals);
             if (ProbHasInterac(ProblemType))
             {
@@ -376,6 +375,15 @@ namespace InteracGenerator
         private double _ip1;
         private double _ip2;
 
+        public double[] FPVal
+        {
+            get { return FPVal;  }
+            set
+            {
+                FPVal = value;
+                NotifyPropertyChanged();
+            }
+        }
         public double FPVal1
         {
             get { return _fp1; }
@@ -476,6 +484,65 @@ namespace InteracGenerator
             FeaturesDynamicHist = new DynamicHist(this) { UseSquareRoot = true };
             VariantDynamicHist = new DynamicHist(this) { UseSquareRoot = true };
             InteracDynamicHist = new DynamicHist(this) { UseSquareRoot = true };
+        }
+
+        public Distribution[] BestDistribution(Distribution dist, int size, int rounds = 100, int amount = 2)
+        {
+            if (dist.DistType == Distribution.DistributionType.Feature)
+            {
+                DStore.ScaledFeatureDistributions = new Distribution[amount];
+            }
+            else
+            {
+                DStore.ScaledInteractionDistributions = new Distribution[amount];
+
+            }
+            for (int r = 0; r < rounds; ++r)
+            {
+                for(int i = 0; i < amount; ++i)
+                {
+                    var result= RIntegrator.BootStrapValues(dist, size);
+                    if (dist.DistType == Distribution.DistributionType.Feature)
+                    {
+                        double score_tmp = KSmirnoffTest(dist, result);
+                            if (i == 0 && FPVal1 < score_tmp)
+                            {
+                                FPVal1 = score_tmp;
+                                result.DisplayName = dist.DisplayName;
+                                DStore.ScaledFeatureDistributions[i] = result;
+                                Console.WriteLine("Feature Normal KS Test: " + score_tmp);
+                            }
+                            if (i == 1 && FPVal2 < score_tmp)
+                            {
+                                FPVal2 = score_tmp;
+                                result.DisplayName = dist.DisplayName;
+                                DStore.ScaledFeatureDistributions[i] = result;
+                                Console.WriteLine("Feature Uniform KS Test: " + score_tmp);
+                            }
+                        
+                    }
+                    else if (dist.DistType == Distribution.DistributionType.Interaction)
+                    {
+                        double score_tmp = KSmirnoffTest(dist, result);
+                        if (i == 0 && IPVal1 < score_tmp)
+                        {
+                            IPVal1 = score_tmp;
+                            result.DisplayName = dist.DisplayName;
+                            DStore.ScaledInteractionDistributions[i] = result;
+                            Console.WriteLine("Interaction Normal KS Test: " + score_tmp);
+                        }
+                        if (i == 1 && IPVal2 < score_tmp)
+                        {
+                            IPVal2 = score_tmp;
+                            result.DisplayName = dist.DisplayName;
+                            DStore.ScaledInteractionDistributions[i] = result;
+                            Console.WriteLine("Interaction Uniform KS Test: " + score_tmp);
+                        }
+                        
+                    }
+                }               
+            }
+            return dist.DistType == Distribution.DistributionType.Feature ? DStore.ScaledFeatureDistributions : DStore.ScaledInteractionDistributions;
         }
 
         public Distribution[] ScaleDistribution(Distribution dist, int size, int amount = 2)
@@ -616,7 +683,7 @@ namespace InteracGenerator
             weaver.SetVariabilityModel(Vm);
             weaver.WeaveInteractions(Vm.BinaryOptions, features, interactions, worker);
             FoundInteractions = weaver.GetInteractions();
-
+            Console.WriteLine("Created FoundInteractions: " + FoundInteractions.Count());
 
 
             /*var fms = new FMScaling(this);
@@ -1338,16 +1405,15 @@ namespace InteracGenerator
 
 		public void WriteResult(String targetFolder)
         {
-			writeVariantsToCSV (targetFolder);
+			//writeVariantsToCSV(targetFolder);
 
 			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt");
 			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "variantSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "variantSolution.txt");
 			if (File.Exists(targetFolder + Path.DirectorySeparatorChar + "featSolution.txt")) File.Delete(targetFolder + Path.DirectorySeparatorChar + "featSolution.txt");
             var sf = new StringBuilder();
-           
             for (var i = 0; i < Vm.BinaryOptions.Count; i++)
             {
-                sf.AppendLine(Vm.BinaryOptions[i] + ": " + BestSolution.Features.Values[i]);
+              sf.AppendLine(Vm.BinaryOptions[i] + ": " + BestSolution.Features.Values[i]);
             }
             if (Setting.NumberOfInteractions > 0)
             {
@@ -1359,7 +1425,7 @@ namespace InteracGenerator
                     {
                         si.Append(interac[j] + "#");
                     }
-                    si.Append(interac[interac.Count - 1]);
+                    si.Append(interac[interac.Count-1]);
                     si.AppendLine(": " + BestSolution.Interaction.Values[i]);
                 }
 				File.WriteAllText(targetFolder + Path.DirectorySeparatorChar + "interactionSolution.txt", si.ToString());
