@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\Commander.cs" />
-    <Compile Include="Parser\Help.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

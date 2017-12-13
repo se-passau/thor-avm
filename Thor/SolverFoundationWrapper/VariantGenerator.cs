@@ -225,7 +225,7 @@ namespace MicrosoftSolverFoundation
 
         public List<List<BinaryOption>> generateR1(VariabilityModel vm, int Random1Size, int timeout, BackgroundWorker worker)
         {
-
+            //Synchrone Tasks erstellen
             List<List<BinaryOption>> erglist = new List<List<BinaryOption>>();
 
             var tasks = new Task[vm.BinaryOptions.Count];
