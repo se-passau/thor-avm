@@ -68,6 +68,7 @@ namespace ThorCOM.Parser
         public const string COMMAND_VARIANT_USE_PSEUDO_RANDOM = "pseudo_random";
         public const string COMMAND_VARIANT_USE_RANDOM_LINEAR_VALUE = "random_linear";
         public const string COMMAND_VARIANT_USE_RANDOM_QUADRATIC_VALUE = "random_quadratic";
+        public const string COMMAND_VARIANT_USE_ALL_VARIANT = "all_variant";
 
         public const string COMMAND_VARIANT_TRESHOLD = "treshold";
         public const string COMMAND_VARIANT_MODULO = "modulo";
@@ -341,6 +342,9 @@ namespace ThorCOM.Parser
                                 break;
                             case COMMAND_VARIANT_USE_RANDOM_QUADRATIC_VALUE:
                                 _model.Setting.QuadraticRandom = Convert.ToBoolean(argument[1]);
+                                break;
+                            case COMMAND_VARIANT_USE_ALL_VARIANT:
+                                _model.Setting.UseAllVariant = Convert.ToBoolean(argument[1]);
                                 break;
 
                             //VARIANT VALUE CONTROL

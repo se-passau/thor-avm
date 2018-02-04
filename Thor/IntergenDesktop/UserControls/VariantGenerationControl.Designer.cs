@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -71,6 +72,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel11.Controls.Add(this.checkBox8, 0, 7);
             this.tableLayoutPanel11.Controls.Add(this.checkBox1, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.checkBox2, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.checkBox3, 0, 2);
@@ -111,6 +113,16 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(1085, 374);
             this.tableLayoutPanel11.TabIndex = 1;
             this.tableLayoutPanel11.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel11_Paint);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(3, 333);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(78, 17);
+            this.checkBox8.TabIndex = 30;
+            this.checkBox8.Text = "All Variants";
+            this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -511,5 +523,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }

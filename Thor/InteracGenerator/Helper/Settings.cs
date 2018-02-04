@@ -75,6 +75,7 @@ namespace InteracGenerator
         public bool UseNfw { get; set; }
         public bool UseRnd { get; set; }
         public bool UsePseudoRnd { get; set; }
+        public bool UseAllVariant { get; set; }
         public bool LinearRandom { get; set; }
         public bool DrawHistogram { get; set; }
         public bool DrawDensity { get; set; }

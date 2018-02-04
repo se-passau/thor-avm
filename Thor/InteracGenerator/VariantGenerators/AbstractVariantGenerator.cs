@@ -10,7 +10,7 @@ namespace InteracGenerator.VariantGenerators
     internal abstract class AbstractVariantGenerator<T> : IVariantGenerator<T>, IHeuristic<T>
     {
 
-        public enum Method { FeatureWise, NegativeFeatureWise, Pairwise, Random, PseudoRandom, LinearRandom, QuadraticRandom }
+        public enum Method { FeatureWise, NegativeFeatureWise, Pairwise, Random, PseudoRandom, LinearRandom, QuadraticRandom, AllVariant}
 
         public List<List<T>> GenerateVariants(List<HeuristicOption> options, BackgroundWorker worker)
         {
@@ -51,6 +51,8 @@ namespace InteracGenerator.VariantGenerators
                     return Random(option, worker);
                 case VariantGenerator.Method.PseudoRandom:
                     return FixedRandom(option, worker);
+                case VariantGenerator.Method.AllVariant:
+                    return AllVariant(option, worker);
                 default:
                     throw new NotImplementedException();
 
@@ -64,5 +66,6 @@ namespace InteracGenerator.VariantGenerators
         public abstract List<List<T>> NegFeatureWise(HeuristicOption opt, BackgroundWorker worker);
         public abstract List<List<T>> PairWise(HeuristicOption opt, BackgroundWorker worker);
         public abstract List<List<T>> Random(HeuristicOption opt, BackgroundWorker worker);
+        public abstract List<List<T>> AllVariant(HeuristicOption opt, BackgroundWorker worker);
     }
 }

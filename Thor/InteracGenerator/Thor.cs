@@ -1220,6 +1220,13 @@ namespace InteracGenerator
                     Treshold = 1,
                 });
             }
+            if (Setting.UseAllVariant)
+            {
+                heuristiclist.Add(new HeuristicOption
+                {
+                    Method = VariantGenerator.Method.AllVariant
+                });
+            }
             return heuristiclist;
         }
 

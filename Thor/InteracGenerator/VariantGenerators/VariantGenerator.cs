@@ -64,5 +64,11 @@ namespace InteracGenerator.VariantGenerators
             var vg = new MicrosoftSolverFoundation.VariantGenerator();
             return vg.generateRandomVariantsUntilSeconds(_vm, opt.TimeLimitSeconds, opt.Treshold, opt.Modulo);
         }
+
+        public override List<List<BinaryOption>> AllVariant(HeuristicOption opt, BackgroundWorker worker)
+        {
+            var vg = new MicrosoftSolverFoundation.VariantGenerator();
+            return vg.generateAllVariantsFast(_vm);
+        }
     }
 }

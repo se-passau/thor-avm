@@ -328,6 +328,12 @@ namespace IntergenDesktop.UserControls
             textBox2.Enabled = checkBox7.Checked;
         }
 
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            _model.Setting.UseAllVariant = checkBox8.Checked;
+            textBox2.Enabled = checkBox8.Checked;
+        }
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             try

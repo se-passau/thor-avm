@@ -214,10 +214,6 @@ namespace InteracGenerator
             //Console.WriteLine("Plotted Pareto"); */
         }
 
-
-
-
-
         internal static string PlotVariantTarget(double[] first, double[] second, int index)
         {
             NumericVector data1 = Engine.CreateNumericVector(first);
@@ -269,18 +265,25 @@ namespace InteracGenerator
 
         public static void PlotValues(string name, string imagepath, double adjust, Distribution.DistributionType type)
         {
-            if (!StoredValues.Contains(name))
+            try
             {
-                //throw new ArgumentNullException("Values not found: " + name);
+                if (!StoredValues.Contains(name))
+                {
+                    //throw new ArgumentNullException("Values not found: " + name);
+                }
+                var color = "red";
+                if (type == Distribution.DistributionType.Variant) color = "blue";
+                if (type == Distribution.DistributionType.Feature) color = "green";
+                Engine.Evaluate($"featureDist <- data.frame({name})");
+                Engine.Evaluate($"plot <- ggplot(data=featureDist, aes({name})) + geom_density(fill='{color}', alpha=0.3, adjust=0.5)" + LegendNoFill + PanelGrid + DensityPercent);
+                Engine.Evaluate($"ggsave(plot=plot, file='{imagepath.Replace('\\','/')}', width=7, height=5)");
             }
-            var color = "red";
-            if (type == Distribution.DistributionType.Variant) color = "blue";
-            if (type == Distribution.DistributionType.Feature) color = "green";
-            Engine.Evaluate($"featureDist1 <- data.frame({name})");
-            Engine.Evaluate($"plot <- ggplot(data=featureDist1, aes({name})) + geom_density(fill='{color}', alpha=0.3, adjust=0.5)" + LegendNoFill + PanelGrid + DensityPercent);
-            Engine.Evaluate($"ggsave(plot=plot, file='{imagepath}', width=7, height=5)");
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
-
+        //Engine.Evaluate($"png('{ImagePath.Replace('\\', '/') + imagePath + ".png"}', {900}, {600})");
         internal static double[] GenerateNormalDistribution(double min, double max, int numberOfFeatures)
         {
             try
@@ -346,8 +349,6 @@ namespace InteracGenerator
                 LegendNoFill + DensityPercent + PanelGrid);
             Engine.Evaluate($"ggsave(file='{imagePath}', width=7, height=5)");
             return imagePath;
-
-
         }
 
         public static string PlotFeatureTarget(double[] first, double[] second, double adjust)
