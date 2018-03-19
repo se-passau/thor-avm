@@ -109,6 +109,7 @@ namespace ThorCOM.Parser
         private string output_path;
         private bool draw_pareto_solution;
         private bool draw_pareto_3d;
+        private bool write_finished;
         private string featurepath;
         private string interactionpath;
         private string variantpath;
@@ -609,6 +610,12 @@ namespace ThorCOM.Parser
                 backgroundWorker1.RunWorkerAsync(_model);
             }
             catch (Exception e) { Console.WriteLine("Evolution failed"); }
+
+            while (!write_finished)
+            {
+                //Wait half a second.
+                System.Threading.Thread.Sleep(500);
+            }
         }
 
         public void WriteResult()
@@ -632,6 +639,7 @@ namespace ThorCOM.Parser
             //Write Results to path
             _model.WriteResult(output_path);
             Console.WriteLine("Done.");
+            write_finished = true;
         }
 
         #region Interactions

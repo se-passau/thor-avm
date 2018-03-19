@@ -40,9 +40,6 @@ namespace ThorCOM
                     commander.ReadFile(args[0]);
                     commander.StartEvolution();
                 }
-                
-                Console.ReadLine();
-
 
             }
             catch (TypeInitializationException)
