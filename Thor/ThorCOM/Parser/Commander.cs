@@ -36,6 +36,8 @@ namespace ThorCOM.Parser
 
         public const string COMMAND_FEATURES_SCALE_MIN = "feature_scale_min";
         public const string COMMAND_FEATURES_SCALE_MAX = "feature_scale_max";
+        public const string COMMAND_INTERACTIONS_SCALE_MIN = "interaction_scale_min";
+        public const string COMMAND_INTERACTIONS_SCALE_MAX = "interaction_scale_max";
         public const string COMMAND_FEATURES_INITIAL_FW = "initial_fw";
 
         public const string COMMAND_EVOLUTION_LOGGING = "logging";
@@ -238,6 +240,14 @@ namespace ThorCOM.Parser
                                 output_path = argument[1];
                                 break;
 
+                            //FEATURE
+                            case COMMAND_FEATURES_SCALE_MIN:
+                                _model.Setting.FeatureScaleMin = Convert.ToDouble(argument[1]);
+                                break;
+                            case COMMAND_FEATURES_SCALE_MAX:
+                                _model.Setting.FeatureScaleMax = Convert.ToDouble(argument[1]);
+                                break;
+
                             //INTERACTION
                             case COMMAND_FEATUREMODEL_NUMBER_OF_INTERACTIONS:
                                 _model.Setting.NumberOfInteractions = Convert.ToInt32(argument[1]);
@@ -248,6 +258,12 @@ namespace ThorCOM.Parser
                                 //_SET_ _INTERACTION 0.2 0.3 0.4
                                 for (int i = 0; i < argument.Count(); ++i) { interactionValues.Add(Convert.ToDouble(argument[i]));}
                                 _model.Setting.InteractionOrderPercent = Scaleto100(interactionValues);
+                                break;
+                            case COMMAND_INTERACTIONS_SCALE_MIN:
+                                _model.Setting.InteractionScaleMin = Convert.ToDouble(argument[1]);
+                                break;
+                            case COMMAND_INTERACTIONS_SCALE_MAX:
+                                _model.Setting.InteractionScaleMax = Convert.ToDouble(argument[1]);
                                 break;
                             ///interactionValues.Add(a);
                             //FEATURE MODEL
