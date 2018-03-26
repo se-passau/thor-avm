@@ -107,6 +107,8 @@ namespace ThorCOM.Parser
 
         public List<double> interactionValues = new List<double>();
         private double[] weightValues = new double[3];
+        private double[] feature_random_function_values;
+        private double[] interaction_random_function_values;
         private int seconds;
         private string output_path;
         private bool draw_pareto_solution;
@@ -220,14 +222,11 @@ namespace ThorCOM.Parser
                                 switch (argument[1])
                                 {
                                     case COMMAND_NORMAL_RANDOM_FUNCTION:
-                                        _model.Setting.Mean = Convert.ToDouble(argument[2]);
-                                        _model.Setting.StandardDeviation = Convert.ToDouble(argument[3]);
-                                        Console.WriteLine("Feature Normal Distribution with Mean:" + argument[2] + " and Standard Deviation:" + argument[3]);
-                                        break;
                                     case COMMAND_UNIFORM_RANDOM_FUNCTION:
-                                        _model.Setting.UnifMin = Convert.ToDouble(argument[2]);
-                                        _model.Setting.UnifMax = Convert.ToDouble(argument[3]);
-                                        Console.WriteLine("Feature Uniform Distribution with Min:" + argument[2] + " and Max:" + argument[3]);
+                                        feature_random_function_values = new double[2];
+                                        feature_random_function_values[0] = Convert.ToDouble(argument[2]);
+                                        feature_random_function_values[1] = Convert.ToDouble(argument[3]);
+                                        Console.WriteLine("Feature Random Function");
                                         break;
                                     default:                                        
                                         Console.WriteLine("Feature Path: " + featurepath);
@@ -239,14 +238,11 @@ namespace ThorCOM.Parser
                                 switch (argument[1])
                                 {
                                     case COMMAND_NORMAL_RANDOM_FUNCTION:
-                                        _model.Setting.Mean = Convert.ToDouble(argument[2]);
-                                        _model.Setting.StandardDeviation = Convert.ToDouble(argument[3]);
-                                        Console.WriteLine("Interaction Normal Distribution with Mean:" + argument[2] + " and Standard Deviation:" + argument[3]);
-                                        break;
                                     case COMMAND_UNIFORM_RANDOM_FUNCTION:
-                                        _model.Setting.UnifMin = Convert.ToDouble(argument[2]);
-                                        _model.Setting.UnifMax = Convert.ToDouble(argument[3]);
-                                        Console.WriteLine("Interaction Uniform Distribution with Min:" + argument[3] + " and Max:" + argument[3]);
+                                        interaction_random_function_values = new double[2];
+                                        interaction_random_function_values[0] = Convert.ToDouble(argument[2]);
+                                        interaction_random_function_values[1] = Convert.ToDouble(argument[3]);
+                                        Console.WriteLine("Interaction Random Function");
                                         break;
                                     default:
                                         Console.WriteLine("Interaction Path: " + featurepath);
@@ -606,9 +602,13 @@ namespace ThorCOM.Parser
             try {
                 switch (featurepath) {
                     case COMMAND_NORMAL_RANDOM_FUNCTION:
+                        _model.Setting.Mean = feature_random_function_values[0];
+                        _model.Setting.StandardDeviation = feature_random_function_values[1];
                         _model.CreateNormalDist(1, Distribution.DistributionType.Feature);
                         break;
                     case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                        _model.Setting.UnifMin = feature_random_function_values[0];
+                        _model.Setting.UnifMax = feature_random_function_values[1];
                         _model.CreateUnifDist(1, Distribution.DistributionType.Feature);
                         break;
                     default:
@@ -633,9 +633,13 @@ namespace ThorCOM.Parser
                 switch (interactionpath)
                 {
                     case COMMAND_NORMAL_RANDOM_FUNCTION:
+                        _model.Setting.Mean = interaction_random_function_values[0];
+                        _model.Setting.StandardDeviation = interaction_random_function_values[1];
                         _model.CreateNormalDist(1, Distribution.DistributionType.Interaction);
                         break;
                     case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                        _model.Setting.UnifMin = interaction_random_function_values[0];
+                        _model.Setting.UnifMax = interaction_random_function_values[1];
                         _model.CreateUnifDist(1, Distribution.DistributionType.Interaction);
                         break;
                     default:
