@@ -314,6 +314,77 @@ namespace InteracGenerator
             }
         }
 
+        public Distribution[] CreateExpDist(int amount, Distribution.DistributionType type)
+        {
+            if (double.IsNaN(Setting.ExpLambda)) return null;
+
+            switch (type)
+            {
+                case Distribution.DistributionType.Variant:
+                    UnivariateContinuousDistribution n = new ExponentialDistribution(Setting.ExpLambda);
+                    Distribution d = new Distribution(n.Generate(500));
+                    d.Name = "ExpTarget";
+                    d.DistType = type;
+                    d.DisplayName = "Exponential";
+                    d.SelectedNfProperty = new NFProperty("Random function");
+                    DStore.SelectedTargetDistribution = d;
+                    return null;
+                case Distribution.DistributionType.Feature:
+                    DStore.ScaledFeatureDistributions = new Distribution[amount];
+                    break;
+                case Distribution.DistributionType.Interaction:
+                    DStore.ScaledInteractionDistributions = new Distribution[amount];
+                    break;
+                default:
+                    Console.WriteLine("Error: No such distribution type");
+                    break;
+            }
+
+            for (int i = 0; i < amount; i++)
+            {
+
+                var n = new ExponentialDistribution(Setting.ExpLambda);
+
+                double[] values = null;
+                switch (type)
+                {
+                    case Distribution.DistributionType.Feature:
+                        values = getDistributionSample(Setting.NumberOfFeatures, 100, n);
+                        break;
+                    case Distribution.DistributionType.Interaction:
+                        values = getDistributionSample(Setting.NumberOfInteractions, 100, n);
+                        break;
+                }
+                var d = new Distribution(values)
+                {
+                    Name = "Exponential" + i,
+                    ImagePath = "Exponential" + i + ".png",
+                    DistType = type,
+                    DisplayName = "Exponential",
+                    SelectedNfProperty = new NFProperty("Random function")
+                };
+                RIntegrator.PlotRandomDist(d, Setting.FeatureAdjust);
+                switch (type)
+                {
+                    case Distribution.DistributionType.Feature:
+                        DStore.ScaledFeatureDistributions[i] = d;
+                        break;
+                    case Distribution.DistributionType.Interaction:
+                        DStore.ScaledInteractionDistributions[i] = d;
+                        break;
+                }
+            }
+            switch (type)
+            {
+                case Distribution.DistributionType.Feature:
+                    return DStore.ScaledFeatureDistributions;
+                case Distribution.DistributionType.Interaction:
+                    return DStore.ScaledInteractionDistributions;
+                default:
+                    return null;
+            }
+        }
+
         private double[] getDistributionSample(int amount, int rounds, UnivariateContinuousDistribution dist)
         {
             double[] values = new double[amount];

@@ -35,6 +35,7 @@ namespace ThorCOM.Parser
         public const string COMMAND_NON_FUNCT_PROPERTY_RANDOM_FUNCTION = "randomfunction";
         public const string COMMAND_NORMAL_RANDOM_FUNCTION = "normal_distribution";
         public const string COMMAND_UNIFORM_RANDOM_FUNCTION = "uniform_distribution";
+        public const string COMMAND_EXP_RANDOM_FUNCTION = "exponential_distribution";
 
         public const string COMMAND_FEATURES_SCALE_MIN = "feature_scale_min";
         public const string COMMAND_FEATURES_SCALE_MAX = "feature_scale_max";
@@ -228,6 +229,11 @@ namespace ThorCOM.Parser
                                         feature_random_function_values[1] = Convert.ToDouble(argument[3]);
                                         Console.WriteLine("Feature Random Function");
                                         break;
+                                    case COMMAND_EXP_RANDOM_FUNCTION:
+                                        feature_random_function_values = new double[1];
+                                        feature_random_function_values[0] = Convert.ToDouble(argument[2]);
+                                        Console.WriteLine("Feature Random Function");
+                                        break;
                                     default:                                        
                                         Console.WriteLine("Feature Path: " + featurepath);
                                         break;
@@ -242,6 +248,11 @@ namespace ThorCOM.Parser
                                         interaction_random_function_values = new double[2];
                                         interaction_random_function_values[0] = Convert.ToDouble(argument[2]);
                                         interaction_random_function_values[1] = Convert.ToDouble(argument[3]);
+                                        Console.WriteLine("Interaction Random Function");
+                                        break;
+                                    case COMMAND_EXP_RANDOM_FUNCTION:
+                                        interaction_random_function_values = new double[1];
+                                        interaction_random_function_values[0] = Convert.ToDouble(argument[2]);
                                         Console.WriteLine("Interaction Random Function");
                                         break;
                                     default:
@@ -611,6 +622,10 @@ namespace ThorCOM.Parser
                         _model.Setting.UnifMax = feature_random_function_values[1];
                         _model.CreateUnifDist(1, Distribution.DistributionType.Feature);
                         break;
+                    case COMMAND_EXP_RANDOM_FUNCTION:
+                        _model.Setting.ExpLambda = feature_random_function_values[0];
+                        _model.CreateExpDist(1, Distribution.DistributionType.Feature);
+                        break;
                     default:
                         try
                         {
@@ -641,6 +656,10 @@ namespace ThorCOM.Parser
                         _model.Setting.UnifMin = interaction_random_function_values[0];
                         _model.Setting.UnifMax = interaction_random_function_values[1];
                         _model.CreateUnifDist(1, Distribution.DistributionType.Interaction);
+                        break;
+                    case COMMAND_EXP_RANDOM_FUNCTION:
+                        _model.Setting.ExpLambda = feature_random_function_values[0];
+                        _model.CreateExpDist(1, Distribution.DistributionType.Interaction);
                         break;
                     default:
                         _model.DStore.SelectedInteractionDistribution = CreateDistFromFile(interactionpath, "interaction");
