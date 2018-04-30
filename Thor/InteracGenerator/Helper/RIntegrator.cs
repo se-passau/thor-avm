@@ -39,14 +39,22 @@ namespace InteracGenerator
         {
             try
             {
+                
                 _model = model;
                 Engine.AutoPrint = false;
+
+                Engine.Evaluate("libPaths('.')");
+
+                Engine.Evaluate("if (!require('ks')) install.packages('ks', lib='.',repos='https://cran.uni-muenster.de')");
+                Engine.Evaluate("if (!require('ggplot2')) install.packages('ggplot2', lib='.',repos='https://cran.uni-muenster.de')");
+                Engine.Evaluate("if (!require('scales')) install.packages('scales', lib='.',repos='https://cran.uni-muenster.de')");
+
                 Engine.Evaluate("suppressMessages(require('ks', quietly=TRUE))");
-                Engine.Evaluate("suppressMessages(library(ks))");
+                Engine.Evaluate("suppressMessages(library(ks),lib.loc='.')");
                 Engine.Evaluate("require('ggplot2', quietly=TRUE)");
-                Engine.Evaluate("suppressMessages(library(ggplot2))");
+                Engine.Evaluate("suppressMessages(library(ggplot2),lib.loc='.')");
                 Engine.Evaluate("require('scales', quietly=TRUE)");
-                Engine.Evaluate("suppressMessages(library(scales))");
+                Engine.Evaluate("suppressMessages(library(scales),lib.loc='.')");
                 Engine.Evaluate("require(gridExtra)");
                 Engine.Evaluate("require(scatterplot3d)");
                 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
