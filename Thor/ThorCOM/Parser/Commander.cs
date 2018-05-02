@@ -481,7 +481,7 @@ namespace ThorCOM.Parser
         {
             var text = File.ReadAllText(path);
             var doublelist = new List<double>();
-            text.Replace("[", string.Empty).Replace("]", string.Empty).Replace(",", string.Empty);
+            text = text.Replace("[", string.Empty).Replace("]", string.Empty).Replace(",", string.Empty);
 
             var srValues = text.Split(null);
             
