@@ -48,15 +48,19 @@ namespace InteracGenerator
                 Engine.Evaluate("if (!require('ks')) install.packages('ks', lib='./RPackages',repos='https://cran.uni-muenster.de')");
                 Engine.Evaluate("if (!require('ggplot2')) install.packages('ggplot2', lib='./RPackages',repos='https://cran.uni-muenster.de')");
                 Engine.Evaluate("if (!require('scales')) install.packages('scales', lib='./RPackages',repos='https://cran.uni-muenster.de')");
+                Engine.Evaluate("if (!require('gridExtra')) install.packages('gridExtra', lib='./RPackages',repos='https://cran.uni-muenster.de')");
+                Engine.Evaluate("if (!require('scatterplot3d')) install.packages('scatterplot3d', lib='./RPackages',repos='https://cran.uni-muenster.de')");
 
                 Engine.Evaluate("suppressMessages(require('ks', quietly=TRUE))");
-                Engine.Evaluate("suppressMessages(library(ks),lib.loc='./RPackages')");
+                Engine.Evaluate("suppressMessages(library(ks,lib.loc='./RPackages'))");
                 Engine.Evaluate("require('ggplot2', quietly=TRUE)");
-                Engine.Evaluate("suppressMessages(library(ggplot2),lib.loc='./RPackages')");
+                Engine.Evaluate("suppressMessages(library(ggplot2,lib.loc='./RPackages'))");
                 Engine.Evaluate("require('scales', quietly=TRUE)");
-                Engine.Evaluate("suppressMessages(library(scales),lib.loc='./RPackages')");
+                Engine.Evaluate("suppressMessages(library(scales,lib.loc='./RPackages'))");
                 Engine.Evaluate("require(gridExtra)");
+                Engine.Evaluate("suppressMessages(library(gridExtra,lib.loc='./RPackages'))");
                 Engine.Evaluate("require(scatterplot3d)");
+                Engine.Evaluate("suppressMessages(library(scatterplot3d,lib.loc='./RPackages'))");
                 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                 return true;
             }
