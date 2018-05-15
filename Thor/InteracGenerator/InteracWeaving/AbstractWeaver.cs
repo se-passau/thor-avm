@@ -157,10 +157,10 @@ namespace InteracGenerator.InteracWeaving
             foreach (var foundInter in FoundInteractions)
             {
                 var isSame = true;
-                foreach (var interacFeat in foundInter)
+                foreach (var interacFeat in newConfig)
                 {
                     //the Interaction to test does not contain a Feature from the current already found interaction
-                    if (!newConfig.Contains(interacFeat))
+                    if (!foundInter.Contains(interacFeat))
                     {
                         isSame = false;
                         break;
