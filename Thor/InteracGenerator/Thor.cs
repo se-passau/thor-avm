@@ -73,11 +73,11 @@ namespace InteracGenerator
                 double[] values = null;
                 if (type == Distribution.DistributionType.Feature)
                 {
-                    values = n.Generate(Setting.NumberOfFeatures);
+                    values = getDistributionSample(Setting.NumberOfFeatures, 100, n);
                 }
                 else if (type == Distribution.DistributionType.Interaction)
                 {
-                    values = n.Generate(Setting.NumberOfInteractions);
+                    values = getDistributionSample(Setting.NumberOfInteractions, 100, n);
                 }
                 Distribution d = new Distribution(values)
                 {
@@ -270,15 +270,15 @@ namespace InteracGenerator
                 switch (type)
                 {
                     case Distribution.DistributionType.Feature:
-                        if(Setting.FeatureScaleMin == 0 && Setting.FeatureScaleMax == 0)
-                            values = n.Generate(Setting.NumberOfFeatures);
+                        if (Setting.FeatureScaleMin == 0 && Setting.FeatureScaleMax == 0)
+                            values = getDistributionSample(Setting.NumberOfFeatures, 100, n);
                         else
                             values = RIntegrator.GenerateNormalDistribution(Setting.FeatureScaleMin, Setting.FeatureScaleMax, Setting.NumberOfFeatures);
                         
                         break;
                     case Distribution.DistributionType.Interaction:
                         if (Setting.FeatureScaleMin == 0 && Setting.FeatureScaleMax == 0)
-                            values = n.Generate(Setting.NumberOfInteractions);
+                            values = getDistributionSample(Setting.NumberOfInteractions, 100, n);
                         else
                             values = RIntegrator.GenerateNormalDistribution(Setting.FeatureScaleMin, Setting.FeatureScaleMax, Setting.NumberOfInteractions);
                         
@@ -312,6 +312,23 @@ namespace InteracGenerator
                 default:
                     return null;
             }
+        }
+
+        private double[] getDistributionSample(int amount, int rounds, UnivariateContinuousDistribution dist)
+        {
+            double[] values = new double[amount];
+            double PValue = 0.0;
+            for (int i = 0; i < rounds; i++)
+            {
+                double[] temp_values = dist.Generate(amount);
+                KolmogorovSmirnovTest test = new KolmogorovSmirnovTest(temp_values, dist);
+                if (PValue < test.PValue)
+                {
+                    values = temp_values;
+                    PValue = test.PValue;
+                }
+            }
+            return values;
         }
 
         public SolutionSet Solutions;

@@ -33,6 +33,8 @@ namespace ThorCOM.Parser
         public const string COMMAND_NON_FUNCT_PROPERTY_PERFORMANCE = "performance";
         public const string COMMAND_NON_FUNCT_PROPERTY_MAINMEMORY = "mainmemory";
         public const string COMMAND_NON_FUNCT_PROPERTY_RANDOM_FUNCTION = "randomfunction";
+        public const string COMMAND_NORMAL_RANDOM_FUNCTION = "normal_distribution";
+        public const string COMMAND_UNIFORM_RANDOM_FUNCTION = "uniform_distribution";
 
         public const string COMMAND_FEATURES_SCALE_MIN = "feature_scale_min";
         public const string COMMAND_FEATURES_SCALE_MAX = "feature_scale_max";
@@ -107,6 +109,8 @@ namespace ThorCOM.Parser
 
         public List<double> interactionValues = new List<double>();
         private double[] weightValues = new double[3];
+        private double[] feature_random_function_values;
+        private double[] interaction_random_function_values;
         private int seconds;
         private string output_path;
         private bool draw_pareto_solution;
@@ -218,12 +222,36 @@ namespace ThorCOM.Parser
                                 Console.WriteLine("Feature Count: " + _model.Setting.NumberOfFeatures);
                                 break;
                             case COMMAND_PATH_FEATURE_DISTRIBUTION:
+                                switch (argument[1])
+                                {
+                                    case COMMAND_NORMAL_RANDOM_FUNCTION:
+                                    case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                                        feature_random_function_values = new double[2];
+                                        feature_random_function_values[0] = Convert.ToDouble(argument[2]);
+                                        feature_random_function_values[1] = Convert.ToDouble(argument[3]);
+                                        Console.WriteLine("Feature Random Function");
+                                        break;
+                                    default:                                        
+                                        Console.WriteLine("Feature Path: " + featurepath);
+                                        break;
+                                }
                                 featurepath = argument[1];
-                                Console.WriteLine("Feature Path: " + featurepath);
                                 break;
                             case COMMAND_PATH_INTERACTION_DISTRIBUTION:
-                                interactionpath = argument[1];
-                                Console.WriteLine("Interaction Path: " + interactionpath);
+                                switch (argument[1])
+                                {
+                                    case COMMAND_NORMAL_RANDOM_FUNCTION:
+                                    case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                                        interaction_random_function_values = new double[2];
+                                        interaction_random_function_values[0] = Convert.ToDouble(argument[2]);
+                                        interaction_random_function_values[1] = Convert.ToDouble(argument[3]);
+                                        Console.WriteLine("Interaction Random Function");
+                                        break;
+                                    default:
+                                        Console.WriteLine("Interaction Path: " + featurepath);
+                                        break;
+                                }
+                                interactionpath = argument[1];                                
                                 break;
                             case COMMAND_PATH_VARIANT_DISTRIBUTION:
                                 variantpath = argument[1];
@@ -588,29 +616,57 @@ namespace ThorCOM.Parser
         public void StartEvolution()
         {
             //Load and Scale Feature
-            try
-            {
-                _model.DStore.SelectedFeatureDistribution = CreateDistFromFile(featurepath, "feature");
-            }
-            catch (Exception e) { Console.WriteLine(e); }
-            if (_model.Setting.SelectedFeature == 0) { _model.CreateNormalDist(2, Distribution.DistributionType.Feature); }
-            else { _model.CreateUnifDist(2, Distribution.DistributionType.Feature); }
-            Console.WriteLine("Selected Feature");
-            try
-            {
-                _model.BestDistribution(_model.DStore.SelectedFeatureDistribution, _model.Setting.NumberOfFeatures, 100, 2);
+            try {
+                switch (featurepath) {
+                    case COMMAND_NORMAL_RANDOM_FUNCTION:
+                        _model.Setting.Mean = feature_random_function_values[0];
+                        _model.Setting.StandardDeviation = feature_random_function_values[1];
+                        _model.CreateNormalDist(1, Distribution.DistributionType.Feature);
+                        break;
+                    case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                        _model.Setting.UnifMin = feature_random_function_values[0];
+                        _model.Setting.UnifMax = feature_random_function_values[1];
+                        _model.CreateUnifDist(1, Distribution.DistributionType.Feature);
+                        break;
+                    default:
+                        try
+                        {
+                            _model.DStore.SelectedFeatureDistribution = CreateDistFromFile(featurepath, "feature");
+                        }
+                        catch (Exception e) { Console.WriteLine(e); }
+                        if (_model.Setting.SelectedFeature == 0) { _model.CreateNormalDist(2, Distribution.DistributionType.Feature); }
+                        else { _model.CreateUnifDist(2, Distribution.DistributionType.Feature); }
+                        Console.WriteLine("Selected Feature");
+                        _model.BestDistribution(_model.DStore.SelectedFeatureDistribution, _model.Setting.NumberOfFeatures, 100, 2);                        
+                        break;
+                }
                 _model.DStore.SelectedFeatureDistribution = _model.DStore.ScaledFeatureDistributions[_model.Setting.SelectedFeature];
             }
             catch (Exception e) { Console.WriteLine("Feature Scale failed"); }
 
             //Load and Scale Interaction
-            _model.DStore.SelectedInteractionDistribution = CreateDistFromFile(interactionpath, "interaction");
-            if (_model.Setting.SelectedInteraction == 0) { _model.CreateNormalDist(2, Distribution.DistributionType.Interaction); }
-            else { _model.CreateUnifDist(2, Distribution.DistributionType.Interaction); }
-            Console.WriteLine("Selected Interaction");
             try
             {
-                _model.BestDistribution(_model.DStore.SelectedInteractionDistribution, _model.Setting.NumberOfInteractions, 100, 2);
+                switch (interactionpath)
+                {
+                    case COMMAND_NORMAL_RANDOM_FUNCTION:
+                        _model.Setting.Mean = interaction_random_function_values[0];
+                        _model.Setting.StandardDeviation = interaction_random_function_values[1];
+                        _model.CreateNormalDist(1, Distribution.DistributionType.Interaction);
+                        break;
+                    case COMMAND_UNIFORM_RANDOM_FUNCTION:
+                        _model.Setting.UnifMin = interaction_random_function_values[0];
+                        _model.Setting.UnifMax = interaction_random_function_values[1];
+                        _model.CreateUnifDist(1, Distribution.DistributionType.Interaction);
+                        break;
+                    default:
+                        _model.DStore.SelectedInteractionDistribution = CreateDistFromFile(interactionpath, "interaction");
+                        if (_model.Setting.SelectedInteraction == 0) { _model.CreateNormalDist(2, Distribution.DistributionType.Interaction); }
+                        else { _model.CreateUnifDist(2, Distribution.DistributionType.Interaction); }
+                        Console.WriteLine("Selected Interaction");
+                        _model.BestDistribution(_model.DStore.SelectedInteractionDistribution, _model.Setting.NumberOfInteractions, 100, 2);
+                        break;
+                }
                 _model.DStore.SelectedInteractionDistribution = _model.DStore.ScaledInteractionDistributions[_model.Setting.SelectedInteraction];
             }
             catch (Exception e) { Console.WriteLine("Interaction Scale failed"); }
