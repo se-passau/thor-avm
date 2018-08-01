@@ -51,6 +51,7 @@ namespace InteracGenerator
         public double Mean { get; set; }
         public double UnifMin { get; set; }
         public double UnifMax { get; set; }
+        public double ExpLambda { get; set; }
 
         public List<double> InteractionOrderPercent { get; set; }
 
