@@ -84,5 +84,10 @@ namespace InteracGenerator.InteracWeaving
                 sw.WriteLine(val);
             }
         }
+
+        public override List<List<string>> GenerateAllInteractions(int order)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

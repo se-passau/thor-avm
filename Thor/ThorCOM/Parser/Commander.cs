@@ -42,6 +42,7 @@ namespace ThorCOM.Parser
         public const string COMMAND_INTERACTIONS_SCALE_MIN = "interaction_scale_min";
         public const string COMMAND_INTERACTIONS_SCALE_MAX = "interaction_scale_max";
         public const string COMMAND_FEATURES_INITIAL_FW = "initial_fw";
+        public const string COMMAND_INTERACTIONS_GENERATE_ALL = "interaction_generate_all";
 
         public const string COMMAND_EVOLUTION_LOGGING = "logging";
         public const string COMMAND_EVOLUTION_LOG_FOLDER = "log_folder";
@@ -304,6 +305,9 @@ namespace ThorCOM.Parser
                                 break;
                             case COMMAND_INTERACTIONS_SCALE_MAX:
                                 _model.Setting.InteractionScaleMax = Convert.ToDouble(argument[1]);
+                                break;
+                            case COMMAND_INTERACTIONS_GENERATE_ALL:
+                                _model.Setting.AllInteractions = Convert.ToBoolean(argument[1]);
                                 break;
                             ///interactionValues.Add(a);
                             //FEATURE MODEL

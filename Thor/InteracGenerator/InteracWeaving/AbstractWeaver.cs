@@ -58,6 +58,8 @@ namespace InteracGenerator.InteracWeaving
 
         public abstract void SetUpWeaver();
 
+        public abstract List<List<T>> GenerateAllInteractions(int order);
+
         public List<T> SelectRandomInteraction(int order)
         {
             var rands = new List<int>(order);
@@ -96,6 +98,11 @@ namespace InteracGenerator.InteracWeaving
             //Order of Zero ==  Interaction of two features!
             var currentOrder = 0;
             var index = 0;
+            List<List<T>> allInteractionsOfCurrentOrder = null;
+            if (Model.Setting.AllInteractions)
+            {
+                allInteractionsOfCurrentOrder = GenerateAllInteractions(currentOrder + 2);
+            }
 
             for (var i = 0; i < InteractionValues.Length; i++)
             {
@@ -107,10 +114,24 @@ namespace InteracGenerator.InteracWeaving
                 else //creates interactions of the next higher order
                 {
                     currentOrder++;
+                    allInteractionsOfCurrentOrder = null;
                     index = 1;
                     while ((currentOrder >= orderP.Count()) && !(index < orderP[currentOrder] * InteractionValues.Length * 0.01)) currentOrder++;
+                    if (Model.Setting.AllInteractions)
+                    {
+                        allInteractionsOfCurrentOrder = GenerateAllInteractions(currentOrder + 2);
+                    }
                 }
-                var tempConfig = SelectRandomInteraction(currentOrder + 2);
+
+                List<T> tempConfig;
+                if (allInteractionsOfCurrentOrder != null)
+                {
+                    tempConfig = allInteractionsOfCurrentOrder[Rand.Next(0, allInteractionsOfCurrentOrder.Count)];
+                }
+                else
+                {
+                    tempConfig = SelectRandomInteraction(currentOrder + 2);
+                }
 
                 //we already have found this exact same interaction  //TODO check if comparator is working correct
                 if (AlreadyFoundInteraction(tempConfig))
@@ -119,7 +140,12 @@ namespace InteracGenerator.InteracWeaving
                     if (Model.Tries > 5000)
                     {
                         Console.WriteLine("I cant find anymore new Interactions,  decide how to handle this case!");
-                        throw new NotImplementedException();
+                        if (allInteractionsOfCurrentOrder != null)
+                        {
+                            throw new NotImplementedException();
+                        }
+                        allInteractionsOfCurrentOrder = GenerateAllInteractions(currentOrder + 2);
+                        Model.Tries = 0;
                     }
                     i--;
                     index--;
