@@ -86,6 +86,7 @@
     <Compile Include="FitnessCalculation\KsTest.cs" />
     <Compile Include="InteracWeaving\AbstractWeaver.cs" />
     <Compile Include="InteracWeaving\BinaryOptionWeaver.cs" />
+    <Compile Include="InteracWeaving\BinaryOptionAllInteractionGenerator.cs" />
     <Compile Include="InteracWeaving\DimacsWeaver.cs" />
     <Compile Include="InteracWeaving\IInteracWeaver.cs" />
     <Compile Include="Pareto\ParetoSolver.cs" />

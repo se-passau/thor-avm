@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SPLConqueror_Core;
+using MachineLearning.Sampling.Heuristics;
 
 namespace InteracGenerator.InteracWeaving
 {
@@ -69,6 +70,11 @@ namespace InteracGenerator.InteracWeaving
             //var solver = new CheckConfigSAT(null);  //TODO is this call necessary for the path information??
 
             return t.checkConfigurationSAT(tempConfig, _vm, false);
+        }
+
+        public override List<List<BinaryOption>> GenerateAllInteractions(int order)
+        {
+            return new BinaryOptionAllInteractionGenerator().GenerateAllInteractions(_vm, order);
         }
     }
 }

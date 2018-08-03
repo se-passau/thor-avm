@@ -102,6 +102,8 @@ namespace InteracGenerator
         public double FeatureScaleMax { get; set; }
         public double InteractionScaleMin { get; set; }
         public double InteractionScaleMax { get; set; }
+        public bool AllInteractions { get; set; }
+
 
         public int DrawAngle { get; set; }
         public int PlotStepSize { get; set; }

@@ -49,7 +49,7 @@ namespace MachineLearning.Solver
             catalog.Catalogs.Add(new DirectoryCatalog(location));
             location = location + Path.DirectorySeparatorChar + "SolverFoundationWrapper" + Path.DirectorySeparatorChar + "bin" + Path.DirectorySeparatorChar + "Release";
 #else
-            location = location + Path.DirectorySeparatorChar + "SolverFoundationWrapper" + Path.DirectorySeparatorChar + "bin"  + Path.DirectorySeparatorChar + "x64"  + Path.DirectorySeparatorChar + "Debug";
+            location = location + Path.DirectorySeparatorChar + "SolverFoundationWrapper" + Path.DirectorySeparatorChar + "bin" + Path.DirectorySeparatorChar + "Debug";
 #endif
             catalog.Catalogs.Add(new DirectoryCatalog(location));
             //Create the CompositionContainer with the parts in the catalog
